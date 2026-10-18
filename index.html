@@ -84,6 +84,10 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
 .chip.c{background:var(--good-2);color:var(--good)}
 .chip.st{background:var(--blue-2);color:var(--blue-ink)}
 .chip.flt{border-color:var(--ink)}
+.stock{display:flex;flex-direction:column;gap:6px;padding:8px;border-radius:12px;background:var(--bp-bg)}
+.stock .sh{font:600 11px/1.2 var(--f-body);color:var(--bp)}
+.stock .chip{background:var(--paper);cursor:pointer}
+.stock .chip.nd{border-color:var(--good);color:var(--good)}
 .legend{display:flex;gap:10px;flex-wrap:wrap;font:500 10.5px/1.2 var(--f-body);color:var(--ink-3)}
 .legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:4px;vertical-align:-1px}
 .legend .l1::before{background:var(--good-2);box-shadow:inset 0 0 0 1.5px var(--good)}
@@ -324,6 +328,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
       </div>
       <div class="pbar"><i id="pBar"></i></div>
       <div class="needs" id="pNeeds"></div>
+      <div class="stock" id="pStock" hidden><div class="sh" data-t="stock.h"></div><div class="needs" id="pStockL"></div></div>
       <div class="legend"><span class="l1" data-t="legend.carry"></span><span class="l2" data-t="legend.station"></span></div>
       <button class="primary" id="bBuild" disabled>—</button>
       <button class="ghostbtn" id="bSell" hidden></button>
@@ -408,7 +413,7 @@ uk:{
   tree:'Дерево покращень', bag:'Сумка', 'bag.carry':'для будови: {n}', 'bag.full':'Сумка повна', mail:'Пошта', pulse:'Імпульс',
   'legend.carry':'у сумці','legend.station':'на станції', 'plan.min':'згорнути','plan.max':'розгорнути',
   'plan.layer':'Шар {a} з {b}','plan.done':'Відбудовано',
-  'act.place':'Покласти {n}','act.carry':'Неси до «{b}» →','act.fore':'Докупити {n} за {c}','act.take':'До станції по {n} →','act.takeNow':'Взяти {n} для будови','ret':'↩ Повернути {n} на станцію','f.ret':'Віддаси на станції','f.notNeeded':'Цей матеріал зараз не потрібен','lab.station':'Візьми цеглини на станції: «Взяти» або тап по ящику','act.lack':'Бракує {n} — збирай','act.done':'Відбудовано ✓','act.busy':'Кладу…',
+  'act.place':'Покласти {n}','act.carry':'Неси до «{b}» →','act.fore':'Докупити {n} за {c}','act.take':'До станції по {n} →','act.takeNow':'Взяти {n} для будови','stock.h':'На станції — тапни, щоб узяти в сумку','ret':'↩ Повернути {n} на станцію','f.ret':'Віддаси на станції','f.notNeeded':'Цей матеріал зараз не потрібен','lab.station':'Візьми цеглини на станції: «Взяти» або тап по ящику','act.lack':'Бракує {n} — збирай','act.done':'Відбудовано ✓','act.busy':'Кладу…',
   sell:'Продати надлишок: {n} шт → {c}',
   'lab.near':'Тапай по будинку або «Покласти»','lab.far':'Неси сюди — у сумці є потрібні',
   'f.lower':'Спершу нижній шар','f.take':'Візьми {m} {s} на станції','f.pile':'Вся купа!','f.idea':'+{n} ідея','f.rent':'оренда',
@@ -441,7 +446,7 @@ en:{
   tree:'Upgrade tree', bag:'Bag', 'bag.carry':'for building: {n}', 'bag.full':'Bag is full', mail:'Mail', pulse:'Pulse',
   'legend.carry':'in your bag','legend.station':'at the station', 'plan.min':'collapse','plan.max':'expand',
   'plan.layer':'Layer {a} of {b}','plan.done':'Rebuilt',
-  'act.place':'Place {n}','act.carry':'Carry to “{b}” →','act.fore':'Buy {n} for {c}','act.take':'Get {n} at the station →','act.takeNow':'Take {n} for building','ret':'↩ Return {n} to station','f.ret':'Drop off at the station','f.notNeeded':'This material isn’t needed right now','lab.station':'Pick up bricks at the station: “Take” or tap a crate','act.lack':'{n} missing — collect','act.done':'Rebuilt ✓','act.busy':'Placing…',
+  'act.place':'Place {n}','act.carry':'Carry to “{b}” →','act.fore':'Buy {n} for {c}','act.take':'Get {n} at the station →','act.takeNow':'Take {n} for building','stock.h':'At the station — tap to put in your bag','ret':'↩ Return {n} to station','f.ret':'Drop off at the station','f.notNeeded':'This material isn’t needed right now','lab.station':'Pick up bricks at the station: “Take” or tap a crate','act.lack':'{n} missing — collect','act.done':'Rebuilt ✓','act.busy':'Placing…',
   sell:'Sell surplus: {n} pcs → {c}',
   'lab.near':'Tap the building or press “Place”','lab.far':'Bring them here — your bag has what’s needed',
   'f.lower':'Lower layer first','f.take':'Pick up {m} {s} at the station','f.pile':'The whole pile!','f.idea':'+{n} idea','f.rent':'rent',
@@ -474,7 +479,7 @@ de:{
   tree:'Upgrade-Baum', bag:'Tasche', 'bag.carry':'zum Bauen: {n}', 'bag.full':'Tasche ist voll', mail:'Rohrpost', pulse:'Impuls',
   'legend.carry':'in der Tasche','legend.station':'an der Station', 'plan.min':'einklappen','plan.max':'ausklappen',
   'plan.layer':'Schicht {a} von {b}','plan.done':'Wiederaufgebaut',
-  'act.place':'{n} setzen','act.carry':'Zu „{b}“ tragen →','act.fore':'{n} kaufen für {c}','act.take':'{n} an der Station holen →','act.takeNow':'{n} zum Bauen nehmen','ret':'↩ {n} zur Station zurück','f.ret':'An der Station abgeben','f.notNeeded':'Dieses Material wird gerade nicht gebraucht','lab.station':'Hol die Steine an der Station: „Nehmen“ oder Kiste antippen','act.lack':'{n} fehlen — sammeln','act.done':'Wiederaufgebaut ✓','act.busy':'Setze…',
+  'act.place':'{n} setzen','act.carry':'Zu „{b}“ tragen →','act.fore':'{n} kaufen für {c}','act.take':'{n} an der Station holen →','act.takeNow':'{n} zum Bauen nehmen','stock.h':'An der Station — antippen, um einzupacken','ret':'↩ {n} zur Station zurück','f.ret':'An der Station abgeben','f.notNeeded':'Dieses Material wird gerade nicht gebraucht','lab.station':'Hol die Steine an der Station: „Nehmen“ oder Kiste antippen','act.lack':'{n} fehlen — sammeln','act.done':'Wiederaufgebaut ✓','act.busy':'Setze…',
   sell:'Überschuss verkaufen: {n} Stk. → {c}',
   'lab.near':'Tippe auf das Gebäude oder „Setzen“','lab.far':'Bring sie her — du hast die passenden Steine',
   'f.lower':'Zuerst die untere Schicht','f.take':'Hol {m} {s} an der Station','f.pile':'Der ganze Haufen!','f.idea':'+{n} Idee','f.rent':'Miete',
@@ -1953,12 +1958,12 @@ function checkMilestones(){ for (const [id, n, f] of MS) if (!S.ms[id] && f()) {
 /* ================= local player ================= */
 /* remaining bricks of the next n layers (from the current one) — bricks are handed out strictly in layer order */
 function windowRem(b, n){ const r = Array(18).fill(0); if (!b) return r; for (let li = S.bld[b.i]; li < Math.min(b.layers.length, S.bld[b.i] + n); li++) for (const k of b.layers[li]) if (!b.placedSet.has(k)) r[b.P[k].t]++; return r; }
-function carryWant(q){ const b = W.buildings[SEL]; if (!b || S.bld[b.i] >= b.layers.length) return false; return windowRem(b, 1)[q] - S.pl[ME].carry[q] > 0; }
+function carryWant(q){ const b = W.buildings[SEL]; if (!b || S.bld[b.i] >= b.layers.length) return false; return remainAll(b)[q] - S.pl[ME].carry[q] > 0; }
 function carryUnusable(){ const b = W.buildings[SEL], rem = windowRem(b, 1), c = S.pl[ME].carry, out = []; for (let q = 0; q < 18; q++) for (let k = rem[q]; k < c[q]; k++) out.push(q); return out; }
 /* after switching buildings: bag bricks the new one needs move to the building part, unneeded building bricks go back to the loose part (sorted at the station) */
 function rebalanceCarry(){
   if (!W || !running) return;
-  const b = W.buildings[SEL], pl = S.pl[ME], keep = windowRem(b, 2), cur = windowRem(b, 1), toC = [], toB = [];
+  const b = W.buildings[SEL], pl = S.pl[ME], keep = b && S.bld[b.i] < b.layers.length ? remainAll(b) : Array(18).fill(0), cur = keep, toC = [], toB = [];
   for (let q = 0; q < 18; q++) {
     const extra = Math.max(0, pl.carry[q] - keep[q]); for (let k = 0; k < extra; k++) toB.push(q);
     const need = cur[q] - (pl.carry[q] - extra), avail = pl.bag[q] - P.pendUnl[q];
@@ -2031,7 +2036,7 @@ function startPlaceAll(b){ P.placeQ = { b:b.i, t:0 }; P.queue.length = 0; }
 function foreman(b){ const st = buildAction(b); if (!st.fore) return; for (const k of b.layers[S.bld[b.i]]) if (!b.placedSet.has(k) && !P.pendPlace.has(b.i + ':' + k)) sendPlace(b, k, 'sky'); }
 function desiredCarry(b){
   const want = Array(18).fill(0); const cap = E.cap() - looseN(ME); let total = 0;
-  for (let li = S.bld[b.i]; li < Math.min(b.layers.length, S.bld[b.i] + 2) && total < cap; li++) for (const k of b.layers[li]) { if (b.placedSet.has(k)) continue; if (total >= cap) break; want[b.P[k].t]++; total++; }
+  for (let li = S.bld[b.i]; li < b.layers.length && total < cap; li++) for (const k of b.layers[li]) { if (b.placedSet.has(k)) continue; if (total >= cap) break; want[b.P[k].t]++; total++; }
   return want;
 }
 function takePlan(onlyMat = -1){
@@ -2203,17 +2208,22 @@ function refreshHUD(){
   $('#pSub').textContent = (done ? t('plan.done') : t('plan.layer', { a:li + 1, b:b.layers.length })) + ' · ' + '★'.repeat(b.star);
   $('#pBar').style.width = (b.placedSet.size / b.P.length * 100) + '%';
   const rem = curLayerRem(b), pl = S.pl[ME];
-  const sig = LANG + rem.join() + '|' + S.station.join() + '|' + pl.carry.join() + filterColor;
+  const atSt = atStationNow(), allRem = done ? Array(18).fill(0) : remainAll(b);
+  $('#pStock').hidden = !atSt || !S.station.some(x => x > 0);
+  const sig = LANG + rem.join() + '|' + S.station.join() + '|' + pl.carry.join() + filterColor + atSt;
   if (sig !== planSig) {
     planSig = sig;
     const items = []; for (let q = 0; q < 18; q++) if (rem[q]) items.push(q);
+    if (atSt) $('#pStockL').innerHTML = S.station.map((n, q) => n ? `<button class="chip${allRem[q] > pl.carry[q] ? ' nd' : ''}" data-q="${q}" title="${tx(MATS[tc(q)].n)} ${SHAPES[ts(q)].label}">${chipSvg(ts(q), tc(q))}<span><b>${n}</b></span></button>` : '').join('');
     $('#pNeeds').innerHTML = done ? '' : items.map(q => { const c = tc(q), cls = pl.carry[q] >= rem[q] ? ' c' : pl.carry[q] + S.station[q] >= rem[q] ? ' st' : ''; return `<button class="chip${cls}${filterColor === c ? ' flt' : ''}" data-c="${c}" title="${tx(MATS[c].n)} ${SHAPES[ts(q)].label}">${chipSvg(ts(q), c)}<span><b>${Math.min(pl.carry[q], rem[q])}</b>/${rem[q]}</span></button>`; }).join('');
   }
   const ba = buildAction(b), bb = $('#bBuild');
   bb.textContent = ba.txt; bb.disabled = !!ba.dis; bb.classList.toggle('ready', !!ba.ready); bb.classList.toggle('go', !!ba.go); bb.onclick = ba.fn || null;
   const sp = surplus(), sbt = $('#bSell'); sbt.hidden = sp.n === 0; if (sp.n) sbt.textContent = t('sell', { n:sp.n, c:nC(Math.round(sp.n * E.trade() * dm() * council())) });
   const can = NODES.filter(nd => nodeInfo(nd).can).length; const dot = $('#treeDot'); dot.hidden = !can; dot.textContent = can;
-  const un = carryUnusable(), br = $('#bRet'); br.hidden = !un.length; if (un.length) br.textContent = t('ret', { n:un.length });
+  const un = carryUnusable(), br = $('#bRet'), curOk = (() => { const r = windowRem(W.buildings[SEL], 1), c = S.pl[ME].carry; return r.some((x, q) => x > 0 && c[q] > 0); })();
+  if (un.length && curOk && plN(ME) < E.cap()) un.length = 0;
+  br.hidden = !un.length; if (un.length) br.textContent = t('ret', { n:un.length });
   $('#bMail').hidden = !L('c_mail'); $('#bPulse').hidden = !L('m_pulse');
   const oc = $('#order');
   if (S.order) { const o = S.order; oc.hidden = false; const m = Math.max(0, Math.floor(o.left / 60)), s = Math.max(0, Math.floor(o.left % 60)); oc.innerHTML = `<span class="sw" style="background:${MATS[o.c].hex}"></span><div style="flex:1;min-width:0"><div class="ot">${t('order.from', { f:tx(BN[o.from]) || o.from })}</div><b>${tx(MATS[o.c].n)}: ${o.got}/${o.n}</b><div class="ob"><i style="width:${o.got / o.n * 100}%"></i></div></div><span class="tm">${m}:${String(s).padStart(2, '0')}</span>`; }
@@ -2229,6 +2239,14 @@ function tipText(){
   if (S.stars >= 2 && !L('m_unlock') && S.coins >= 40) return t('tip.magnet');
   return '';
 }
+$('#pStockL').addEventListener('click', e => {
+  const ch = e.target.closest('.chip'); if (!ch || !atStationNow()) return;
+  const q = +ch.dataset.q, b = W.buildings[SEL], pl = S.pl[ME];
+  const need = b && S.bld[b.i] < b.layers.length ? Math.max(0, remainAll(b)[q] - pl.carry[q]) : 0;
+  const n = Math.min(need || 1, S.station[q], E.cap() - plN(ME));
+  if (n <= 0) { bagFull(P.pos.clone().setY(1.2)); return; }
+  act({ k:'take', ret:[], ts:Array(n).fill(q) }); SFX.clink(2);
+});
 $('#pNeeds').addEventListener('click', e => { const ch = e.target.closest('.chip'); if (!ch || !L('v_filter')) return; const c = +ch.dataset.c; filterColor = filterColor === c ? -1 : c; planSig = ''; hudDirty = true; });
 $('#bSell').onclick = () => act({ k:'sell' });
 const selectB = i => { const ch = SEL !== i; if (ch) P.wantTake = null; SEL = i; if (ch) rebalanceCarry(); W.needDirty = true; planSig = ''; hudDirty = true; refreshGhosts(); };
@@ -2237,7 +2255,7 @@ $('#pNext').onclick = () => selectB((SEL + 1) % W.buildings.length);
 $('#pMin').onclick = () => { $('#plan').classList.toggle('mini'); $('#pMin').textContent = $('#plan').classList.contains('mini') ? t('plan.max') : t('plan.min'); };
 if (window.innerWidth < 640 || window.innerHeight < 560) $('#plan').classList.add('mini');
 $('#bMail').onclick = sendMail;
-$('#bRet').onclick = () => { const un = carryUnusable(); if (!un.length) return; act({ k:'conv', toC:[], toB:un }); if (!atStationNow()) floatText(t('f.ret'), P.pos.clone().setY(1.2), 'sm'); };
+$('#bRet').onclick = () => { const un = carryUnusable(); if (!un.length) return; hudDirty = true; act({ k:'conv', toC:[], toB:un }); if (!atStationNow()) floatText(t('f.ret'), P.pos.clone().setY(1.2), 'sm'); };
 $('#bPulse').onclick = sendPulse;
 $('#bRot').onclick = () => { LOC.yaw = (LOC.yaw + 1) % 4; saveLocal(); };
 $('#bRotL').onclick = () => { LOC.yaw = (LOC.yaw + 3) % 4; saveLocal(); };
