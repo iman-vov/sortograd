@@ -254,6 +254,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
 .df .primary{min-width:150px}
 
 @media (max-width:640px){
+  #bRotL{display:none}
   #plan{width:min(250px,calc(100% - 32px))}
   .pill{height:36px;font-size:13px;padding:0 11px 0 6px}
   .pill svg{width:22px;height:22px}
@@ -301,6 +302,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
       </div>
       <div class="btns">
         <button class="ib tree" id="bTree"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2.2"/><circle cx="5" cy="19" r="2.2"/><circle cx="12" cy="19" r="2.2"/><circle cx="19" cy="19" r="2.2"/><path d="M12 6.8v10M12 11c-4 0-7 2-7 5.8M12 11c4 0 7 2 7 5.8"/></svg><span class="dot" id="treeDot" hidden>0</span></button>
+        <button class="ib" id="bRotL"><svg viewBox="0 0 24 24" fill="none" stroke="#1D2840" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.6-5.9"/><path d="M4 4v5h5"/></svg></button>
         <button class="ib" id="bRot"><svg viewBox="0 0 24 24" fill="none" stroke="#1D2840" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/></svg></button>
         <button class="ib" id="bMenu"><svg viewBox="0 0 24 24" fill="none" stroke="#1D2840" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14"/></svg></button>
       </div>
@@ -398,9 +400,9 @@ uk:{
   tree:'Дерево покращень', bag:'Сумка', 'bag.carry':'для будови: {n}', 'bag.full':'Сумка повна', mail:'Пошта', pulse:'Імпульс',
   'legend.carry':'у сумці','legend.station':'на станції', 'plan.min':'згорнути','plan.max':'розгорнути',
   'plan.layer':'Шар {a} з {b}','plan.done':'Відбудовано',
-  'act.place':'Покласти {n}','act.carry':'Неси до «{b}» →','act.fore':'Докупити {n} за {c}','act.take':'Взяти {n} на станції →','act.lack':'Бракує {n} — збирай','act.done':'Відбудовано ✓','act.busy':'Кладу…',
+  'act.place':'Покласти {n}','act.carry':'Неси до «{b}» →','act.fore':'Докупити {n} за {c}','act.take':'До станції по {n} →','act.takeNow':'Взяти {n} для будови','f.notNeeded':'Цей матеріал зараз не потрібен','lab.station':'Візьми цеглини на станції: «Взяти» або тап по ящику','act.lack':'Бракує {n} — збирай','act.done':'Відбудовано ✓','act.busy':'Кладу…',
   sell:'Продати надлишок: {n} шт → {c}',
-  'lab.near':'Тапай по жовтих місцях або «Покласти»','lab.far':'Неси сюди — у сумці є потрібні',
+  'lab.near':'Тапай по будинку або «Покласти»','lab.far':'Неси сюди — у сумці є потрібні',
   'f.lower':'Спершу нижній шар','f.take':'Візьми {m} {s} на станції','f.pile':'Вся купа!','f.idea':'+{n} ідея','f.rent':'оренда',
   'tip.full':'Сумка повна — неси на станцію','tip.magnet':'Відкрилась гілка «Магніт» у дереві покращень',
   'coach.ok':'Зрозуміло','coach.skip':'Пропустити','coach.skipped':'Навчання пропущено. «Як грати» є в меню',
@@ -431,9 +433,9 @@ en:{
   tree:'Upgrade tree', bag:'Bag', 'bag.carry':'for building: {n}', 'bag.full':'Bag is full', mail:'Mail', pulse:'Pulse',
   'legend.carry':'in your bag','legend.station':'at the station', 'plan.min':'collapse','plan.max':'expand',
   'plan.layer':'Layer {a} of {b}','plan.done':'Rebuilt',
-  'act.place':'Place {n}','act.carry':'Carry to “{b}” →','act.fore':'Buy {n} for {c}','act.take':'Pick up {n} at the station →','act.lack':'{n} missing — collect','act.done':'Rebuilt ✓','act.busy':'Placing…',
+  'act.place':'Place {n}','act.carry':'Carry to “{b}” →','act.fore':'Buy {n} for {c}','act.take':'Get {n} at the station →','act.takeNow':'Take {n} for building','f.notNeeded':'This material isn’t needed right now','lab.station':'Pick up bricks at the station: “Take” or tap a crate','act.lack':'{n} missing — collect','act.done':'Rebuilt ✓','act.busy':'Placing…',
   sell:'Sell surplus: {n} pcs → {c}',
-  'lab.near':'Tap the yellow spots or press “Place”','lab.far':'Bring them here — your bag has what’s needed',
+  'lab.near':'Tap the building or press “Place”','lab.far':'Bring them here — your bag has what’s needed',
   'f.lower':'Lower layer first','f.take':'Pick up {m} {s} at the station','f.pile':'The whole pile!','f.idea':'+{n} idea','f.rent':'rent',
   'tip.full':'Bag is full — head to the station','tip.magnet':'The Magnet branch is now open in the upgrade tree',
   'coach.ok':'Got it','coach.skip':'Skip','coach.skipped':'Tutorial skipped. “How to play” is in the menu',
@@ -464,9 +466,9 @@ de:{
   tree:'Upgrade-Baum', bag:'Tasche', 'bag.carry':'zum Bauen: {n}', 'bag.full':'Tasche ist voll', mail:'Rohrpost', pulse:'Impuls',
   'legend.carry':'in der Tasche','legend.station':'an der Station', 'plan.min':'einklappen','plan.max':'ausklappen',
   'plan.layer':'Schicht {a} von {b}','plan.done':'Wiederaufgebaut',
-  'act.place':'{n} setzen','act.carry':'Zu „{b}“ tragen →','act.fore':'{n} kaufen für {c}','act.take':'{n} an der Station holen →','act.lack':'{n} fehlen — sammeln','act.done':'Wiederaufgebaut ✓','act.busy':'Setze…',
+  'act.place':'{n} setzen','act.carry':'Zu „{b}“ tragen →','act.fore':'{n} kaufen für {c}','act.take':'{n} an der Station holen →','act.takeNow':'{n} zum Bauen nehmen','f.notNeeded':'Dieses Material wird gerade nicht gebraucht','lab.station':'Hol die Steine an der Station: „Nehmen“ oder Kiste antippen','act.lack':'{n} fehlen — sammeln','act.done':'Wiederaufgebaut ✓','act.busy':'Setze…',
   sell:'Überschuss verkaufen: {n} Stk. → {c}',
-  'lab.near':'Tippe auf die gelben Stellen oder „Setzen“','lab.far':'Bring sie her — du hast die passenden Steine',
+  'lab.near':'Tippe auf das Gebäude oder „Setzen“','lab.far':'Bring sie her — du hast die passenden Steine',
   'f.lower':'Zuerst die untere Schicht','f.take':'Hol {m} {s} an der Station','f.pile':'Der ganze Haufen!','f.idea':'+{n} Idee','f.rent':'Miete',
   'tip.full':'Tasche voll — ab zur Station','tip.magnet':'Der Zweig „Magnet“ ist im Upgrade-Baum frei',
   'coach.ok':'Verstanden','coach.skip':'Überspringen','coach.skipped':'Tutorial übersprungen. „Spielanleitung“ findest du im Menü',
@@ -1195,15 +1197,28 @@ function buildDistrict(d){
 }
 const bName = b => tx(BN[b.key]);
 function setBrick(b){ dummy.position.set(b.x, b.y, b.z); dummy.rotation.set(b.rx, b.ry, b.rz); dummy.scale.setScalar(b.alive ? 1 : 0); dummy.updateMatrix(); const m = W.meshes[b.m]; m.setMatrixAt(b.k, dummy.matrix); m.instanceMatrix.needsUpdate = true; }
+function ghostVis(b, p){ return !p.shown && (!b.xr || p.li <= S.bld[b.i] + 1); }
+function updateXray(force){
+  if (!W) return;
+  for (const b of W.buildings) {
+    const xr = b.i === SEL && S.bld[b.i] < b.layers.length && distToB(b, P.pos.x, P.pos.z) <= E.placeR() + 3;
+    const key = xr ? S.bld[b.i] : -1;
+    if (!force && key === b.xrKey) continue;
+    b.xrKey = key; b.xr = xr;
+    for (const p of b.P) { if (p.shown) continue; const s = ts(p.t); dummy.position.set(p.wx, p.wy, p.wz); dummy.rotation.set(0, p.rot ? Math.PI / 2 : 0, 0); dummy.scale.setScalar(ghostVis(b, p) ? 1 : 0); dummy.updateMatrix(); b.ghost[s].setMatrixAt(p.gk, dummy.matrix); }
+    b.ghost.forEach(gm => gm.instanceMatrix.needsUpdate = true);
+  }
+}
 function setPlacement(b, p, shown){
   p.shown = shown; const s = ts(p.t);
   dummy.position.set(p.wx, p.wy, p.wz); dummy.rotation.set(0, p.rot ? Math.PI / 2 : 0, 0);
   dummy.scale.setScalar(shown ? 1 : 0); dummy.updateMatrix(); const bm = b.built[p.t]; bm.setMatrixAt(p.k, dummy.matrix); bm.instanceMatrix.needsUpdate = true;
-  dummy.scale.setScalar(shown ? 0 : 1); dummy.updateMatrix(); b.ghost[s].setMatrixAt(p.gk, dummy.matrix); b.ghost[s].instanceMatrix.needsUpdate = true;
+  dummy.scale.setScalar(ghostVis(b, p) ? 1 : 0); dummy.updateMatrix(); b.ghost[s].setMatrixAt(p.gk, dummy.matrix); b.ghost[s].instanceMatrix.needsUpdate = true;
 }
 function carryAvail(){ const c = S.pl[ME].carry.slice(); for (const key of P.pendPlace) { const [bi, pk] = key.split(':').map(Number); const b = W.buildings[bi]; if (b) c[b.P[pk].t]--; } return c; }
 function refreshGhosts(){
   if (!W) return;
+  updateXray(false);
   const ca = carryAvail();
   for (const b of W.buildings) {
     const cur = S.bld[b.i];
@@ -1427,7 +1442,7 @@ function animFigure(f, dt, moving, speed){
 }
 const miniGeo = new RoundedBoxGeometry(0.15, 0.08, 0.11, 1, 0.02);
 const P = { fig:makeFigure('#3C6FB4', '#E5534B'), path:null, pathFor:null, queue:[], col:null, still:0, heading:0, moving:false, mgT:0, rfT:0, eyeT:0, unT:0, unloading:false,
-  tapN:0, streak:0, lastCol:0, keys:{}, joy:{ x:0, y:0 }, mailCd:0, pulseCd:0, takeCd:0, placeQ:null, pendPlace:new Set(), pendUnl:Array(18).fill(0), lastColPos:null, netT:0 };
+  tapN:0, streak:0, wantTake:null, lastCol:0, keys:{}, joy:{ x:0, y:0 }, mailCd:0, pulseCd:0, takeCd:0, placeQ:null, pendPlace:new Set(), pendUnl:Array(18).fill(0), lastColPos:null, netT:0 };
 P.pos = P.fig.g.position; scene.add(P.fig.g);
 const REM = { fig:makeFigure('#3FA556', '#F5C53D'), tx:0, tz:0, th:0, moving:false, active:false };
 REM.fig.g.visible = false; scene.add(REM.fig.g);
@@ -1519,7 +1534,10 @@ function pickTargetFor(h){
   }
   return best;
 }
+/* helpers scale with the work left: busy with hundreds of bricks, lazy when only a few dozen remain */
+function helperPace(){ let n = 0; for (const b of W.bricks) if (b.alive && !b.gold) n++; return clamp(n / 120, 0.5, 1.6); }
 function hostHelpers(dt){
+  const pace = W.helpers.length ? helperPace() : 1;
   for (const h of W.helpers) {
     const pos = h.g.position; let moving = false; const spd = helperSpeed(h);
     if (h.fly) { if (h.goal) { const [gx, gz] = h.goal, dx = gx - pos.x, dz = gz - pos.z, d = Math.hypot(dx, dz), st = spd * dt; if (d <= st) { pos.x = gx; pos.z = gz; h.goal = null; } else { pos.x += dx / d * st; pos.z += dz / d * st; h.g.rotation.y = Math.atan2(dx, dz); } moving = true; } }
@@ -1527,7 +1545,7 @@ function hostHelpers(dt){
     animHelper(h, dt, moving);
     const travel = (x, z) => { if (h.fly) { h.goal = [x, z]; return true; } h.path = findPath(pos.x, pos.z, x, z); return !!h.path; };
     const arrived = () => h.fly ? !h.goal : !h.path;
-    if (h.state === 'rest') { h.t -= dt; if (h.t <= 0) { const b = pickTargetFor(h); if (b) { b.res = h; h.target = b; if (travel(b.x, b.z)) h.state = 'go'; else { b.res = null; h.t = 1.5; } } else h.t = 2; } }
+    if (h.state === 'rest') { h.t -= dt * pace; if (h.t <= 0) { const b = pickTargetFor(h); if (b) { b.res = h; h.target = b; if (travel(b.x, b.z)) h.state = 'go'; else { b.res = null; h.t = 1.5; } } else h.t = 2; } }
     else if (h.state === 'go') {
       const b = h.target;
       if (!b.alive) { h.state = 'rest'; h.t = 0.2; h.path = null; h.goal = null; continue; }
@@ -1944,16 +1962,23 @@ function desiredCarry(b){
   for (let li = S.bld[b.i]; li < b.layers.length && total < cap; li++) for (const k of b.layers[li]) { if (b.placedSet.has(k)) continue; if (total >= cap) break; want[b.P[k].t]++; total++; }
   return want;
 }
-function autoTake(){
-  const b = W.buildings[SEL]; if (!b || S.bld[b.i] >= b.layers.length) return;
+function takePlan(onlyMat = -1){
+  const b = W.buildings[SEL]; if (!b || S.bld[b.i] >= b.layers.length) return { ret:[], tk:[] };
   const want = desiredCarry(b), pl = S.pl[ME], ret = [], tk = [];
   for (let q = 0; q < 18; q++) for (let k = want[q]; k < pl.carry[q]; k++) ret.push(q);
   let space = E.cap() - plN(ME) + ret.length;
   const cur = curLayerRem(b);
   const order = [...Array(18).keys()].sort((a, c) => (cur[c] > 0) - (cur[a] > 0));
-  for (const q of order) { let need = want[q] - Math.min(pl.carry[q], want[q]); let have = S.station[q]; while (need > 0 && have > 0 && space > 0) { tk.push(q); need--; have--; space--; } }
-  if (ret.length || tk.length) act({ k:'take', ret, ts:tk });
+  for (const q of order) { if (onlyMat >= 0 && tc(q) !== onlyMat) continue; let need = want[q] - Math.min(pl.carry[q], want[q]); let have = S.station[q]; while (need > 0 && have > 0 && space > 0) { tk.push(q); need--; have--; space--; } }
+  return onlyMat >= 0 ? { ret:[], tk } : { ret, tk };
 }
+function autoTake(onlyMat = -1){
+  const { ret, tk } = takePlan(onlyMat);
+  if (ret.length || tk.length) { act({ k:'take', ret, ts:tk }); SFX.clink(3); }
+  return tk.length;
+}
+function takeMat(c){ if (!autoTake(c)) { floatText(t('f.notNeeded'), W.crates[c].pos, 'bad'); SFX.bad(); } }
+const atStationNow = () => distToDeck(P.pos.x, P.pos.z) <= UNLOAD_R[L('c_unload')] + 0.4;
 function updatePlayer(dt){
   const spd = E.speed();
   const k = P.keys; let kx = (k.d ? 1 : 0) - (k.a ? 1 : 0) + P.joy.x, kz = (k.s ? 1 : 0) - (k.w ? 1 : 0) + P.joy.y;
@@ -2023,8 +2048,7 @@ function updatePlayer(dt){
       if (L('c_boom') && P.lastColPos && !P.path && !P.queue.length && W.bricks.some(b => b.alive && hd(b.x, b.z, P.lastColPos[0], P.lastColPos[1]) < 3)) later(0.5, () => { if (!P.path && !P.queue.length) walkTo(P.lastColPos[0], P.lastColPos[1]); });
     }
   }
-  P.takeCd -= dt;
-  if (atStation && looseN(ME) === 0 && P.takeCd <= 0) { P.takeCd = 0.6; autoTake(); }
+  if (P.wantTake != null && atStation && looseN(ME) === 0 && P.pendUnl.every(x => !x)) { if (P.wantTake === SEL) autoTake(); P.wantTake = null; }
   const sb = W.buildings[SEL];
   if (!P.placeQ && sb && L('b_auto') >= 1 && !P.moving && distToB(sb, P.pos.x, P.pos.z) <= E.placeR() && nextPlaceable(sb) >= 0) startPlaceAll(sb);
   if (P.placeQ) {
@@ -2048,7 +2072,7 @@ function sendPulse(){
 let vacT = 0;
 function hostSystems(dt){
   hostHelpers(dt);
-  if (L('a_vacuum')) { vacT += dt * VAC_RATE[L('a_vacuum')]; if (vacT >= 1) { vacT -= 1; const b = (L('x_crew') ? nearest(0, -0.3, V('a_vacuum'), true) : null) || nearest(0, -0.3, V('a_vacuum'), false); if (b) act({ k:'vac', i:b.i }); else vacT = 0; } }
+  if (L('a_vacuum')) { vacT += dt * VAC_RATE[L('a_vacuum')] * helperPace(); if (vacT >= 1) { vacT -= 1; const b = (L('x_crew') ? nearest(0, -0.3, V('a_vacuum'), true) : null) || nearest(0, -0.3, V('a_vacuum'), false); if (b) act({ k:'vac', i:b.i }); else vacT = 0; } }
   if (L('b_rent') && S.stars) { W.rentT += dt; if (W.rentT >= 20) { W.rentT = 0; act({ k:'coins', n:Math.round(S.stars * V('b_rent') / 3 * dm() * (L('x_fair') ? 1.25 : 1)) }); } }
   if (S.stats.buildings >= 1) {
     if (!S.order) { W.orderT -= dt; if (W.orderT <= 0) { W.orderT = 90 + Math.random() * 60; const o = makeOrder(); if (o) act({ k:'order', o }); } }
@@ -2085,7 +2109,10 @@ function buildAction(b){
   if (carryOk > 0) return near ? { txt:t('act.place', { n:nB(carryOk) }), fn:() => startPlaceAll(b), ready:true } : { txt:t('act.carry', { b:bName(b) }), fn:() => walkToBuilding(b), go:true };
   const allow = Math.floor(V('b_foreman') * b.layers[S.bld[b.i]].length);
   if (allow && remN <= allow && near) { const cost = remN * Math.round(3 * dm()); return { txt:t('act.fore', { n:remN, c:nC(cost) }), fn:() => foreman(b), dis:S.coins < cost, fore:true }; }
-  if (inSt > 0) return { txt:t('act.take', { n:nB(inSt) }), fn:walkToStation, go:true };
+  if (inSt > 0) {
+    if (atStationNow()) { const n = takePlan().tk.length; if (n) return { txt:t('act.takeNow', { n:nB(n) }), fn:() => autoTake(), ready:true }; }
+    return { txt:t('act.take', { n:nB(inSt) }), fn:() => { walkToStation(); P.wantTake = SEL; }, go:true };
+  }
   return { txt:t('act.lack', { n:nB(remN) }), dis:true };
 }
 function refreshHUD(){
@@ -2131,7 +2158,7 @@ function tipText(){
 }
 $('#pNeeds').addEventListener('click', e => { const ch = e.target.closest('.chip'); if (!ch || !L('v_filter')) return; const c = +ch.dataset.c; filterColor = filterColor === c ? -1 : c; planSig = ''; hudDirty = true; });
 $('#bSell').onclick = () => act({ k:'sell' });
-const selectB = i => { SEL = i; W.needDirty = true; planSig = ''; hudDirty = true; refreshGhosts(); };
+const selectB = i => { if (SEL !== i) P.wantTake = null; SEL = i; W.needDirty = true; planSig = ''; hudDirty = true; refreshGhosts(); };
 $('#pPrev').onclick = () => selectB((SEL + W.buildings.length - 1) % W.buildings.length);
 $('#pNext').onclick = () => selectB((SEL + 1) % W.buildings.length);
 $('#pMin').onclick = () => { $('#plan').classList.toggle('mini'); $('#pMin').textContent = $('#plan').classList.contains('mini') ? t('plan.max') : t('plan.min'); };
@@ -2139,6 +2166,7 @@ if (window.innerWidth < 640 || window.innerHeight < 560) $('#plan').classList.ad
 $('#bMail').onclick = sendMail;
 $('#bPulse').onclick = sendPulse;
 $('#bRot').onclick = () => { LOC.yaw = (LOC.yaw + 1) % 4; saveLocal(); };
+$('#bRotL').onclick = () => { LOC.yaw = (LOC.yaw + 3) % 4; saveLocal(); };
 $('#bMenu').onclick = () => { $('#menu').hidden = false; syncMenu(); };
 $('#mClose').onclick = () => { $('#menu').hidden = true; };
 const LANGS = [['uk','Українська'],['en','English'],['de','Deutsch']];
@@ -2187,7 +2215,8 @@ function labelHTML(b){
   if (li >= b.layers.length) return `<h4>${bName(b)} ✓</h4><div class="ls" style="margin:0">${t('plan.done')} · ${'★'.repeat(b.star)}</div>`;
   const near = distToB(b, P.pos.x, P.pos.z) <= E.placeR(), ca = carryAvail(), rem = curLayerRem(b);
   const hasCarry = rem.some((n, q) => n > 0 && ca[q] > 0);
-  const hint = hasCarry ? (near ? t('lab.near') : t('lab.far')) : '';
+  const inSt = rem.some((n, q) => n > 0 && S.station[q] > 0);
+  const hint = hasCarry ? (near ? t('lab.near') : t('lab.far')) : inSt ? t('lab.station') : '';
   return `<h4>${bName(b)}</h4><div class="ls">${t('plan.layer', { a:li + 1, b:b.layers.length })} · ${Math.floor(b.placedSet.size / b.P.length * 100)}%</div><div class="cs">${chipsHTML(b)}</div>${hint ? `<div class="hint">${hint}</div>` : ''}`;
 }
 let labT = 0;
@@ -2346,37 +2375,55 @@ function pickBrick(cx, cy){
   for (const b of W.bricks) { if (!b.alive) continue; const [sx, sy] = screenOf(b.x, b.y, b.z); const d = Math.hypot(sx - px, sy - py); if (d < 34) { const s = d - (nd[b.t] > 0 ? 12 : 0); if (s < bs) { bs = s; best = b; } } }
   return best ? { b:best, d:1e9 } : null;
 }
-function pickGhost(){
+/* slots of the current layer are picked by screen distance, so the back wall works even behind the front one */
+function pickSlot(cx, cy, maxPx, only = null, needCarry = false){
+  const r = canvas.getBoundingClientRect(), px = cx - r.left, py = cy - r.top, ca = carryAvail();
   let best = null;
-  for (const b of W.buildings) for (let s = 0; s < 3; s++) {
-    const g = b.ghost[s]; if (!g.count) continue;
-    const hits = raycaster.intersectObject(g, false);
-    for (const h of hits) { const k = b.ghostP[s][h.instanceId]; if (k == null || b.P[k].shown) continue; if (!best || h.distance < best.d) best = { b, k, d:h.distance }; break; }
+  for (const b of W.buildings) {
+    if (only && b !== only) continue;
+    const li = S.bld[b.i]; if (li >= b.layers.length) continue;
+    for (const k of b.layers[li]) {
+      if (b.placedSet.has(k) || P.pendPlace.has(b.i + ':' + k)) continue;
+      const p = b.P[k], has = ca[p.t] > 0; if (needCarry && !has) continue;
+      const [sx, sy] = screenOf(p.wx, p.wy + H / 2, p.wz), d = Math.hypot(sx - px, sy - py);
+      if (d > maxPx) continue;
+      const sc = d - (has ? 14 : 0);
+      if (!best || sc < best.sc) best = { b, k, d, sc, has };
+    }
   }
   return best;
 }
+function pickCrate(){ const hits = raycaster.intersectObjects(W.crates.map(c => c.g), true); if (!hits.length) return -1; let o = hits[0].object; while (o && !W.crates.some(c => c.g === o)) o = o.parent; return o ? W.crates.findIndex(c => c.g === o) : -1; }
 function pickBuilding(){ let bi = -1, bd = 1e9; for (const bl of W.buildings) { const p = raycaster.ray.intersectBox(bl.box, tmpV); if (p) { const d = p.distanceTo(raycaster.ray.origin); if (d < bd) { bd = d; bi = bl.i; } } } return bi; }
 function onTap(cx, cy){
   if (!running) return;
   const pb = pickBrick(cx, cy);
   toNdc(cx, cy);
-  const pg = pickGhost();
-  if (pg && (!pb || pg.d < pb.d)) {
-    if (SEL !== pg.b.i) selectB(pg.b.i);
-    const p = pg.b.P[pg.k];
-    if (p.li === S.bld[pg.b.i] && carryAvail()[p.t] > 0) { placeTap(pg.b, pg.k); return; }
-    if (carryN(ME) > 0 && distToB(pg.b, P.pos.x, P.pos.z) > E.placeR()) { walkToBuilding(pg.b); return; }
-    if (p.li === S.bld[pg.b.i]) placeTap(pg.b, pg.k);
+  const g = raycaster.ray.intersectPlane(groundPlane, new THREE.Vector3());
+  const ci = pickCrate(), deckHit = ci >= 0 || (g && distToDeck(g.x, g.z) < 0.4);
+  if (deckHit) {
+    P.queue.length = 0; P.col = null; P.fig.reach = false; P.placeQ = null;
+    if (!atStationNow()) { walkToStation(); return; }
+    if (ci >= 0) takeMat(ci); else if (!autoTake()) walkToStation();
+    return;
+  }
+  const bi = pickBuilding(), near = pickSlot(cx, cy, 30);
+  const bl = bi >= 0 ? W.buildings[bi] : near ? near.b : null;
+  if (bl) {
+    if (SEL !== bl.i) selectB(bl.i);
+    const mine = pickSlot(cx, cy, 1e9, bl, true);
+    if (!mine) {
+      const s2 = pickSlot(cx, cy, 40, bl);
+      if (s2) placeTap(bl, s2.k);
+      return;
+    }
+    if (distToB(bl, P.pos.x, P.pos.z) > E.placeR()) { walkToBuilding(bl); return; }
+    placeTap(bl, mine.k);
     return;
   }
   if (pb) { requestCollect(pb.b); return; }
-  const bi = pickBuilding();
-  const g = raycaster.ray.intersectPlane(groundPlane, new THREE.Vector3());
-  const deckHit = g && distToDeck(g.x, g.z) < 0.4;
-  if (bi >= 0 && !deckHit) { selectB(bi); return; }
   if (!g) return;
   P.queue.length = 0; P.col = null; P.fig.reach = false; P.placeQ = null;
-  if (deckHit) { walkToStation(); return; }
   walkTo(g.x, g.z);
 }
 function swipeAt(cx, cy){
@@ -2388,13 +2435,13 @@ canvas.addEventListener('pointerdown', e => {
   audioInit(); try { canvas.setPointerCapture(e.pointerId); } catch (x) {}
   ptrs.set(e.pointerId, { x:e.clientX, y:e.clientY });
   if (ptrs.size === 1) gesture = { type:'tap', x0:e.clientX, y0:e.clientY, t0:performance.now(), sw:0 };
-  else if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; gesture = { type:'pinch', d0:Math.hypot(a.x - b.x, a.y - b.y), z0:zoomT }; }
+  else if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; gesture = { type:'pinch', d0:Math.hypot(a.x - b.x, a.y - b.y), z0:zoomT, a0:Math.atan2(b.y - a.y, b.x - a.x) }; }
 });
 canvas.addEventListener('pointermove', e => {
   if (e.pointerType === 'mouse' && !ptrs.size && W && running) { toNdc(e.clientX, e.clientY); HOV = pickBuilding(); return; }
   if (!ptrs.has(e.pointerId)) return; ptrs.set(e.pointerId, { x:e.clientX, y:e.clientY });
   if (!gesture) return;
-  if (gesture.type === 'pinch' && ptrs.size === 2) { const [a, b] = [...ptrs.values()]; const d = Math.hypot(a.x - b.x, a.y - b.y); zoomT = clamp(gesture.z0 * gesture.d0 / Math.max(20, d), 7, 24); }
+  if (gesture.type === 'pinch' && ptrs.size === 2) { const [a, b] = [...ptrs.values()]; const d = Math.hypot(a.x - b.x, a.y - b.y); zoomT = clamp(gesture.z0 * gesture.d0 / Math.max(20, d), 7, 24); let da = Math.atan2(b.y - a.y, b.x - a.x) - gesture.a0; da = Math.atan2(Math.sin(da), Math.cos(da)); if (Math.abs(da) > 0.55) { LOC.yaw = (LOC.yaw + (da > 0 ? 3 : 1)) % 4; gesture.a0 += da; saveLocal(); } }
   else if (gesture.type === 'tap' && Math.hypot(e.clientX - gesture.x0, e.clientY - gesture.y0) > 12) gesture.type = 'drag';
   if (gesture.type === 'drag' && running) swipeAt(e.clientX, e.clientY);
 });
@@ -2430,7 +2477,7 @@ let hlActive = false, sparkT = 0, beamT = 0;
 const radarEls = [];
 for (let i = 0; i < 4; i++) { const el = document.createElement('div'); el.className = 'arw'; el.innerHTML = '<i></i>'; el.hidden = true; $('#radar').appendChild(el); radarEls.push(el); }
 function updateHighlight(dt, time){
-  const lvl = V('v_need'), nd = getNeeds(), tutOn = LOC.tut < 7 && NET.role !== 'guest' && running, any = lvl > 0 || filterColor >= 0 || tutOn;
+  const lvl = V('v_need'), nd = getNeeds(), tutOn = LOC.tut < 8 && NET.role !== 'guest' && running, any = lvl > 0 || filterColor >= 0 || tutOn;
   if (any || hlActive) {
     const eff = Math.max(lvl, tutOn ? 1 : 0), amp = eff >= 2 ? 0.42 : 0.32, pulse = 0.5 + 0.5 * Math.sin(time * 5);
     for (const b of W.bricks) {
@@ -2467,12 +2514,13 @@ const TUT = [
   { t:{uk:'Праворуч — креслення колодязя. Для першого шару треба 8 кам’яних цеглин 1×2. Потрібні цеглини блимають — збирай!',en:'On the right is the well’s blueprint. The first layer needs 8 stone 1×2 bricks. The ones you need are blinking — collect them!',de:'Rechts ist der Bauplan des Brunnens. Die erste Schicht braucht 8 Steine 1×2. Die benötigten blinken — sammle sie!'}, ui:'#plan', at:tutBrick, done:() => S.stats.collected >= 4 },
   { t:{uk:'Тапни по землі — підеш туди. Можна й джойстиком у кутку. Далекі цеглини теж можна тапати',en:'Tap the ground to walk there, or use the joystick in the corner. You can tap faraway bricks too',de:'Tippe auf den Boden, um hinzugehen, oder nutze den Joystick in der Ecke. Auch entfernte Steine kannst du antippen'}, ui:'#joy', at:tutBrick, done:() => S.stats.collected >= 8 || plN(ME) >= E.cap() },
   { t:{uk:'Неси сумку на станцію в центрі. Там цеглини самі розсортуються по ящиках',en:'Carry your bag to the station in the middle. The bricks sort themselves into crates there',de:'Bring die Tasche zur Station in der Mitte. Dort sortieren sich die Steine selbst in Kisten'}, ui:'#bag', at:() => STATION_PT, done:() => S.stats.delivered >= 1 },
-  { t:{uk:'Станція видала тобі цеглини для будови (жовта смужка в сумці). Неси їх до колодязя',en:'The station handed you bricks for building (the yellow bar in your bag). Carry them to the well',de:'Die Station hat dir Bausteine gegeben (gelber Balken in der Tasche). Bring sie zum Brunnen'}, at:() => bTop(0), done:() => S.stats.placed > 0 || distToB(W.buildings[0], P.pos.x, P.pos.z) <= E.placeR() },
-  { t:{uk:'Тапай по жовтих місцях на кресленні — так кладеш цеглини. Або натисни «Покласти»',en:'Tap the yellow spots on the blueprint to place bricks, or press “Place”',de:'Tippe auf die gelben Stellen im Bauplan, um Steine zu setzen, oder drücke „Setzen“'}, ui:'#bBuild', at:() => bTop(0), done:() => S.stats.placed >= 3 },
+  { t:{uk:'Цеглини розсортовані. Тепер візьми ті, що для колодязя: кнопка «Взяти» в панелі або тап по ящику, що підстрибує',en:'The bricks are sorted. Now take the ones for the well: the “Take” button in the panel, or tap the bouncing crate',de:'Die Steine sind sortiert. Nimm jetzt die für den Brunnen: Taste „Nehmen“ im Panel oder tippe auf die hüpfende Kiste'}, ui:'#bBuild', at:() => STATION_PT, done:() => carryN(ME) > 0 || S.stats.placed > 0 },
+  { t:{uk:'Жовта смужка в сумці — цеглини для будови. Неси їх до колодязя',en:'The yellow bar in your bag is bricks for building. Carry them to the well',de:'Der gelbe Balken in der Tasche sind Bausteine. Bring sie zum Brunnen'}, at:() => bTop(0), done:() => S.stats.placed > 0 || distToB(W.buildings[0], P.pos.x, P.pos.z) <= E.placeR() },
+  { t:{uk:'Тапай по кресленню — цеглина ляже в найближче жовте місце, навіть на задній стіні. Або натисни «Покласти». Кнопки ⟲ ⟳ повертають камеру',en:'Tap the blueprint — the brick goes to the nearest yellow spot, even on the back wall. Or press “Place”. ⟲ ⟳ rotate the camera',de:'Tippe auf den Bauplan — der Stein landet an der nächsten gelben Stelle, auch hinten. Oder drücke „Setzen“. ⟲ ⟳ drehen die Kamera'}, ui:'#bBuild', at:() => bTop(0), done:() => S.stats.placed >= 3 },
   { t:{uk:'Чудово! Збирай далі, вивантажуй на станції й добудуй перший шар. Метал і камінь важкі — беруться довше',en:'Great! Keep collecting, unload at the station and finish the first layer. Metal and stone are heavy and take longer to pick',de:'Super! Sammle weiter, lade an der Station ab und beende die erste Schicht. Metall und Stein sind schwer und dauern länger'}, at:tutBrick, done:() => S.bld[0] >= 1 },
   { t:{uk:'За кожну цеглину платять монети. Відкрий дерево покращень — синя кнопка вгорі',en:'Every brick pays coins. Open the upgrade tree — the blue button at the top',de:'Jeder Stein bringt Münzen. Öffne den Upgrade-Baum — die blaue Taste oben'}, ui:'#bTree', done:() => treeOpened || S.stats.bought >= 1 },
   { t:{uk:'Купи «Спритні руки» або «Рюкзак» — вони світяться. Тапни по кружечку, потім «Купити»',en:'Buy “Quick hands” or “Backpack” — they’re glowing. Tap the circle, then “Buy”',de:'Kauf „Flinke Hände“ oder „Rucksack“ — sie leuchten. Tippe auf den Kreis, dann „Kaufen“'}, ui:'#n_h_speed,#n_c_cap', ontree:true, done:() => S.stats.bought >= 1 },
-  { t:{uk:'Два пальці — масштаб, ⟳ — поворот камери. Тапни по будівлі, щоб вибрати її креслення. Удачі, майстре!',en:'Two fingers zoom, ⟳ rotates the camera. Tap a building to pick its blueprint. Good luck, builder!',de:'Zwei Finger zoomen, ⟳ dreht die Kamera. Tippe auf ein Gebäude, um seinen Bauplan zu wählen. Viel Glück!'}, ui:'#bRot', ok:true, done:() => false },
+  { t:{uk:'Два пальці — масштаб і поворот (покрути ними), ⟲ ⟳ — теж поворот. Тапни по будівлі, щоб вибрати її креслення. Удачі, майстре!',en:'Two fingers zoom and rotate (twist them), ⟲ ⟳ rotate too. Tap a building to pick its blueprint. Good luck, builder!',de:'Zwei Finger zoomen und drehen, ⟲ ⟳ drehen auch. Tippe auf ein Gebäude, um seinen Bauplan zu wählen. Viel Glück!'}, ui:'#bRot', ok:true, done:() => false },
 ];
 let coachOn = [];
 function tutTick(dt, time){
@@ -2482,7 +2530,7 @@ function tutTick(dt, time){
   let st = TUT[LOC.tut];
   while (st && st.done()) { LOC.tut++; saveLocal(); st = TUT[LOC.tut]; }
   if (!st) { coach.hidden = true; coachArrow.visible = false; setCoachUI([]); return; }
-  if (st.ontree && $('#tree').hidden && S.stats.bought < 1) { LOC.tut = 7; treeOpened = false; st = TUT[7]; }
+  if (st.ontree && $('#tree').hidden && S.stats.bought < 1) { LOC.tut = 8; treeOpened = false; st = TUT[8]; }
   if (!$('#tree').hidden && !st.ontree) { coach.hidden = true; coachArrow.visible = false; return; }
   if (coach.hidden) hudDirty = true;
   coach.hidden = false; coach.classList.toggle('ontree', !$('#tree').hidden);
@@ -2508,8 +2556,9 @@ const SLIDES = [
   { art:'👆', h:{uk:'Як грати',en:'How to play',de:'So wird gespielt'}, list:[
     ['👆',{uk:'Тап по цеглині — зібрати',en:'Tap a brick to pick it up',de:'Stein antippen = aufheben'}],
     ['🕹️',{uk:'Тап по землі або джойстик — іти',en:'Tap the ground or use the joystick to walk',de:'Boden antippen oder Joystick = gehen'}],
-    ['📦',{uk:'Станція сортує й видає цеглини для будови',en:'The station sorts bricks and hands out building bricks',de:'Die Station sortiert und gibt Bausteine aus'}],
-    ['🧱',{uk:'Тап по жовтому місцю на кресленні — покласти',en:'Tap a yellow spot on a blueprint to place',de:'Gelbe Stelle im Bauplan antippen = setzen'}],
+    ['📦',{uk:'Станція сортує; «Взяти» або тап по ящику — цеглини для будови',en:'The station sorts; “Take” or tap a crate to get building bricks',de:'Die Station sortiert; „Nehmen“ oder Kiste antippen = Bausteine'}],
+    ['🔄',{uk:'⟲ ⟳ або покрутити двома пальцями — повернути камеру',en:'⟲ ⟳ or twist two fingers to rotate the camera',de:'⟲ ⟳ oder zwei Finger drehen = Kamera drehen'}],
+    ['🧱',{uk:'Тап по кресленню — цеглина ляже в найближче місце',en:'Tap the blueprint to place a brick at the nearest spot',de:'Bauplan antippen = Stein an die nächste Stelle setzen'}],
     ['⏱️',{uk:'Пластик береться швидко, метал і камінь — довше',en:'Plastic is quick to pick, metal and stone take longer',de:'Plastik geht schnell, Metall und Stein dauern länger'}],
     ['🌳',{uk:'Монети → дерево покращень',en:'Coins → upgrade tree',de:'Münzen → Upgrade-Baum'}] ] },
 ];
@@ -2673,12 +2722,14 @@ function offlineProgress(){
 /* ================= main loop ================= */
 let running = false, last = performance.now(), saveT = 0, hudT = 0;
 function step(dt, time){
-  updatePlayer(dt); updateRemote(dt);
+  updatePlayer(dt); updateRemote(dt); updateXray(false);
   if (NET.role === 'guest') guestHelpers(dt); else hostSystems(dt);
   updateResidents(dt); settleUpdate(dt);
   if (S.order) S.order.left -= dt;
   marker.material.opacity = Math.max(0, marker.material.opacity - dt * 1.6); marker.scale.multiplyScalar(1 + dt * 0.6);
   const sb = W.buildings[SEL]; selRing.position.set(sb.ox, 0.04, sb.oz); selRing.scale.setScalar(Math.max(sb.hx, sb.hz) * 1.35 + 0.3); selRing.material.opacity = 0.35 + 0.2 * Math.sin(time * 3);
+  const selB = W.buildings[SEL], remS = selB ? remainAll(selB) : null, plc = S.pl[ME].carry;
+  W.crates.forEach((c, ci) => { let want = false; if (remS) for (let s3 = 0; s3 < 3; s3++) { const q = ci * 3 + s3; if (remS[q] > plc[q] && S.station[q] > 0) want = true; } c.g.position.y = 0.14 + (want ? Math.abs(Math.sin(time * 4 + ci)) * 0.06 : 0); });
   for (const c of W.crates) { c.h = lerp(c.h, c.ht, 1 - Math.exp(-8 * dt)); c.fill.scale.y = Math.max(0.001, c.h); c.fill.position.y = 0.05 + c.h / 2; }
   if (L('c_mail')) { $('#mailCd').style.width = P.mailCd > 0 ? (P.mailCd / V('c_mail') * 100) + '%' : '0%'; $('#bMail').disabled = P.mailCd > 0 || looseN(ME) === 0; }
   if (L('m_pulse')) { $('#pulseCd').style.width = P.pulseCd > 0 ? (P.pulseCd / PULSE_CD[L('m_pulse')] * 100) + '%' : '0%'; $('#bPulse').disabled = P.pulseCd > 0; }
@@ -2703,7 +2754,7 @@ function boot(data){
   LANG = LOC.lang || 'uk';
   const saved = (data && data.S) || loadSaved();
   if (saved) S = mergeState(saved);
-  if (saved && S.stats.placed > 20 && LOC.tut < 7) LOC.tut = TUT.length;
+  if (saved && S.stats.placed > 20 && LOC.tut < 8) LOC.tut = TUT.length;
   applyLang();
   enterDistrict(); refreshHUD();
   showStart(!!(saved && S.stats.collected > 0));
