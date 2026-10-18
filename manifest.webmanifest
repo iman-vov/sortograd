@@ -1,0 +1,17 @@
+{
+  "name": "Сортоград",
+  "short_name": "Сортоград",
+  "description": "Затишна ізометрична гра: збирай цеглини, сортуй їх і відбудовуй містечко.",
+  "lang": "uk",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#BDE2F4",
+  "theme_color": "#BDE2F4",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
