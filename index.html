@@ -182,6 +182,12 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
 .howto b{flex:none;width:34px;height:34px;border-radius:11px;background:var(--paper-2);display:grid;place-items:center;font-size:18px}
 .linkbtn{border:0;background:none;color:var(--blue);font:600 13px/1.2 var(--f-body);padding:6px;align-self:center}
 .menu .ghostbtn{min-height:46px;font-size:14px;text-align:left;padding:10px 14px}
+.vol{display:grid;grid-template-columns:96px 1fr 44px;align-items:center;gap:10px;font:600 14px/1.2 var(--f-body);color:var(--ink-2)}
+.vol input{width:100%;accent-color:var(--blue);height:28px}
+.vol span{font:700 12px/1 var(--f-body);color:var(--ink-3);text-align:right;font-variant-numeric:tabular-nums}
+.trk{display:flex;align-items:center;gap:8px;font:500 12.5px/1.3 var(--f-body);color:var(--ink-3);margin-top:-6px}
+.trk span{flex:1;min-width:0}
+.menu .trk .ghostbtn{min-height:36px;font-size:12.5px;padding:6px 12px}
 .menu .danger{color:var(--warn);border-color:#F3C9B5}
 .code{font:800 44px/1 var(--f-display);letter-spacing:.12em;text-align:center;color:var(--blue);padding:14px;border-radius:16px;background:var(--blue-2);font-variant-numeric:tabular-nums}
 .codein{width:100%;font:800 32px/1 var(--f-display);letter-spacing:.2em;text-align:center;padding:12px;border-radius:14px;border:2px solid var(--line);color:var(--ink);background:var(--paper-2);user-select:text;-webkit-user-select:text}
@@ -355,8 +361,9 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
       <h2 data-t="menu"></h2>
       <div class="langs" id="mLangs"></div>
       <button class="ghostbtn" id="mCoop"></button>
-      <button class="ghostbtn" id="mMusic"></button>
-      <button class="ghostbtn" id="mSound"></button>
+      <div class="vol"><label for="vMusic" data-t="vol.music"></label><input type="range" id="vMusic" min="0" max="100" step="5"><span id="vMusicV"></span></div>
+      <div class="trk"><span id="mTrack"></span><button class="ghostbtn" id="mNext" data-t="vol.next"></button></div>
+      <div class="vol"><label for="vSfx" data-t="vol.sfx"></label><input type="range" id="vSfx" min="0" max="100" step="5"><span id="vSfxV"></span></div>
       <button class="ghostbtn" id="mJoy"></button>
       <button class="ghostbtn" id="mHow" data-t="menu.how"></button>
       <button class="ghostbtn" id="mCheat" data-t="menu.cheat"></button>
@@ -406,7 +413,7 @@ uk:{
   'f.lower':'Спершу нижній шар','f.take':'Візьми {m} {s} на станції','f.pile':'Вся купа!','f.idea':'+{n} ідея','f.rent':'оренда',
   'tip.full':'Сумка повна — неси на станцію','tip.magnet':'Відкрилась гілка «Магніт» у дереві покращень',
   'coach.ok':'Зрозуміло','coach.skip':'Пропустити','coach.skipped':'Навчання пропущено. «Як грати» є в меню',
-  menu:'Меню','menu.coop':'👫 Гра вдвох по Wi‑Fi','menu.coopOn':'👫 Гра вдвох: підключено','menu.music':'Музика: {s}','menu.sound':'Звуки: {s}','menu.joy':'Джойстик: {s}','st.on':'увімкнено','st.off':'вимкнено',
+  menu:'Меню','menu.coop':'👫 Гра вдвох по Wi‑Fi','menu.coopOn':'👫 Гра вдвох: підключено','vol.music':'🎵 Музика','vol.sfx':'🔔 Звуки','vol.track':'Зараз: «{n}»','vol.next':'Наступний ⏭','menu.joy':'Джойстик: {s}','st.on':'увімкнено','st.off':'вимкнено',
   'menu.how':'Як грати','menu.cheat':'Тест: +1000 монет і +3 ідеї','menu.stars':'Тест: +2 зірки','menu.reset':'Почати заново','menu.reset2':'Тапни ще раз, щоб стерти прогрес','menu.close':'Повернутися до гри',
   't.cheat':'Тест: +1000 монет і +3 ідеї','t.stars':'Тест: +2 зірки','t.reset':'Новий початок',
   't.built':'<b>{b}</b> відбудовано! +{s} ★','t.ideaPlus':' <em>+1 ідея</em>','t.bought':'{i} {n}: {v}','t.pbought':'Напарник купив {i} {n}','t.refund':'Вибір скинуто: повернуто {c}','t.sold':'Продано {n} за {c}',
@@ -439,7 +446,7 @@ en:{
   'f.lower':'Lower layer first','f.take':'Pick up {m} {s} at the station','f.pile':'The whole pile!','f.idea':'+{n} idea','f.rent':'rent',
   'tip.full':'Bag is full — head to the station','tip.magnet':'The Magnet branch is now open in the upgrade tree',
   'coach.ok':'Got it','coach.skip':'Skip','coach.skipped':'Tutorial skipped. “How to play” is in the menu',
-  menu:'Menu','menu.coop':'👫 Play together over Wi‑Fi','menu.coopOn':'👫 Playing together: connected','menu.music':'Music: {s}','menu.sound':'Sounds: {s}','menu.joy':'Joystick: {s}','st.on':'on','st.off':'off',
+  menu:'Menu','menu.coop':'👫 Play together over Wi‑Fi','menu.coopOn':'👫 Playing together: connected','vol.music':'🎵 Music','vol.sfx':'🔔 Sounds','vol.track':'Now playing: “{n}”','vol.next':'Next ⏭','menu.joy':'Joystick: {s}','st.on':'on','st.off':'off',
   'menu.how':'How to play','menu.cheat':'Test: +1000 coins and +3 ideas','menu.stars':'Test: +2 stars','menu.reset':'Start over','menu.reset2':'Tap again to erase progress','menu.close':'Back to the game',
   't.cheat':'Test: +1000 coins and +3 ideas','t.stars':'Test: +2 stars','t.reset':'Fresh start',
   't.built':'<b>{b}</b> rebuilt! +{s} ★','t.ideaPlus':' <em>+1 idea</em>','t.bought':'{i} {n}: {v}','t.pbought':'Your partner bought {i} {n}','t.refund':'Choice reset: {c} refunded','t.sold':'Sold {n} for {c}',
@@ -472,7 +479,7 @@ de:{
   'f.lower':'Zuerst die untere Schicht','f.take':'Hol {m} {s} an der Station','f.pile':'Der ganze Haufen!','f.idea':'+{n} Idee','f.rent':'Miete',
   'tip.full':'Tasche voll — ab zur Station','tip.magnet':'Der Zweig „Magnet“ ist im Upgrade-Baum frei',
   'coach.ok':'Verstanden','coach.skip':'Überspringen','coach.skipped':'Tutorial übersprungen. „Spielanleitung“ findest du im Menü',
-  menu:'Menü','menu.coop':'👫 Zu zweit im WLAN','menu.coopOn':'👫 Zu zweit: verbunden','menu.music':'Musik: {s}','menu.sound':'Geräusche: {s}','menu.joy':'Joystick: {s}','st.on':'an','st.off':'aus',
+  menu:'Menü','menu.coop':'👫 Zu zweit im WLAN','menu.coopOn':'👫 Zu zweit: verbunden','vol.music':'🎵 Musik','vol.sfx':'🔔 Geräusche','vol.track':'Läuft: „{n}“','vol.next':'Weiter ⏭','menu.joy':'Joystick: {s}','st.on':'an','st.off':'aus',
   'menu.how':'Spielanleitung','menu.cheat':'Test: +1000 Münzen und +3 Ideen','menu.stars':'Test: +2 Sterne','menu.reset':'Neu anfangen','menu.reset2':'Nochmal tippen, um den Fortschritt zu löschen','menu.close':'Zurück zum Spiel',
   't.cheat':'Test: +1000 Münzen und +3 Ideen','t.stars':'Test: +2 Sterne','t.reset':'Neustart',
   't.built':'<b>{b}</b> wiederaufgebaut! +{s} ★','t.ideaPlus':' <em>+1 Idee</em>','t.bought':'{i} {n}: {v}','t.pbought':'Dein Partner hat {i} {n} gekauft','t.refund':'Wahl zurückgesetzt: {c} erstattet','t.sold':'{n} für {c} verkauft',
@@ -722,7 +729,7 @@ const DEF = () => ({ v:2, coins:0, stars:0, ideas:0, district:1, up:{},
   pl:[mkPl(), mkPl()], station:Array(18).fill(0), dead:[], extraGold:0, bld:[], placed:{}, order:null, savedAt:0, dRewarded:0, ppos:null });
 const coarse = window.matchMedia && matchMedia('(pointer:coarse)').matches;
 const navLang = (navigator.language || 'uk').slice(0, 2);
-const LDEF = () => ({ tut:0, intro:false, sound:true, music:true, yaw:0, introD:0, joy:coarse, lang:['uk','en','de'].includes(navLang) ? navLang : (navLang === 'ru' ? 'uk' : 'en') });
+const LDEF = () => ({ tut:0, intro:false, musicVol:0.6, sfxVol:0.8, yaw:0, introD:0, joy:coarse, lang:['uk','en','de'].includes(navLang) ? navLang : (navLang === 'ru' ? 'uk' : 'en') });
 let S = DEF(), LOC = LDEF();
 let ME = 0;
 const NET = { role:'solo', conn:null, peer:null, code:'', status:'', err:false };
@@ -805,17 +812,18 @@ function applyTheme(th){
 
 /* ================= audio ================= */
 let AC = null, master = null, noiseBuf = null, lastPop = 0;
+const sfxLevel = () => Math.pow(clamp(LOC.sfxVol ?? 0.8, 0, 1), 1.3) * 0.65;
 function audioInit(){
   if (AC) { if (AC.state === 'suspended') AC.resume(); return; }
   try {
     AC = new (window.AudioContext || window.webkitAudioContext)();
-    master = AC.createGain(); master.gain.value = 0.5; master.connect(AC.destination);
+    master = AC.createGain(); master.gain.value = sfxLevel(); master.connect(AC.destination);
     noiseBuf = AC.createBuffer(1, AC.sampleRate * 0.4, AC.sampleRate);
     const d = noiseBuf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
   } catch (e) { AC = null; }
 }
 function tone(f, dur, type = 'sine', vol = 0.2, slide = 1, delay = 0){
-  if (!AC || !LOC.sound) return;
+  if (!AC || !(LOC.sfxVol > 0)) return;
   const t0 = AC.currentTime + delay, o = AC.createOscillator(), g = AC.createGain();
   o.type = type; o.frequency.setValueAtTime(f, t0);
   if (slide !== 1) o.frequency.exponentialRampToValueAtTime(Math.max(40, f * slide), t0 + dur);
@@ -823,7 +831,7 @@ function tone(f, dur, type = 'sine', vol = 0.2, slide = 1, delay = 0){
   o.connect(g); g.connect(master); o.start(t0); o.stop(t0 + dur + 0.03);
 }
 function noise(dur, vol, freq){
-  if (!AC || !LOC.sound) return;
+  if (!AC || !(LOC.sfxVol > 0)) return;
   const t0 = AC.currentTime, s = AC.createBufferSource(), f = AC.createBiquadFilter(), g = AC.createGain();
   s.buffer = noiseBuf; f.type = 'bandpass'; f.frequency.value = freq; f.Q.value = 1.2;
   g.gain.setValueAtTime(vol, t0); g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
@@ -841,42 +849,88 @@ const SFX = {
   coin(){ tone(1320, 0.07, 'square', 0.05); tone(1760, 0.1, 'square', 0.04, 1, 0.05); },
 };
 const Music = (() => {
-  let out = null, timer = null, nextT = 0, step = 0, bar = 0, key = 0, mel = 5;
-  const PROG = [[0,4,7,11],[9,12,16,19],[5,9,12,16],[7,11,14,17]], PROG2 = [[0,4,7,14],[5,9,12,16],[9,12,16,19],[7,11,14,17]];
-  const PENTA = [0,2,4,7,9,12,14,16,19,21], BEAT = 60 / 66;
+  let out = null, timer = null, nextT = 0, step = 0, bar = 0, key = 0, mel = 5, ti = -1, tStart = 0, tEnd = 0, played = [];
+  const PENTA = [0,2,4,7,9,12,14,16,19,21], LYD = [0,2,4,6,7,9,11,12,14,16], DOR = [0,2,3,5,7,9,10,12,14,15];
+  const TRACK_LEN = 210, GAP = 14;
+  /* five generative "tracks": each its own tempo, harmony, instrument and pattern; they rotate with a quiet gap between */
+  const TRACKS = [
+    { n:{uk:'Ранкова площа',en:'Morning square',de:'Morgenplatz'}, bpm:66, off:0, scale:PENTA, pad:0.03, padAtt:1.4, bass:'half', lead:'pluck',
+      progs:[[[0,4,7,11],[9,12,16,19],[5,9,12,16],[7,11,14,17]],[[0,4,7,14],[5,9,12,16],[9,12,16,19],[7,11,14,17]]] },
+    { n:{uk:'Музична скринька',en:'Music box',de:'Spieluhr'}, bpm:80, off:5, scale:PENTA, pad:0.014, padAtt:1.0, bass:'root', lead:'box',
+      progs:[[[0,4,7,12],[4,7,11,16],[5,9,12,17],[0,4,7,12]],[[9,12,16,21],[5,9,12,17],[0,4,7,12],[7,11,14,19]]] },
+    { n:{uk:'Дерев’яні молоточки',en:'Wooden mallets',de:'Holzschlägel'}, bpm:92, off:-3, scale:DOR, pad:0.016, padAtt:0.8, bass:'syncop', lead:'marimba',
+      progs:[[[2,5,9,12],[7,11,14,17],[2,5,9,12],[0,4,7,11]],[[9,12,16,19],[5,9,12,16],[2,5,9,12],[7,11,14,17]]] },
+    { n:{uk:'Вечірнє піаніно',en:'Evening piano',de:'Abendklavier'}, bpm:56, off:2, scale:LYD, pad:0.012, padAtt:2.0, bass:'whole', lead:'piano',
+      progs:[[[0,4,7,11,14],[2,6,9,12],[0,4,7,11],[2,6,9,14]],[[9,12,16,19],[2,6,9,12],[4,7,11,14],[0,4,7,11]]] },
+    { n:{uk:'Вітерець',en:'Breeze',de:'Brise'}, bpm:48, off:7, scale:PENTA, pad:0.042, padAtt:2.8, bass:'soft', lead:'chime',
+      progs:[[[0,7,14,16],[5,12,16,19],[2,9,14,17],[7,14,17,23]],[[9,16,19,24],[5,12,16,21],[0,7,14,16],[7,14,19,23]]] },
+  ];
   const midi = n => 440 * Math.pow(2, (n - 69) / 12);
   function ir(sec2){ const len = Math.floor(AC.sampleRate * sec2), b = AC.createBuffer(2, len, AC.sampleRate); for (let c = 0; c < 2; c++) { const d = b.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.6); } return b; }
+  const level = () => Math.pow(clamp(LOC.musicVol ?? 0.6, 0, 1), 1.4) * 1.3;
   function ensure(){
     if (out || !AC) return;
     out = AC.createGain(); out.gain.value = 0.0001;
-    const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 2400;
-    const conv = AC.createConvolver(); conv.buffer = ir(3);
+    const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 2600;
+    const conv = AC.createConvolver(); conv.buffer = ir(3.2);
     const wet = AC.createGain(); wet.gain.value = 0.5; const dry = AC.createGain(); dry.gain.value = 0.65;
     out.connect(lp); lp.connect(dry); lp.connect(conv); conv.connect(wet); dry.connect(AC.destination); wet.connect(AC.destination);
   }
-  function voice(f, t0, dur, type, vol, att, rel){
+  function voice(f, t0, dur, type, vol, att, rel, cut){
+    if (vol <= 0.0002) return;
     const o = AC.createOscillator(), g = AC.createGain(); o.type = type; o.frequency.value = f;
     g.gain.setValueAtTime(0.0001, t0); g.gain.linearRampToValueAtTime(vol, t0 + att); g.gain.setTargetAtTime(0.0001, t0 + dur, rel / 3);
-    o.connect(g); g.connect(out); o.start(t0); o.stop(t0 + dur + rel * 1.6);
+    if (cut) { const fl = AC.createBiquadFilter(); fl.type = 'lowpass'; fl.frequency.value = cut; o.connect(fl); fl.connect(g); } else o.connect(g);
+    g.connect(out); o.start(t0); o.stop(t0 + dur + rel * 1.6);
+  }
+  function pickNext(){
+    const pool = TRACKS.map((_, i) => i).filter(i => i !== ti && !played.slice(-2).includes(i));
+    ti = pool[Math.floor(Math.random() * pool.length)]; played.push(ti);
+    step = 0; bar = 0; mel = 4;
   }
   function schedule(){
     if (!AC || !out) return;
     while (nextT < AC.currentTime + 0.45) {
-      const t0 = nextT, prog = (Math.floor(bar / 8) % 2) ? PROG2 : PROG, ch = prog[bar % 4], root = 48 + key;
-      if (step % 8 === 0) { for (const n of ch) { voice(midi(root + 12 + n), t0, BEAT * 4 * 0.98, 'sine', 0.03, 1.4, 2.2); voice(midi(root + 12 + n) * 1.004, t0, BEAT * 4 * 0.98, 'triangle', 0.014, 1.6, 2.2); } voice(midi(root + ch[0]), t0, BEAT * 3, 'sine', 0.055, 0.06, 1.6); }
-      if (step % 8 === 4) voice(midi(root + ch[0] + (Math.random() < 0.5 ? 7 : 0)), t0, BEAT * 2, 'sine', 0.04, 0.06, 1.4);
-      if (Math.random() < (step % 2 === 0 ? 0.42 : 0.16)) { mel = clamp(mel + [-2,-1,-1,0,1,1,2][Math.floor(Math.random() * 7)], 0, PENTA.length - 1); const f = midi(root + 24 + PENTA[mel]); voice(f, t0, 0.06, 'triangle', 0.045, 0.004, 1.7); voice(f * 2, t0, 0.04, 'sine', 0.012, 0.004, 1.3); }
-      if (step % 16 === 10 && Math.random() < 0.35) voice(midi(root + 36 + PENTA[Math.floor(Math.random() * 5)]), t0, 0.05, 'sine', 0.022, 0.003, 3.2);
+      if (nextT >= tEnd) { const gap = tEnd ? GAP : 0.2; pickNext(); tStart = nextT + gap; tEnd = tStart + TRACK_LEN; nextT = tStart; hudDirty = true; continue; }
+      const tr = TRACKS[ti], BEAT = 60 / tr.bpm, t0 = nextT;
+      const fade = Math.min(1, (t0 - tStart) / 5, (tEnd - t0) / 7);
+      const prog = tr.progs[Math.floor(bar / 8) % tr.progs.length], ch = prog[bar % 4], root = 48 + (((key + tr.off) % 12) + 12) % 12;
+      const s8 = step % 8;
+      if (s8 === 0 && tr.pad) for (const n of ch) { voice(midi(root + 12 + n), t0, BEAT * 4 * 0.98, 'sine', tr.pad * fade, tr.padAtt, 2.4); voice(midi(root + 12 + n) * 1.004, t0, BEAT * 4 * 0.98, 'triangle', tr.pad * 0.45 * fade, tr.padAtt * 1.2, 2.4); }
+      const b0 = midi(root + ch[0]);
+      if (tr.bass === 'half') { if (s8 === 0) voice(b0, t0, BEAT * 3, 'sine', 0.055 * fade, 0.06, 1.6); if (s8 === 4) voice(midi(root + ch[0] + (Math.random() < 0.5 ? 7 : 0)), t0, BEAT * 2, 'sine', 0.04 * fade, 0.06, 1.4); }
+      else if (tr.bass === 'root') { if (s8 === 0) voice(b0, t0, BEAT * 2, 'sine', 0.045 * fade, 0.04, 1.2); }
+      else if (tr.bass === 'syncop') { if (s8 === 0 || s8 === 3 || s8 === 6) voice(b0 * (s8 === 3 ? 1.5 : 1), t0, BEAT * 0.8, 'triangle', 0.045 * fade, 0.01, 0.5, 900); }
+      else if (tr.bass === 'whole') { if (s8 === 0) voice(b0, t0, BEAT * 4, 'sine', 0.05 * fade, 0.2, 2.2); }
+      else if (tr.bass === 'soft') { if (step % 16 === 0) voice(b0, t0, BEAT * 7, 'sine', 0.035 * fade, 1.5, 3); }
+      const walk = () => { mel = clamp(mel + [-2,-1,-1,0,1,1,2][Math.floor(Math.random() * 7)], 0, tr.scale.length - 1); return tr.scale[mel]; };
+      if (tr.lead === 'pluck') {
+        if (Math.random() < (step % 2 === 0 ? 0.42 : 0.16)) { const f = midi(root + 24 + walk()); voice(f, t0, 0.06, 'triangle', 0.045 * fade, 0.004, 1.7); voice(f * 2, t0, 0.04, 'sine', 0.012 * fade, 0.004, 1.3); }
+        if (step % 16 === 10 && Math.random() < 0.35) voice(midi(root + 36 + PENTA[Math.floor(Math.random() * 5)]), t0, 0.05, 'sine', 0.022 * fade, 0.003, 3.2);
+      } else if (tr.lead === 'box') {
+        const pat = [0,1,2,3,4,3,2,1], i = pat[s8], n = ch[i % ch.length] + (i >= ch.length ? 12 : 0);
+        if (Math.random() < 0.9) { const f = midi(root + 24 + n); voice(f, t0, 0.03, 'sine', 0.032 * fade, 0.002, 1.1); voice(f * 3, t0, 0.02, 'sine', 0.008 * fade, 0.002, 0.5); }
+      } else if (tr.lead === 'marimba') {
+        const pat = [1,0,1,1,0,1,0,1];
+        if (pat[s8] && Math.random() < 0.85) { const f = midi(root + 24 + walk()); voice(f, t0, 0.04, 'triangle', 0.05 * fade, 0.002, 0.45); voice(f * 4, t0, 0.01, 'sine', 0.012 * fade, 0.001, 0.08); }
+      } else if (tr.lead === 'piano') {
+        if (s8 === 0) ch.forEach((n, k) => voice(midi(root + 12 + n), t0 + k * 0.07, BEAT * 2, 'triangle', 0.028 * fade, 0.005, 2.6, 1600));
+        if (step % 2 === 0 && s8 !== 0 && Math.random() < 0.24) voice(midi(root + 24 + walk()), t0, BEAT, 'triangle', 0.034 * fade, 0.004, 2.2, 2000);
+      } else if (tr.lead === 'chime') {
+        if (Math.random() < 0.08) { const f = midi(root + 36 + PENTA[Math.floor(Math.random() * 7)]); voice(f, t0, 0.05, 'sine', 0.022 * fade, 0.002, 3.6); voice(f * 2.76, t0, 0.03, 'sine', 0.005 * fade, 0.002, 1.8); }
+      }
       nextT += BEAT / 2; step++; if (step % 8 === 0) bar++;
     }
   }
-  const run = () => { if (!timer) { nextT = AC.currentTime + 0.15; timer = setInterval(schedule, 100); } };
+  const run = () => { if (!timer) { if (nextT < AC.currentTime) nextT = AC.currentTime + 0.15; timer = setInterval(schedule, 100); } };
   return {
-    start(){ if (!AC) return; ensure(); if (LOC.music) run(); out.gain.setTargetAtTime(LOC.music ? 0.9 : 0.0001, AC.currentTime, 1.2); },
-    set(on){ if (!AC) return; ensure(); out.gain.setTargetAtTime(on ? 0.9 : 0.0001, AC.currentTime, 0.5); if (on) run(); else setTimeout(() => { if (!LOC.music && timer) { clearInterval(timer); timer = null; } }, 1500); },
+    start(){ if (!AC) return; ensure(); if (level() > 0) run(); out.gain.setTargetAtTime(Math.max(0.0001, level()), AC.currentTime, 1.2); },
+    setVol(){ if (!AC) return; ensure(); out.gain.setTargetAtTime(Math.max(0.0001, level()), AC.currentTime, 0.15); if (level() > 0) run(); },
+    next(){ if (!AC) return; ensure(); tEnd = AC.currentTime + 0.3; nextT = Math.min(nextT, tEnd); played = played.slice(-1); run(); },
+    name(){ return ti >= 0 ? tx(TRACKS[ti].n) : '—'; },
     key(k){ key = k; },
     pause(){ if (timer) { clearInterval(timer); timer = null; } },
-    resume(){ if (AC && out && LOC.music) run(); },
+    resume(){ if (AC && out && level() > 0) run(); },
   };
 })();
 
@@ -1737,7 +1791,7 @@ function apply(ev){
         break;
       }
       if (plN(by) >= E.cap()) { if (ev.toSt) { takeBrick(b); S.station[b.t]++; S.xp.magnet++; flyBrick(b.t, false, pos, W.crates[tc(b.t)].pos.clone(), 0.6, 2, crateFillUpdate); } break; }
-      takeBrick(b); pl.bag[b.t]++;
+      takeBrick(b); if (ev.carry) pl.carry[b.t]++; else pl.bag[b.t]++;
       flyBrick(b.t, false, pos, () => packPosOf(by), 0.32, 0.9, () => updatePack(by), { s1:0.35 });
       if (ev.src === 'hand') { S.xp.hands++; S.stats.manual++; if (L('x_master')) addCoins(dm(), null); }
       else if (ev.src === 'magnet') S.xp.magnet++;
@@ -1829,6 +1883,7 @@ function apply(ev){
       break;
     }
     case 'next': if (ev.d === S.district) nextDistrictApply(); break;
+    case 'conv': { for (const q of ev.toC || []) if (pl.bag[q] > 0) { pl.bag[q]--; pl.carry[q]++; } for (const q of ev.toB || []) if (pl.carry[q] > 0) { pl.carry[q]--; pl.bag[q]++; } updatePack(by); break; }
     case 'hcol': { const b = W.bricks[ev.i]; if (b && b.alive) takeBrick(b); break; }
     case 'hdel': { S.station[ev.t]++; S.xp.auto++; flyBrick(ev.t, false, V3(ev.x, ev.y || 0.5, ev.z), W.crates[tc(ev.t)].pos.clone(), 0.4, 0.6, crateFillUpdate); break; }
     case 'vac': { const b = W.bricks[ev.i]; if (!b || !b.alive) break; takeBrick(b); S.station[b.t]++; S.xp.auto++; flyBrick(b.t, false, V3(b.x, b.y, b.z), W.crates[tc(b.t)].pos.clone(), 0.7, 1.4, crateFillUpdate); break; }
@@ -1894,11 +1949,23 @@ const MS = [
 function checkMilestones(){ for (const [id, n, f] of MS) if (!S.ms[id] && f()) { S.ms[id] = 1; S.ideas++; toast(t('t.ms', { n:tx(n) }) + t('t.ideaPlus')); bump('#pIdeas'); } }
 
 /* ================= local player ================= */
+function carryWant(q){ const b = W.buildings[SEL]; if (!b || S.bld[b.i] >= b.layers.length) return false; return remainAll(b)[q] - S.pl[ME].carry[q] > 0; }
+/* after switching buildings: bag bricks the new one needs move to the building part, unneeded building bricks go back to the loose part (sorted at the station) */
+function rebalanceCarry(){
+  if (!W || !running) return;
+  const b = W.buildings[SEL], pl = S.pl[ME], rem = b && S.bld[b.i] < b.layers.length ? remainAll(b) : Array(18).fill(0), toC = [], toB = [];
+  for (let q = 0; q < 18; q++) {
+    const extra = Math.max(0, pl.carry[q] - rem[q]); for (let k = 0; k < extra; k++) toB.push(q);
+    const need = rem[q] - (pl.carry[q] - extra), avail = pl.bag[q] - P.pendUnl[q];
+    for (let k = 0; k < Math.min(need, avail); k++) toC.push(q);
+  }
+  if (toC.length || toB.length) act({ k:'conv', toC, toB });
+}
 function actCollect(b, src){
   if (!b.alive) return false;
   const full = plN(ME) >= E.cap() && !b.gold;
   if (full && !(src === 'magnet' && L('x_magbag'))) { if (src === 'hand') bagFull(V3(b.x, b.y, b.z)); return false; }
-  const ev = { k:'col', i:b.i, src, need:!b.gold && getNeeds()[b.t] > 0, toSt:full };
+  const ev = { k:'col', i:b.i, src, need:!b.gold && getNeeds()[b.t] > 0, toSt:full, carry:!b.gold && !full && carryWant(b.t) };
   if (src === 'hand') {
     const now = performance.now(); P.streak = now - P.lastCol < 1500 ? P.streak + 1 : 1; P.lastCol = now;
     if (P.streak >= 15) S.ms._streak = 1;
@@ -2158,7 +2225,7 @@ function tipText(){
 }
 $('#pNeeds').addEventListener('click', e => { const ch = e.target.closest('.chip'); if (!ch || !L('v_filter')) return; const c = +ch.dataset.c; filterColor = filterColor === c ? -1 : c; planSig = ''; hudDirty = true; });
 $('#bSell').onclick = () => act({ k:'sell' });
-const selectB = i => { if (SEL !== i) P.wantTake = null; SEL = i; W.needDirty = true; planSig = ''; hudDirty = true; refreshGhosts(); };
+const selectB = i => { const ch = SEL !== i; if (ch) P.wantTake = null; SEL = i; if (ch) rebalanceCarry(); W.needDirty = true; planSig = ''; hudDirty = true; refreshGhosts(); };
 $('#pPrev').onclick = () => selectB((SEL + W.buildings.length - 1) % W.buildings.length);
 $('#pNext').onclick = () => selectB((SEL + 1) % W.buildings.length);
 $('#pMin').onclick = () => { $('#plan').classList.toggle('mini'); $('#pMin').textContent = $('#plan').classList.contains('mini') ? t('plan.max') : t('plan.min'); };
@@ -2174,13 +2241,16 @@ function langButtons(el){ el.innerHTML = LANGS.map(([c, n]) => `<button data-l="
 function setLang(l){ LANG = l; LOC.lang = l; saveLocal(); applyLang(); if (W && W.drawSign) W.drawSign(); syncMenu(); if (!$('#start').hidden && !running) showStart(hasSaveFlag); }
 function syncMenu(){
   const st = v => v ? t('st.on') : t('st.off');
-  $('#mSound').textContent = t('menu.sound', { s:st(LOC.sound) }); $('#mMusic').textContent = t('menu.music', { s:st(LOC.music) }); $('#mJoy').textContent = t('menu.joy', { s:st(LOC.joy) });
+  $('#vMusic').value = Math.round((LOC.musicVol ?? 0.6) * 100); $('#vSfx').value = Math.round((LOC.sfxVol ?? 0.8) * 100); volLabels(); $('#mJoy').textContent = t('menu.joy', { s:st(LOC.joy) });
   $('#mReset').textContent = t('menu.reset'); $('#mReset').dataset.arm = ''; $('#mReset').disabled = NET.role !== 'solo';
   $('#mCoop').textContent = NET.conn && NET.conn.open ? t('menu.coopOn') : t('menu.coop');
   langButtons($('#mLangs'));
 }
-$('#mSound').onclick = () => { LOC.sound = !LOC.sound; saveLocal(); syncMenu(); };
-$('#mMusic').onclick = () => { LOC.music = !LOC.music; saveLocal(); audioInit(); Music.set(LOC.music); syncMenu(); };
+function volLabels(){ const f = v => v > 0 ? Math.round(v * 100) + '%' : t('st.off'); $('#vMusicV').textContent = f(LOC.musicVol); $('#vSfxV').textContent = f(LOC.sfxVol); $('#mTrack').textContent = t('vol.track', { n:Music.name() }); }
+$('#vMusic').addEventListener('input', e => { LOC.musicVol = e.target.value / 100; audioInit(); Music.setVol(); volLabels(); });
+$('#vSfx').addEventListener('input', e => { LOC.sfxVol = e.target.value / 100; audioInit(); if (master) master.gain.setTargetAtTime(sfxLevel(), AC.currentTime, 0.05); volLabels(); SFX.pop(4, 0); });
+['change', 'pointerup'].forEach(ev => { $('#vMusic').addEventListener(ev, saveLocal); $('#vSfx').addEventListener(ev, saveLocal); });
+$('#mNext').onclick = () => { audioInit(); Music.next(); setTimeout(volLabels, 600); };
 $('#mJoy').onclick = () => { LOC.joy = !LOC.joy; saveLocal(); syncMenu(); hudDirty = true; };
 $('#mHow').onclick = () => { $('#menu').hidden = true; showIntro(2, false); };
 $('#mCheat').onclick = () => { act({ k:'cheat', c:1000, i:3 }); toast(t('t.cheat')); };
@@ -2477,7 +2547,7 @@ let hlActive = false, sparkT = 0, beamT = 0;
 const radarEls = [];
 for (let i = 0; i < 4; i++) { const el = document.createElement('div'); el.className = 'arw'; el.innerHTML = '<i></i>'; el.hidden = true; $('#radar').appendChild(el); radarEls.push(el); }
 function updateHighlight(dt, time){
-  const lvl = V('v_need'), nd = getNeeds(), tutOn = LOC.tut < 8 && NET.role !== 'guest' && running, any = lvl > 0 || filterColor >= 0 || tutOn;
+  const lvl = V('v_need'), nd = getNeeds(), tutOn = LOC.tut < 7 && NET.role !== 'guest' && running, any = lvl > 0 || filterColor >= 0 || tutOn;
   if (any || hlActive) {
     const eff = Math.max(lvl, tutOn ? 1 : 0), amp = eff >= 2 ? 0.42 : 0.32, pulse = 0.5 + 0.5 * Math.sin(time * 5);
     for (const b of W.bricks) {
@@ -2511,16 +2581,15 @@ function tutBrick(){ const nd = getNeeds(); let best = null, bd = 1e9; for (cons
 const bTop = i => { const b = W.buildings[i]; return V3(b.ox, b.top + 0.9, b.oz); };
 const TUT = [
   { t:{uk:'Тапни по цеглинці під жовтою стрілкою — персонаж її підбере',en:'Tap the brick under the yellow arrow — your builder will pick it up',de:'Tippe auf den Stein unter dem gelben Pfeil — deine Figur hebt ihn auf'}, at:tutBrick, done:() => S.stats.collected >= 1 },
-  { t:{uk:'Праворуч — креслення колодязя. Для першого шару треба 8 кам’яних цеглин 1×2. Потрібні цеглини блимають — збирай!',en:'On the right is the well’s blueprint. The first layer needs 8 stone 1×2 bricks. The ones you need are blinking — collect them!',de:'Rechts ist der Bauplan des Brunnens. Die erste Schicht braucht 8 Steine 1×2. Die benötigten blinken — sammle sie!'}, ui:'#plan', at:tutBrick, done:() => S.stats.collected >= 4 },
-  { t:{uk:'Тапни по землі — підеш туди. Можна й джойстиком у кутку. Далекі цеглини теж можна тапати',en:'Tap the ground to walk there, or use the joystick in the corner. You can tap faraway bricks too',de:'Tippe auf den Boden, um hinzugehen, oder nutze den Joystick in der Ecke. Auch entfernte Steine kannst du antippen'}, ui:'#joy', at:tutBrick, done:() => S.stats.collected >= 8 || plN(ME) >= E.cap() },
-  { t:{uk:'Неси сумку на станцію в центрі. Там цеглини самі розсортуються по ящиках',en:'Carry your bag to the station in the middle. The bricks sort themselves into crates there',de:'Bring die Tasche zur Station in der Mitte. Dort sortieren sich die Steine selbst in Kisten'}, ui:'#bag', at:() => STATION_PT, done:() => S.stats.delivered >= 1 },
-  { t:{uk:'Цеглини розсортовані. Тепер візьми ті, що для колодязя: кнопка «Взяти» в панелі або тап по ящику, що підстрибує',en:'The bricks are sorted. Now take the ones for the well: the “Take” button in the panel, or tap the bouncing crate',de:'Die Steine sind sortiert. Nimm jetzt die für den Brunnen: Taste „Nehmen“ im Panel oder tippe auf die hüpfende Kiste'}, ui:'#bBuild', at:() => STATION_PT, done:() => carryN(ME) > 0 || S.stats.placed > 0 },
-  { t:{uk:'Жовта смужка в сумці — цеглини для будови. Неси їх до колодязя',en:'The yellow bar in your bag is bricks for building. Carry them to the well',de:'Der gelbe Balken in der Tasche sind Bausteine. Bring sie zum Brunnen'}, at:() => bTop(0), done:() => S.stats.placed > 0 || distToB(W.buildings[0], P.pos.x, P.pos.z) <= E.placeR() },
+  { t:{uk:'Праворуч — креслення колодязя: перший шар із 8 кам’яних цеглин 1×2. Потрібні блимають — вони одразу йдуть у сумку для будови (жовта смужка)',en:'On the right is the well’s blueprint: the first layer needs 8 stone 1×2 bricks. The needed ones blink and go straight into the building part of your bag (yellow bar)',de:'Rechts ist der Bauplan des Brunnens: die erste Schicht braucht 8 Steine 1×2. Die benötigten blinken und kommen direkt in den Bau-Teil der Tasche (gelber Balken)'}, ui:'#plan', at:tutBrick, done:() => carryN(ME) >= 4 || S.stats.collected >= 6 },
+  { t:{uk:'Тапни по землі — підеш туди. Можна й джойстиком у кутку. Далекі цеглини теж можна тапати',en:'Tap the ground to walk there, or use the joystick in the corner. You can tap faraway bricks too',de:'Tippe auf den Boden, um hinzugehen, oder nutze den Joystick in der Ecke. Auch entfernte Steine kannst du antippen'}, ui:'#joy', at:tutBrick, done:() => carryN(ME) >= 8 || S.stats.collected >= 10 || plN(ME) >= E.cap() },
+  { t:{uk:'Цеглини для будови вже в сумці. Неси їх до колодязя',en:'The building bricks are in your bag. Carry them to the well',de:'Die Bausteine sind in der Tasche. Bring sie zum Brunnen'}, ui:'#bag', at:() => bTop(0), done:() => S.stats.placed > 0 || distToB(W.buildings[0], P.pos.x, P.pos.z) <= E.placeR() },
   { t:{uk:'Тапай по кресленню — цеглина ляже в найближче жовте місце, навіть на задній стіні. Або натисни «Покласти». Кнопки ⟲ ⟳ повертають камеру',en:'Tap the blueprint — the brick goes to the nearest yellow spot, even on the back wall. Or press “Place”. ⟲ ⟳ rotate the camera',de:'Tippe auf den Bauplan — der Stein landet an der nächsten gelben Stelle, auch hinten. Oder drücke „Setzen“. ⟲ ⟳ drehen die Kamera'}, ui:'#bBuild', at:() => bTop(0), done:() => S.stats.placed >= 3 },
-  { t:{uk:'Чудово! Збирай далі, вивантажуй на станції й добудуй перший шар. Метал і камінь важкі — беруться довше',en:'Great! Keep collecting, unload at the station and finish the first layer. Metal and stone are heavy and take longer to pick',de:'Super! Sammle weiter, lade an der Station ab und beende die erste Schicht. Metall und Stein sind schwer und dauern länger'}, at:tutBrick, done:() => S.bld[0] >= 1 },
+  { t:{uk:'Зайві цеглини неси на станцію в центрі — там вони розсортуються по ящиках і чекатимуть на свій будинок',en:'Bring the other bricks to the station in the middle — they get sorted into crates and wait for their house',de:'Bring die übrigen Steine zur Station in der Mitte — dort werden sie in Kisten sortiert und warten auf ihr Haus'}, ui:'#bag', at:() => STATION_PT, done:() => S.stats.delivered >= 1 || looseN(ME) === 0 || S.bld[0] >= 1 },
+  { t:{uk:'Добудуй перший шар. Якщо потрібне лежить на станції — візьми кнопкою «Взяти» або тапом по ящику. Метал і камінь важкі — беруться довше',en:'Finish the first layer. If what you need is at the station, take it with “Take” or by tapping a crate. Metal and stone are heavy and take longer',de:'Beende die erste Schicht. Liegt das Nötige an der Station, nimm es mit „Nehmen“ oder per Tipp auf die Kiste. Metall und Stein sind schwer und dauern länger'}, at:tutBrick, done:() => S.bld[0] >= 1 },
   { t:{uk:'За кожну цеглину платять монети. Відкрий дерево покращень — синя кнопка вгорі',en:'Every brick pays coins. Open the upgrade tree — the blue button at the top',de:'Jeder Stein bringt Münzen. Öffne den Upgrade-Baum — die blaue Taste oben'}, ui:'#bTree', done:() => treeOpened || S.stats.bought >= 1 },
   { t:{uk:'Купи «Спритні руки» або «Рюкзак» — вони світяться. Тапни по кружечку, потім «Купити»',en:'Buy “Quick hands” or “Backpack” — they’re glowing. Tap the circle, then “Buy”',de:'Kauf „Flinke Hände“ oder „Rucksack“ — sie leuchten. Tippe auf den Kreis, dann „Kaufen“'}, ui:'#n_h_speed,#n_c_cap', ontree:true, done:() => S.stats.bought >= 1 },
-  { t:{uk:'Два пальці — масштаб і поворот (покрути ними), ⟲ ⟳ — теж поворот. Тапни по будівлі, щоб вибрати її креслення. Удачі, майстре!',en:'Two fingers zoom and rotate (twist them), ⟲ ⟳ rotate too. Tap a building to pick its blueprint. Good luck, builder!',de:'Zwei Finger zoomen und drehen, ⟲ ⟳ drehen auch. Tippe auf ein Gebäude, um seinen Bauplan zu wählen. Viel Glück!'}, ui:'#bRot', ok:true, done:() => false },
+  { t:{uk:'Два пальці — масштаб і поворот (покрути ними), ⟲ ⟳ — теж поворот. Тапни по будівлі, щоб вибрати її креслення. У меню є гучність і вибір треку. Удачі, майстре!',en:'Two fingers zoom and rotate (twist them), ⟲ ⟳ rotate too. Tap a building to pick its blueprint. The menu has volume and track controls. Good luck, builder!',de:'Zwei Finger zoomen und drehen, ⟲ ⟳ drehen auch. Tippe auf ein Gebäude, um seinen Bauplan zu wählen. Im Menü gibt es Lautstärke und Titelwahl. Viel Glück!'}, ui:'#bRot', ok:true, done:() => false },
 ];
 let coachOn = [];
 function tutTick(dt, time){
@@ -2530,7 +2599,7 @@ function tutTick(dt, time){
   let st = TUT[LOC.tut];
   while (st && st.done()) { LOC.tut++; saveLocal(); st = TUT[LOC.tut]; }
   if (!st) { coach.hidden = true; coachArrow.visible = false; setCoachUI([]); return; }
-  if (st.ontree && $('#tree').hidden && S.stats.bought < 1) { LOC.tut = 8; treeOpened = false; st = TUT[8]; }
+  if (st.ontree && $('#tree').hidden && S.stats.bought < 1) { LOC.tut = 7; treeOpened = false; st = TUT[7]; }
   if (!$('#tree').hidden && !st.ontree) { coach.hidden = true; coachArrow.visible = false; return; }
   if (coach.hidden) hudDirty = true;
   coach.hidden = false; coach.classList.toggle('ontree', !$('#tree').hidden);
@@ -2552,7 +2621,7 @@ $('#coachOk').onclick = () => { LOC.tut = TUT.length; saveLocal(); };
 /* ================= intro & start ================= */
 const SLIDES = [
   { art:'🌪️🧱', h:{uk:'Буря розсипала Сортоград',en:'A storm scattered Sortograd',de:'Ein Sturm hat Sortograd verstreut'}, p:{uk:'Одної ночі над містечком пройшла буря, і всі будинки розсипались на тисячі цеглинок — з глини, каменю, дерева, скла, металу й пластику.',en:'One night a storm swept over the town, and every house crumbled into thousands of bricks — clay, stone, wood, glass, metal and plastic.',de:'Eines Nachts zog ein Sturm über die Stadt, und alle Häuser zerfielen in tausende Steine — aus Ton, Stein, Holz, Glas, Metall und Plastik.'} },
-  { art:'👷‍♂️🏗️', h:{uk:'Ти — майстер-будівельник',en:'You’re the master builder',de:'Du bist der Baumeister'}, p:{uk:'Збирай цеглини й неси на станцію — там вони сортуються. Бери звідти потрібні, неси до будинку й клади своїми руками.',en:'Collect bricks and bring them to the station, where they get sorted. Take what you need, carry it to a house and place it yourself.',de:'Sammle Steine und bring sie zur Station, wo sie sortiert werden. Nimm, was du brauchst, trag es zum Haus und setze es selbst.'} },
+  { art:'👷‍♂️🏗️', h:{uk:'Ти — майстер-будівельник',en:'You’re the master builder',de:'Du bist der Baumeister'}, p:{uk:'Збирай цеглини. Потрібні для будинку одразу лягають у сумку для будови — неси їх і клади своїми руками. Решту віднось на станцію: там вони сортуються й чекають свого будинку.',en:'Collect bricks. The ones a house needs go straight into your building bag — carry them over and place them yourself. Take the rest to the station, where they get sorted and wait for their house.',de:'Sammle Steine. Die, die ein Haus braucht, kommen direkt in deine Bautasche — trag sie hin und setze sie selbst. Den Rest bringst du zur Station, wo er sortiert wird und auf sein Haus wartet.'} },
   { art:'👆', h:{uk:'Як грати',en:'How to play',de:'So wird gespielt'}, list:[
     ['👆',{uk:'Тап по цеглині — зібрати',en:'Tap a brick to pick it up',de:'Stein antippen = aufheben'}],
     ['🕹️',{uk:'Тап по землі або джойстик — іти',en:'Tap the ground or use the joystick to walk',de:'Boden antippen oder Joystick = gehen'}],
@@ -2679,7 +2748,7 @@ function coopUI(){
 function save(){ if (!W || NET.role === 'guest') return; try { S.savedAt = Date.now(); S.ppos = [P.pos.x, P.pos.z]; localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
 function saveLocal(){ try { localStorage.setItem(LKEY, JSON.stringify(LOC)); } catch (e) {} }
 function loadSaved(){ try { const s = localStorage.getItem(KEY); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
-function loadLocal(){ try { const s = localStorage.getItem(LKEY); return s ? { ...LDEF(), ...JSON.parse(s) } : LDEF(); } catch (e) { return LDEF(); } }
+function loadLocal(){ try { const s = localStorage.getItem(LKEY); if (!s) return LDEF(); const o = JSON.parse(s); if (o.musicVol == null && o.music === false) o.musicVol = 0; if (o.sfxVol == null && o.sound === false) o.sfxVol = 0; return { ...LDEF(), ...o }; } catch (e) { return LDEF(); } }
 function mergeState(o){
   const d = DEF(); if (!o) return d;
   for (const k in d) if (o[k] !== undefined) d[k] = (typeof d[k] === 'object' && d[k] && !Array.isArray(d[k]) && k !== 'order') ? { ...d[k], ...o[k] } : o[k];
@@ -2754,7 +2823,7 @@ function boot(data){
   LANG = LOC.lang || 'uk';
   const saved = (data && data.S) || loadSaved();
   if (saved) S = mergeState(saved);
-  if (saved && S.stats.placed > 20 && LOC.tut < 8) LOC.tut = TUT.length;
+  if (saved && S.stats.placed > 20 && LOC.tut < 7) LOC.tut = TUT.length;
   applyLang();
   enterDistrict(); refreshHUD();
   showStart(!!(saved && S.stats.collected > 0));
