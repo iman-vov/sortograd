@@ -263,7 +263,35 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
 .df .price .short{color:var(--warn)}
 .df .primary{min-width:150px}
 
+#showBar{position:absolute;bottom:14px;left:var(--gl);right:calc(var(--gr) + 150px);margin:0 auto;max-width:640px;display:none;align-items:center;gap:10px;padding:10px 10px 10px 16px;border-radius:18px;background:var(--paper);box-shadow:var(--shadow);pointer-events:auto;z-index:5}
+#app.show #showBar{display:flex}
+.sbT{min-width:0;flex:1}
+.sbT b{display:block;font:700 14px/1.2 var(--f-display)}
+.sbT span{display:block;font:500 11.5px/1.4 var(--f-body);color:var(--ink-2);margin-top:3px}
+.sbB{display:flex;gap:6px;flex:none}
+#showBar .primary{min-height:40px;font-size:12.5px;white-space:nowrap}
+#showBar .ghostbtn{min-height:40px;font-size:17px;padding:4px 10px}
+#app.show #plan,#app.show .bottom,#app.show #order,#app.show #bTree,#app.show #coach,#app.show .tip,#app.show #labSel,#app.show #labHov{display:none!important}
+#photoX{position:absolute;right:calc(var(--gr) + 8px);top:12px;display:none;z-index:6}
+#app.photo #hud,#app.photo #labels,#app.photo #radar,#app.photo #fx{display:none!important}
+#app.photo #photoX{display:grid}
+.atlas{width:min(680px,100%)}
+#atlasL{display:flex;flex-direction:column;gap:8px}
+.agrp{font:700 12px/1 var(--f-display);color:var(--bp);margin-top:6px;letter-spacing:.02em}
+.alist{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+.dcard{display:flex;gap:10px;align-items:center;padding:10px;border-radius:14px;border:2px solid var(--line);background:var(--paper);text-align:left;min-width:0}
+.dcard .fl{font-size:26px;line-height:1;flex:none}
+.dcard .dt{min-width:0}
+.dcard b{display:block;font:700 12px/1.25 var(--f-display);color:var(--ink)}
+.dcard .dt span{display:block;font:500 11px/1.2 var(--f-body);color:var(--ink-3);margin-top:3px}
+.dcard.done{border-color:#9BD3AE}
+.dcard.done .dt span{color:var(--good)}
+.dcard.cur{border-color:var(--blue);background:var(--blue-2)}
+.dcard.lock{opacity:.55}
+.dcard.view{outline:3px solid var(--ink);outline-offset:1px}
 @media (max-width:640px){
+  #showBar{padding:8px 8px 8px 12px;right:calc(var(--gr) + 128px)}
+  .sbT span{display:none}
   #bRotL{display:none}
   #plan{width:min(250px,calc(100% - 32px))}
   .pill{height:36px;font-size:13px;padding:0 11px 0 6px}
@@ -311,6 +339,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
         <div class="pill net" id="rNet" hidden></div>
       </div>
       <div class="btns">
+        <button class="ib" id="bAtlas"><svg viewBox="0 0 24 24" fill="none" stroke="#1D2840" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg></button>
         <button class="ib tree" id="bTree"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2.2"/><circle cx="5" cy="19" r="2.2"/><circle cx="12" cy="19" r="2.2"/><circle cx="19" cy="19" r="2.2"/><path d="M12 6.8v10M12 11c-4 0-7 2-7 5.8M12 11c4 0 7 2 7 5.8"/></svg><span class="dot" id="treeDot" hidden>0</span></button>
         <button class="ib" id="bRotL"><svg viewBox="0 0 24 24" fill="none" stroke="#1D2840" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.6-5.9"/><path d="M4 4v5h5"/></svg></button>
         <button class="ib" id="bRot"><svg viewBox="0 0 24 24" fill="none" stroke="#1D2840" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/></svg></button>
@@ -348,7 +377,10 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
     <div class="tip" id="tip"></div>
     <div id="coach" hidden><span class="cn" id="coachN"></span><p id="coachT"></p><div class="cb"><button class="cbtn y" id="coachOk" hidden data-t="coach.ok"></button><button class="cbtn" id="coachSkip" data-t="coach.skip"></button></div></div>
     <div id="toasts" aria-live="polite"></div>
+    <div id="showBar"><div class="sbT"><b id="sbName"></b><span id="sbFact"></span></div><div class="sbB"><button class="ghostbtn" id="sbPhoto" aria-label="photo">📷</button><button class="ghostbtn" id="sbMap" aria-label="map">🗺️</button><button class="primary" id="sbBack" data-t="show.back"></button></div></div>
   </div>
+  <button class="ib" id="photoX" aria-label="close">✕</button>
+  <section class="ov" id="atlas" hidden><div class="card atlas"><h2 data-t="atlas"></h2><p data-t="atlas.hint"></p><div id="atlasL"></div><button class="primary" id="aClose" data-t="menu.close"></button></div></section>
 
   <section id="tree" hidden>
     <div class="thead">
@@ -413,7 +445,7 @@ uk:{
   tree:'Дерево покращень', bag:'Сумка', 'bag.carry':'для будови: {n}', 'bag.full':'Сумка повна', mail:'Пошта', pulse:'Імпульс',
   'legend.carry':'у сумці','legend.station':'на станції', 'plan.min':'згорнути','plan.max':'розгорнути',
   'plan.layer':'Шар {a} з {b}','plan.done':'Відбудовано',
-  'act.place':'Покласти {n}','act.carry':'Неси до «{b}» →','act.fore':'Докупити {n} за {c}','act.take':'До станції по {n} →','act.takeNow':'Взяти {n} для будови','stock.h':'На станції — тапни, щоб узяти в сумку','ret':'↩ Повернути {n} на станцію','f.ret':'Віддаси на станції','f.notNeeded':'Цей матеріал зараз не потрібен','lab.station':'Візьми цеглини на станції: «Взяти» або тап по ящику','act.lack':'Бракує {n} — збирай','act.done':'Відбудовано ✓','act.busy':'Кладу…',
+  'act.place':'Покласти {n}','act.carry':'Неси до «{b}» →','act.fore':'Докупити {n} за {c}','act.take':'До станції по {n} →','act.takeNow':'Взяти {n} для будови','atlas':'Мапа світу','atlas.hint':'Тапни відбудований квартал, щоб прогулятися ним і показати друзям.','atlas.home':'Сортоград','atlas.world':'Навколо світу','atlas.more':'Далі','atlas.done':'✓ відбудовано — подивитися','atlas.cur':'зараз тут','atlas.lock':'🔒 попереду','show.back':'↩ До роботи','show.solo':'Перегляд доступний лише в одиночній грі','t.locked':'Спершу відбудуй попередні квартали','m.lmDone':'{b} відбудовано!','m.fact':'Цікавий факт','m.ddoneW':'Сортоград повністю відбудовано! Ти отримав <b>+2 ідеї</b>. Далі — подорож навколо світу, і в кожному місті своя знаменита пам’ятка. Перша зупинка: {n}.','stock.h':'На станції — тапни, щоб узяти в сумку','ret':'↩ Повернути {n} на станцію','f.ret':'Віддаси на станції','f.notNeeded':'Цей матеріал зараз не потрібен','lab.station':'Візьми цеглини на станції: «Взяти» або тап по ящику','act.lack':'Бракує {n} — збирай','act.done':'Відбудовано ✓','act.busy':'Кладу…',
   sell:'Продати надлишок: {n} шт → {c}',
   'lab.near':'Тапай по будинку або «Покласти»','lab.far':'Неси сюди — у сумці є потрібні',
   'f.lower':'Спершу нижній шар','f.take':'Візьми {m} {s} на станції','f.pile':'Вся купа!','f.idea':'+{n} ідея','f.rent':'оренда',
@@ -446,7 +478,7 @@ en:{
   tree:'Upgrade tree', bag:'Bag', 'bag.carry':'for building: {n}', 'bag.full':'Bag is full', mail:'Mail', pulse:'Pulse',
   'legend.carry':'in your bag','legend.station':'at the station', 'plan.min':'collapse','plan.max':'expand',
   'plan.layer':'Layer {a} of {b}','plan.done':'Rebuilt',
-  'act.place':'Place {n}','act.carry':'Carry to “{b}” →','act.fore':'Buy {n} for {c}','act.take':'Get {n} at the station →','act.takeNow':'Take {n} for building','stock.h':'At the station — tap to put in your bag','ret':'↩ Return {n} to station','f.ret':'Drop off at the station','f.notNeeded':'This material isn’t needed right now','lab.station':'Pick up bricks at the station: “Take” or tap a crate','act.lack':'{n} missing — collect','act.done':'Rebuilt ✓','act.busy':'Placing…',
+  'act.place':'Place {n}','act.carry':'Carry to “{b}” →','act.fore':'Buy {n} for {c}','act.take':'Get {n} at the station →','act.takeNow':'Take {n} for building','atlas':'World map','atlas.hint':'Tap a rebuilt district to walk around it and show it off.','atlas.home':'Sortograd','atlas.world':'Around the world','atlas.more':'Further on','atlas.done':'✓ rebuilt — take a look','atlas.cur':'you are here','atlas.lock':'🔒 ahead','show.back':'↩ Back to work','show.solo':'Viewing is only available in solo play','t.locked':'Rebuild the previous districts first','m.lmDone':'{b} rebuilt!','m.fact':'Fun fact','m.ddoneW':'Sortograd is fully rebuilt! You earned <b>+2 ideas</b>. Next comes a journey around the world, each city with its famous landmark. First stop: {n}.','stock.h':'At the station — tap to put in your bag','ret':'↩ Return {n} to station','f.ret':'Drop off at the station','f.notNeeded':'This material isn’t needed right now','lab.station':'Pick up bricks at the station: “Take” or tap a crate','act.lack':'{n} missing — collect','act.done':'Rebuilt ✓','act.busy':'Placing…',
   sell:'Sell surplus: {n} pcs → {c}',
   'lab.near':'Tap the building or press “Place”','lab.far':'Bring them here — your bag has what’s needed',
   'f.lower':'Lower layer first','f.take':'Pick up {m} {s} at the station','f.pile':'The whole pile!','f.idea':'+{n} idea','f.rent':'rent',
@@ -479,7 +511,7 @@ de:{
   tree:'Upgrade-Baum', bag:'Tasche', 'bag.carry':'zum Bauen: {n}', 'bag.full':'Tasche ist voll', mail:'Rohrpost', pulse:'Impuls',
   'legend.carry':'in der Tasche','legend.station':'an der Station', 'plan.min':'einklappen','plan.max':'ausklappen',
   'plan.layer':'Schicht {a} von {b}','plan.done':'Wiederaufgebaut',
-  'act.place':'{n} setzen','act.carry':'Zu „{b}“ tragen →','act.fore':'{n} kaufen für {c}','act.take':'{n} an der Station holen →','act.takeNow':'{n} zum Bauen nehmen','stock.h':'An der Station — antippen, um einzupacken','ret':'↩ {n} zur Station zurück','f.ret':'An der Station abgeben','f.notNeeded':'Dieses Material wird gerade nicht gebraucht','lab.station':'Hol die Steine an der Station: „Nehmen“ oder Kiste antippen','act.lack':'{n} fehlen — sammeln','act.done':'Wiederaufgebaut ✓','act.busy':'Setze…',
+  'act.place':'{n} setzen','act.carry':'Zu „{b}“ tragen →','act.fore':'{n} kaufen für {c}','act.take':'{n} an der Station holen →','act.takeNow':'{n} zum Bauen nehmen','atlas':'Weltkarte','atlas.hint':'Tippe auf ein wiederaufgebautes Viertel, um herumzuspazieren und es herzuzeigen.','atlas.home':'Sortograd','atlas.world':'Rund um die Welt','atlas.more':'Weiter','atlas.done':'✓ wiederaufgebaut — ansehen','atlas.cur':'du bist hier','atlas.lock':'🔒 noch vor dir','show.back':'↩ Zurück zur Arbeit','show.solo':'Ansehen geht nur im Einzelspiel','t.locked':'Baue zuerst die vorherigen Viertel wieder auf','m.lmDone':'{b} wiederaufgebaut!','m.fact':'Wusstest du?','m.ddoneW':'Sortograd ist komplett wiederaufgebaut! Du bekommst <b>+2 Ideen</b>. Jetzt geht es auf Weltreise, jede Stadt mit ihrem berühmten Wahrzeichen. Erste Station: {n}.','stock.h':'An der Station — antippen, um einzupacken','ret':'↩ {n} zur Station zurück','f.ret':'An der Station abgeben','f.notNeeded':'Dieses Material wird gerade nicht gebraucht','lab.station':'Hol die Steine an der Station: „Nehmen“ oder Kiste antippen','act.lack':'{n} fehlen — sammeln','act.done':'Wiederaufgebaut ✓','act.busy':'Setze…',
   sell:'Überschuss verkaufen: {n} Stk. → {c}',
   'lab.near':'Tippe auf das Gebäude oder „Setzen“','lab.far':'Bring sie her — du hast die passenden Steine',
   'f.lower':'Zuerst die untere Schicht','f.take':'Hol {m} {s} an der Station','f.pile':'Der ganze Haufen!','f.idea':'+{n} Idee','f.rent':'Miete',
@@ -516,7 +548,7 @@ const nC = n => fmt(n) + ' ' + t('w.coin', { n });
 function applyLang(){
   document.documentElement.lang = LANG;
   document.querySelectorAll('[data-t]').forEach(el => { el.textContent = t(el.dataset.t); });
-  const al = { bTree:'tree', bMenu:'menu', tClose:'menu.close' };
+  const al = { bTree:'tree', bMenu:'menu', tClose:'menu.close', bAtlas:'atlas' };
   for (const id in al) $('#' + id).setAttribute('aria-label', t(al[id]));
   $('#remTag').textContent = t('net.tag'); $('#rNet').textContent = t('net.pill');
   $('#pMin').textContent = $('#plan').classList.contains('mini') ? t('plan.max') : t('plan.min');
@@ -585,11 +617,135 @@ const DISTRICTS = [null,
   { name:{uk:'Замковий пагорб',en:'Castle Hill',de:'Burgberg'}, theme:'winter', field:'blob', intro:{uk:'Засніжений пагорб і кам’яний замок, що чекає на майстра.',en:'A snowy hill and a stone castle waiting for its builder.',de:'Ein verschneiter Hügel und eine Steinburg, die auf ihren Baumeister wartet.'}, defs:() => [
     { name:'castle', ...castle() }, { name:'watchTower', ...watchTower() }, { name:'eastTower', ...watchTower() }, { name:'cabin', smoke:true, ...house(5,4,3,5,4,0,5) }, { name:'chapel', ...house(5,7,5,4,1,0,3) } ] },
 ];
+
+/* ================= world tour (districts 7–20) ================= */
+const G3 = ['#8DBE68','#A3CF7F','#79AC58'];
+Object.assign(THEMES, {
+  copenhagen:{ sky:'#BFDDF0', hemiS:'#E6F3FF', hemiG:'#A8B890', sun:'#FFF4E4', sunI:2.3, hemiI:1.3, g:['#8FBF6E','#A9D184','#7BAE5C'], trees:['#5DAA55','#4C9A53','#77BC5A'], pine:0.2, flowers:['#FFFFFF','#F28DB2','#FFD95A'], fall:'none', grass:'#7DB85E', key:4, inner:3, sea:true,
+    city:{ walls:['#D9543C','#F2C14E','#3E7CB1','#E8E2D0','#E07A3C','#5BA68A'], roofs:['#B5533C','#4A4F5A'] } },
+  pisa:{ sky:'#F3E2C4', hemiS:'#FFF1DF', hemiG:'#B8B47A', sun:'#FFE0B0', sunI:2.5, hemiI:1.2, g:['#7FC35E','#9AD472','#6BAF4E'], trees:['#3F6E3A','#4E7D45','#5C8C4E'], tree:['cypress','cypress','umbrella'], pine:0, flowers:['#FFFFFF','#FFD95A'], fall:'none', grass:'#7AB85A', key:7, inner:3,
+    city:{ walls:['#E8C48A','#D9A86C','#F0DDB8','#C98F5A'], roofs:['#B5533C','#A84A32'] } },
+  london:{ sky:'#C9D3DC', hemiS:'#E3E8EE', hemiG:'#8EA77C', sun:'#F2EEE6', sunI:1.9, hemiI:1.45, g:['#7DAE62','#94C077','#6A9A52'], trees:['#4C8A4A','#3F7D45','#5E9A55'], pine:0.1, flowers:['#E5534B','#FFFFFF','#B48BE8'], fall:'none', grass:'#6FA855', key:9, inner:4, sea:true, river:true,
+    city:{ walls:['#9C5A45','#B86B4F','#D8CFC0','#7E4A3A'], roofs:['#4A4F5A','#5A5550'] } },
+  paris:{ sky:'#CFE3F2', hemiS:'#EEF5FF', hemiG:'#A8B888', sun:'#FFF2DC', sunI:2.3, hemiI:1.3, g:G3, trees:['#5A9A4E','#6AA857','#4F8C47'], pine:0, flowers:['#F28DB2','#FFFFFF','#E5534B','#B48BE8'], fall:'fluff', grass:'#7DB85E', key:2, inner:6, sea:true, river:true,
+    city:{ walls:['#EDE3CF','#E3D6BC','#F2EADA'], roofs:['#5E6B7A','#6C7886'] } },
+  dresden:{ sky:'#D7E4EE', hemiS:'#EEF4FA', hemiG:'#A5B48E', sun:'#FFF0DA', sunI:2.2, hemiI:1.35, g:['#9DBE6A','#B3CC80','#88AA58'], trees:['#D9A13A','#C9772F','#7FA445','#5E9A4A'], pine:0.1, flowers:['#FFD95A','#FFFFFF'], fall:'leaf', grass:'#8FB25A', key:0, inner:4,
+    city:{ walls:['#E6D3AE','#D9C29A','#EDE0C4','#C9B08A'], roofs:['#5A6B5E','#4A4F5A','#B5533C'] } },
+  koln:{ sky:'#D4DEE6', hemiS:'#EEF2F6', hemiG:'#A0B08C', sun:'#FFF2E2', sunI:2.1, hemiI:1.4, g:G3, trees:['#5A9A4E','#4C8A4A','#6AA857'], pine:0.1, flowers:['#E5534B','#FFFFFF','#FFD95A'], fall:'none', grass:'#7DB85E', key:5, inner:3,
+    city:{ walls:['#E8E0D0','#D9534A','#F2C14E','#C8D6E0'], roofs:['#4A4F5A','#B5533C'] } },
+  rome:{ sky:'#F2DDBF', hemiS:'#FFF0DC', hemiG:'#BFAE7A', sun:'#FFD9A0', sunI:2.5, hemiI:1.2, g:['#B9B26A','#CFC284','#A49C58'], trees:['#4E7A3E','#5C8A48','#3F6A36'], tree:['umbrella','cypress','umbrella'], pine:0, flowers:['#E5534B','#FFFFFF','#F2B632'], fall:'none', grass:'#A9A458', key:0, inner:4,
+    city:{ walls:['#E3A76A','#D98C4E','#EAC48E','#C97B4A'], roofs:['#B5533C','#A84A32'] } },
+  athens:{ sky:'#CFE8F7', hemiS:'#F2FAFF', hemiG:'#CFC08E', sun:'#FFF6E2', sunI:2.6, hemiI:1.3, g:['#C9C08A','#D8CF9E','#B8AE76'], trees:['#8A9A6A','#7E8E5E','#9AA878'], tree:'olive', pine:0, flowers:['#FFFFFF','#E5534B'], fall:'none', grass:'#B3AC6A', key:2, inner:5,
+    city:{ walls:['#FFFFFF','#F4F1EA','#EDE8DC'], roofs:[], flat:true } },
+  giza:{ sky:'#F6DDB0', hemiS:'#FFF0D6', hemiG:'#D8B57A', sun:'#FFE4B8', sunI:2.7, hemiI:1.15, g:['#E3C58E','#EBD09C','#D6B47A'], trees:['#5C8C3E','#4E7D36','#6E9A48'], tree:'palm', pine:0, flowers:[], fall:'none', grass:null, key:2, inner:4, dunes:true,
+    city:{ walls:['#D9B887','#CFA873','#E3C89A'], roofs:[], flat:true } },
+  agra:{ sky:'#F4E6C8', hemiS:'#FFF4E0', hemiG:'#B8B47A', sun:'#FFE6BE', sunI:2.4, hemiI:1.25, g:G3, trees:['#3F6E3A','#4E7D45','#5C8C4E'], tree:['cypress','blob'], pine:0, flowers:['#FF9E5E','#FFD95A','#E5534B','#FFFFFF'], fall:'none', grass:'#7AB85A', key:9, inner:2, flowerMul:2,
+    city:{ walls:['#C9634A','#E8C48A','#D98C5E'], roofs:[], flat:true } },
+  kyoto:{ sky:'#F3E0E6', hemiS:'#FFF0F4', hemiG:'#A8B888', sun:'#FFF0E4', sunI:2.2, hemiI:1.3, g:G3, trees:['#4C8A4A','#3F7D45'], blossom:['#F7B6CF','#FBD3E2','#F59FBF'], tree:['blossom','blossom','pine','blob'], pine:0, flowers:['#F7B6CF','#FFFFFF'], fall:'petal', grass:'#7DB85E', key:7, inner:6,
+    city:{ walls:['#5A4636','#7A5C44','#E8E0D0'], roofs:['#3E4450','#4A4F5A'] } },
+  newyork:{ sky:'#C8DDEE', hemiS:'#E8F2FA', hemiG:'#9AA88C', sun:'#FFF4E4', sunI:2.3, hemiI:1.3, g:['#93B860','#A9C878','#7FA450'], trees:['#D9A13A','#C9772F','#5E9A4A','#E8B23C'], pine:0, flowers:['#FFD95A','#E5534B'], fall:'leaf', grass:'#8DB45A', key:4, inner:3, sea:true,
+    city:{ walls:['#B9C2CC','#8E99A6','#D8D2C4','#A35E46','#6F7C8C'], roofs:[], flat:true, tall:true } },
+  sydney:{ sky:'#BFE3F7', hemiS:'#ECF8FF', hemiG:'#A8C08A', sun:'#FFF6E6', sunI:2.6, hemiI:1.3, g:G3, trees:['#4E9E57','#5DAA55','#3F8C4F'], tree:['palm','blob'], pine:0, flowers:['#B48BE8','#FFFFFF','#FFD95A'], fall:'none', grass:'#7DB85E', key:7, inner:3, sea:true,
+    city:{ walls:['#D8D2C4','#B9C2CC','#E8E0D0','#C9634A'], roofs:[], flat:true, tall:true } },
+  kyiv:{ sky:'#CDE6F5', hemiS:'#EEF7FF', hemiG:'#A5B888', sun:'#FFF1D8', sunI:2.3, hemiI:1.3, g:G3, trees:['#4C9A53','#5DAA55','#6BB55C'], blossom:['#FFFFFF','#FBE7EF'], blossomP:0.2, pine:0.15, flowers:['#FFD95A','#3E7CB1','#FFFFFF'], fall:'fluff', grass:'#7DB85E', key:9, inner:5, sea:true, river:true,
+    city:{ walls:['#F2EADA','#E8D8B8','#D8E4EC'], roofs:['#5A8A6A','#4A4F5A'] } },
+});
+Object.assign(BN, {
+  eiffel:{uk:'Ейфелева вежа',en:'Eiffel Tower',de:'Eiffelturm'}, haussmann:{uk:'Паризький будинок',en:'Parisian house',de:'Pariser Haus'}, boulangerie:{uk:'Буланжері',en:'Boulangerie',de:'Boulangerie'},
+  pisaTower:{uk:'Пізанська вежа',en:'Leaning Tower of Pisa',de:'Schiefer Turm von Pisa'}, duomo:{uk:'Пізанський собор',en:'Pisa Cathedral',de:'Dom von Pisa'}, baptistery:{uk:'Баптистерій',en:'Baptistery',de:'Baptisterium'}, trattoria:{uk:'Тратторія',en:'Trattoria',de:'Trattoria'},
+  bigBen:{uk:'Біг-Бен',en:'Big Ben',de:'Big Ben'}, londonEye:{uk:'Лондонське око',en:'London Eye',de:'London Eye'}, bus:{uk:'Двоповерховий автобус',en:'Double-decker bus',de:'Doppeldeckerbus'}, phoneBox:{uk:'Телефонна будка',en:'Phone box',de:'Telefonzelle'}, pub:{uk:'Паб',en:'Pub',de:'Pub'},
+  houseRed:{uk:'Червоний будинок',en:'Red house',de:'Rotes Haus'}, houseYellow:{uk:'Жовтий будинок',en:'Yellow house',de:'Gelbes Haus'}, houseWhite:{uk:'Білий будинок',en:'White house',de:'Weißes Haus'}, houseBlue:{uk:'Сірий будинок',en:'Grey house',de:'Graues Haus'}, houseWood:{uk:'Дерев’яний будинок',en:'Wooden house',de:'Holzhaus'}, mermaid:{uk:'Русалонька',en:'Little Mermaid',de:'Kleine Meerjungfrau'},
+  frauenkirche:{uk:'Фрауенкірхе',en:'Frauenkirche',de:'Frauenkirche'}, baroqueHouse:{uk:'Бароковий будинок',en:'Baroque house',de:'Barockhaus'},
+  kolnDom:{uk:'Кельнський собор',en:'Cologne Cathedral',de:'Kölner Dom'}, brauhaus:{uk:'Пивоварня',en:'Brewhouse',de:'Brauhaus'}, oldTownHouse:{uk:'Будинок Старого міста',en:'Old town house',de:'Altstadthaus'},
+  colosseum:{uk:'Колізей',en:'Colosseum',de:'Kolosseum'}, pizzeria:{uk:'Піцерія',en:'Pizzeria',de:'Pizzeria'}, gelateria:{uk:'Джелатерія',en:'Gelateria',de:'Eisdiele'},
+  parthenon:{uk:'Парфенон',en:'Parthenon',de:'Parthenon'}, taverna:{uk:'Таверна',en:'Taverna',de:'Taverne'}, cycladic:{uk:'Біла хатинка',en:'White cottage',de:'Weißes Häuschen'},
+  pyramid:{uk:'Піраміда Хеопса',en:'Great Pyramid',de:'Cheops-Pyramide'}, pyramid2:{uk:'Піраміда Хефрена',en:'Pyramid of Khafre',de:'Chephren-Pyramide'}, sphinx:{uk:'Сфінкс',en:'Sphinx',de:'Sphinx'}, souk:{uk:'Базар',en:'Bazaar',de:'Basar'},
+  tajMahal:{uk:'Тадж-Махал',en:'Taj Mahal',de:'Taj Mahal'}, darwaza:{uk:'Великі ворота',en:'Great Gate',de:'Großes Tor'}, haveli:{uk:'Гавелі',en:'Haveli',de:'Haveli'},
+  pagoda:{uk:'П’ятиповерхова пагода',en:'Five-storey pagoda',de:'Fünfstöckige Pagode'}, kinkakuji:{uk:'Золотий павільйон',en:'Golden Pavilion',de:'Goldener Pavillon'}, torii:{uk:'Ворота торії',en:'Torii gate',de:'Torii-Tor'}, teahouse:{uk:'Чайний будиночок',en:'Tea house',de:'Teehaus'},
+  empireState:{uk:'Емпайр-стейт-білдинг',en:'Empire State Building',de:'Empire State Building'}, liberty:{uk:'Статуя Свободи',en:'Statue of Liberty',de:'Freiheitsstatue'}, taxi:{uk:'Жовте таксі',en:'Yellow cab',de:'Gelbes Taxi'}, brownstone:{uk:'Браунстоун',en:'Brownstone',de:'Brownstone-Haus'}, deli:{uk:'Закусочна',en:'Deli',de:'Deli'},
+  opera:{uk:'Сіднейська опера',en:'Sydney Opera House',de:'Opernhaus Sydney'}, harbourBridge:{uk:'Міст Харбор-Брідж',en:'Harbour Bridge',de:'Harbour Bridge'}, surfShop:{uk:'Серф-крамниця',en:'Surf shop',de:'Surfladen'},
+  andriivska:{uk:'Андріївська церква',en:'St Andrew’s Church',de:'Andreaskirche'}, khata:{uk:'Хата',en:'Ukrainian cottage',de:'Ukrainisches Bauernhaus'}, kyivHouse:{uk:'Київський будинок',en:'Kyiv townhouse',de:'Kyjiwer Stadthaus'}, gallery:{uk:'Галерея',en:'Gallery',de:'Galerie'},
+});
+const W_ = (name, extra) => ({ name, ...extra });
+DISTRICTS.push(
+  { flag:'🇩🇰', theme:'copenhagen', field:'coast',
+    name:{uk:'Копенгаген · Нюгавн',en:'Copenhagen · Nyhavn',de:'Kopenhagen · Nyhavn'},
+    intro:{uk:'Перша зупинка подорожі — барвиста гавань Нюгавн. Кольорові будиночки з гострими дахами дивляться просто на воду.',en:'First stop of the journey: the colourful Nyhavn harbour, where gabled houses look straight onto the water.',de:'Erste Station der Reise: der bunte Hafen Nyhavn, wo Giebelhäuser direkt aufs Wasser blicken.'},
+    fact:{uk:'Канал Нюгавн викопали в 1670-х роках, а Ганс Крістіан Андерсен жив тут у трьох різних будинках.',en:'The Nyhavn canal was dug in the 1670s, and Hans Christian Andersen lived in three different houses along it.',de:'Der Nyhavn-Kanal wurde in den 1670er-Jahren gegraben, und Hans Christian Andersen wohnte dort in drei verschiedenen Häusern.'},
+    defs:() => withFill(7, [W_('houseRed', { smoke:true, ...gable(4, 5, 6, 0, 3) }), W_('houseYellow', gable(4, 5, 7, 2, 0)), W_('mermaid', { landmark:true, ...mermaid() }), W_('houseWhite', { smoke:true, ...gable(4, 5, 6, 4, 3) }), W_('houseBlue', gable(4, 5, 7, 3, 0))], [() => W_('houseWood', { smoke:true, ...gable(4, 5, 6, 5, 0) })]) },
+  { flag:'🇮🇹', theme:'pisa', field:'squircle',
+    name:{uk:'Піза · Падаюча вежа',en:'Pisa · Leaning Tower',de:'Pisa · Schiefer Turm'},
+    intro:{uk:'Площа Чудес у Пізі: біла вежа, що нахилилась, собор і круглий баптистерій на зеленій траві.',en:'The Square of Miracles in Pisa: a leaning white tower, a cathedral and a round baptistery on green grass.',de:'Die Piazza dei Miracoli in Pisa: ein schiefer weißer Turm, ein Dom und ein rundes Baptisterium auf grünem Rasen.'},
+    fact:{uk:'Вежа почала нахилятися ще під час будівництва через м’який ґрунт, а будували її майже 200 років — з 1173 до 1372-го.',en:'The tower began to lean during construction because of the soft ground, and it took almost 200 years to build — from 1173 to 1372.',de:'Der Turm begann sich schon beim Bau wegen des weichen Bodens zu neigen; gebaut wurde fast 200 Jahre lang — von 1173 bis 1372.'},
+    defs:() => withFill(8, [W_('pisaTower', { landmark:true, star:3, ...pisaTower() }), W_('duomo', house(9, 5, 4, 4, 4, 0, 0)), W_('baptistery', baptistery())], [() => W_('trattoria', { smoke:true, ...house(5, 4, 4, 2, 4, 0, 0) })]) },
+  { flag:'🇬🇧', theme:'london', field:'coast',
+    name:{uk:'Лондон · Біг-Бен',en:'London · Big Ben',de:'London · Big Ben'},
+    intro:{uk:'Лондон над Темзою: годинникова вежа, оглядове колесо, червоні автобуси й телефонні будки.',en:'London on the Thames: the clock tower, the observation wheel, red buses and phone boxes.',de:'London an der Themse: der Uhrturm, das Riesenrad, rote Busse und Telefonzellen.'},
+    fact:{uk:'Біг-Беном насправді звуть великий дзвін усередині, а сама вежа з 2012 року називається Вежею Єлизавети.',en:'Big Ben is actually the name of the great bell inside; since 2012 the tower itself has been called the Elizabeth Tower.',de:'Big Ben ist eigentlich der Name der großen Glocke im Inneren; der Turm selbst heißt seit 2012 Elizabeth Tower.'},
+    defs:() => withFill(9, [W_('bigBen', { landmark:true, star:3, ...bigBen() }), W_('londonEye', londonEye()), W_('bus', bus()), W_('phoneBox', phoneBox())], [() => W_('pub', { smoke:true, ...house(6, 4, 4, 0, 4, 3, 3) })]) },
+  { flag:'🇫🇷', theme:'paris', field:'coast',
+    name:{uk:'Париж · Ейфелева вежа',en:'Paris · Eiffel Tower',de:'Paris · Eiffelturm'},
+    intro:{uk:'Париж на березі Сени. Головна будівля — висока металева вежа з 44 шарів, тож металу знадобиться дуже багато!',en:'Paris on the Seine. The star is a tall metal tower of 44 layers, so you’ll need lots of metal!',de:'Paris an der Seine. Der Star ist ein hoher Metallturm mit 44 Schichten — du brauchst viel Metall!'},
+    fact:{uk:'Ейфелеву вежу збудували до Всесвітньої виставки 1889 року й збиралися розібрати через 20 років. Влітку від тепла вона стає вищою на кілька сантиметрів.',en:'The Eiffel Tower was built for the 1889 World’s Fair and was meant to be taken down after 20 years. In summer the heat makes it a few centimetres taller.',de:'Der Eiffelturm wurde für die Weltausstellung 1889 gebaut und sollte nach 20 Jahren abgerissen werden. Im Sommer wird er durch die Wärme ein paar Zentimeter höher.'},
+    defs:() => withFill(10, [W_('eiffel', { landmark:true, star:3, ...eiffel() })], [() => W_('haussmann', { smoke:true, ...house(6, 5, 6, 4, 4, 3, 3) }), () => W_('cafe', kiosk(5, 4, 3, 4, 0)), () => W_('boulangerie', { smoke:true, ...house(5, 4, 4, 4, 5, 3, 3) })]) },
+  { flag:'🇩🇪', theme:'dresden', field:'oval',
+    name:{uk:'Дрезден · Фрауенкірхе',en:'Dresden · Frauenkirche',de:'Dresden · Frauenkirche'},
+    intro:{uk:'Барочний Дрезден восени. Тут на тебе чекає церква з величезним кам’яним куполом-дзвоном.',en:'Baroque Dresden in autumn. A church with a huge bell-shaped stone dome awaits you.',de:'Das barocke Dresden im Herbst. Auf dich wartet eine Kirche mit einer riesigen glockenförmigen Steinkuppel.'},
+    fact:{uk:'Фрауенкірхе зруйнувалась у 1945 році, а до 2005-го її відбудували — тисячі вцілілих старих каменів поставили на їхні колишні місця. Зовсім як у Сортограді!',en:'The Frauenkirche collapsed in 1945 and was rebuilt by 2005 — thousands of surviving old stones were put back in their original places. Just like in Sortograd!',de:'Die Frauenkirche stürzte 1945 ein und wurde bis 2005 wieder aufgebaut — tausende alte Steine kamen an ihre ursprünglichen Stellen zurück. Genau wie in Sortograd!'},
+    defs:() => withFill(11, [W_('frauenkirche', { landmark:true, star:3, ...frauenkirche() })], [() => W_('baroqueHouse', { smoke:true, ...house(6, 5, 5, 4, 2, 3, 3) }), () => W_('cafe', kiosk(5, 4, 3, 2, 4))]) },
+  { flag:'🇩🇪', theme:'koln', field:'street',
+    name:{uk:'Кельн · Собор',en:'Cologne · Cathedral',de:'Köln · Dom'},
+    intro:{uk:'Кельн на Рейні: два гострі шпилі собору видно з будь-якої точки міста.',en:'Cologne on the Rhine: the cathedral’s two pointed spires can be seen from anywhere in town.',de:'Köln am Rhein: die zwei spitzen Domtürme sieht man von überall in der Stadt.'},
+    fact:{uk:'Кельнський собор будували 632 роки — з 1248 до 1880-го. Після завершення він кілька років був найвищою будівлею світу.',en:'Cologne Cathedral took 632 years to build — from 1248 to 1880. When it was finished, it was the tallest building in the world for a few years.',de:'Am Kölner Dom wurde 632 Jahre gebaut — von 1248 bis 1880. Nach der Fertigstellung war er einige Jahre das höchste Gebäude der Welt.'},
+    defs:() => withFill(12, [W_('kolnDom', { landmark:true, star:3, ...kolnDom() })], [() => W_('oldTownHouse', { smoke:true, ...gable(5, 5, 7, 0, 3) }), () => W_('brauhaus', { smoke:true, ...house(6, 5, 4, 5, 4, 0, 0) }), () => W_('oldTownHouse', gable(5, 5, 6, 2, 3))]) },
+  { flag:'🇮🇹', theme:'rome', field:'oval',
+    name:{uk:'Рим · Колізей',en:'Rome · Colosseum',de:'Rom · Kolosseum'},
+    intro:{uk:'Вічне місто: величезна овальна арена з арками, а вздовж доріг — пінії-парасольки.',en:'The Eternal City: a huge oval arena with arches, and umbrella pines along the roads.',de:'Die Ewige Stadt: eine riesige ovale Arena mit Bögen und Schirmpinien entlang der Straßen.'},
+    fact:{uk:'Колізей вміщав близько 50 тисяч глядачів, а від сонця над ними натягували величезний тент — веларіум.',en:'The Colosseum held about 50,000 spectators, and a huge awning called the velarium was stretched over them against the sun.',de:'Das Kolosseum fasste etwa 50.000 Zuschauer; gegen die Sonne spannte man ein riesiges Sonnensegel, das Velarium.'},
+    defs:() => withFill(13, [W_('colosseum', { landmark:true, star:3, ...colosseum() })], [() => W_('pizzeria', { smoke:true, ...house(6, 5, 5, 2, 0, 0, 0) }), () => W_('gelateria', kiosk(5, 4, 4, 4, 2))]) },
+  { flag:'🇬🇷', theme:'athens', field:'blob',
+    name:{uk:'Афіни · Парфенон',en:'Athens · Parthenon',de:'Athen · Parthenon'},
+    intro:{uk:'Афінський Акрополь: мармуровий храм з колонами серед оливкових гаїв і білих хатинок.',en:'The Athenian Acropolis: a marble temple with columns among olive groves and white cottages.',de:'Die Akropolis von Athen: ein Marmortempel mit Säulen zwischen Olivenhainen und weißen Häuschen.'},
+    fact:{uk:'У Парфеноні майже немає прямих ліній: колони трохи нахилені й потовщені посередині, щоб здалеку здаватися ідеально рівними.',en:'The Parthenon has almost no straight lines: its columns lean slightly and swell in the middle so they look perfectly straight from afar.',de:'Der Parthenon hat fast keine geraden Linien: Die Säulen sind leicht geneigt und in der Mitte verdickt, damit sie von Weitem perfekt gerade wirken.'},
+    defs:() => withFill(14, [W_('parthenon', { landmark:true, star:3, ...parthenon() })], [() => W_('cycladic', cycladic()), () => W_('taverna', { smoke:true, ...house(6, 5, 4, 4, 4, 1, 1) })]) },
+  { flag:'🇪🇬', theme:'giza', field:'blob',
+    name:{uk:'Гіза · Піраміди',en:'Giza · Pyramids',de:'Gizeh · Pyramiden'},
+    intro:{uk:'Пустеля біля Каїра: дві великі піраміди, Сфінкс і пальми. Каменю знадобиться дуже багато.',en:'The desert near Cairo: two great pyramids, the Sphinx and palm trees. You’ll need a lot of stone.',de:'Die Wüste bei Kairo: zwei große Pyramiden, die Sphinx und Palmen. Du brauchst sehr viel Stein.'},
+    fact:{uk:'Піраміда Хеопса понад 3800 років була найвищою спорудою у світі. На неї пішло близько 2,3 мільйона кам’яних блоків.',en:'The Great Pyramid was the tallest structure in the world for over 3,800 years. About 2.3 million stone blocks went into it.',de:'Die Cheops-Pyramide war über 3800 Jahre lang das höchste Bauwerk der Welt. Rund 2,3 Millionen Steinblöcke wurden verbaut.'},
+    defs:() => withFill(15, [W_('pyramid', { landmark:true, star:3, ...pyramid(15) }), W_('pyramid2', pyramid(11)), W_('sphinx', sphinx())], [() => W_('souk', { smoke:true, ...house(6, 5, 4, 4, 5, 4, 4) }), () => W_('souk', kiosk(6, 5, 4, 4, 5))]) },
+  { flag:'🇮🇳', theme:'agra', field:'squircle',
+    name:{uk:'Агра · Тадж-Махал',en:'Agra · Taj Mahal',de:'Agra · Taj Mahal'},
+    intro:{uk:'Сад біля річки Ямуна і білий мавзолей з цибулястим куполом та чотирма мінаретами.',en:'A garden by the Yamuna river and a white mausoleum with an onion dome and four minarets.',de:'Ein Garten am Fluss Yamuna und ein weißes Mausoleum mit Zwiebelkuppel und vier Minaretten.'},
+    fact:{uk:'Тадж-Махал будували близько 20 років понад 20 тисяч майстрів. Мінарети трохи нахилені назовні, щоб у разі землетрусу не впасти на купол.',en:'More than 20,000 craftsmen spent about 20 years building the Taj Mahal. The minarets lean slightly outward so that an earthquake wouldn’t topple them onto the dome.',de:'Über 20.000 Handwerker bauten etwa 20 Jahre am Taj Mahal. Die Minarette neigen sich leicht nach außen, damit sie bei einem Erdbeben nicht auf die Kuppel fallen.'},
+    defs:() => withFill(16, [W_('tajMahal', { landmark:true, star:3, ...tajMahal() }), W_('darwaza', darwaza())], [() => W_('haveli', { smoke:true, ...house(6, 5, 5, 0, 4, 4, 0) })]) },
+  { flag:'🇯🇵', theme:'kyoto', field:'blob',
+    name:{uk:'Кіото · Пагода',en:'Kyoto · Pagoda',de:'Kyoto · Pagode'},
+    intro:{uk:'Старовинне Кіото навесні: п’ятиповерхова пагода, Золотий павільйон, ворота торії й сакура.',en:'Old Kyoto in spring: a five-storey pagoda, the Golden Pavilion, a torii gate and cherry blossoms.',de:'Das alte Kyoto im Frühling: eine fünfstöckige Pagode, der Goldene Pavillon, ein Torii-Tor und Kirschblüten.'},
+    fact:{uk:'Високі дерев’яні пагоди століттями витримують землетруси завдяки центральному стовпу — сінбасірі, який гасить коливання.',en:'Tall wooden pagodas have survived earthquakes for centuries thanks to the central pillar, the shinbashira, which dampens the swaying.',de:'Hohe Holzpagoden überstehen seit Jahrhunderten Erdbeben dank des Mittelpfeilers, des Shinbashira, der die Schwingungen dämpft.'},
+    defs:() => withFill(17, [W_('pagoda', { landmark:true, star:3, ...pagoda() }), W_('kinkakuji', kinkakuji()), W_('torii', torii())], [() => W_('teahouse', { smoke:true, ...house(7, 5, 4, 5, 5, 3, 3) }), () => W_('teahouse', house(6, 5, 4, 5, 4, 3, 3))]) },
+  { flag:'🇺🇸', theme:'newyork', field:'coast',
+    name:{uk:'Нью-Йорк · Мангеттен',en:'New York · Manhattan',de:'New York · Manhattan'},
+    intro:{uk:'Місто хмарочосів: Емпайр-стейт-білдинг, Статуя Свободи в гавані й жовті таксі.',en:'The city of skyscrapers: the Empire State Building, the Statue of Liberty in the harbour and yellow cabs.',de:'Die Stadt der Wolkenkratzer: das Empire State Building, die Freiheitsstatue im Hafen und gelbe Taxis.'},
+    fact:{uk:'Емпайр-стейт-білдинг звели всього за 410 днів, а Статую Свободи подарувала Франція у 1886 році — її внутрішній каркас спроєктував Гюстав Ейфель.',en:'The Empire State Building went up in just 410 days, and the Statue of Liberty was a gift from France in 1886 — its inner frame was designed by Gustave Eiffel.',de:'Das Empire State Building entstand in nur 410 Tagen, und die Freiheitsstatue war 1886 ein Geschenk Frankreichs — ihr inneres Gerüst entwarf Gustave Eiffel.'},
+    defs:() => withFill(18, [W_('empireState', { landmark:true, star:3, ...empireState() }), W_('liberty', liberty()), W_('taxi', taxi())], [() => W_('brownstone', { smoke:true, ...house(5, 5, 7, 0, 4, 3, 3) }), () => W_('deli', house(6, 5, 4, 0, 1, 3, 3))]) },
+  { flag:'🇦🇺', theme:'sydney', field:'coast',
+    name:{uk:'Сідней · Опера',en:'Sydney · Opera House',de:'Sydney · Oper'},
+    intro:{uk:'Гавань Сіднея: білі «вітрила» опери, сталевий арковий міст і пальми.',en:'Sydney Harbour: the opera’s white “sails”, the steel arch bridge and palm trees.',de:'Der Hafen von Sydney: die weißen „Segel“ der Oper, die Stahlbogenbrücke und Palmen.'},
+    fact:{uk:'Дах Сіднейської опери вкритий понад мільйоном білих і кремових плиток.',en:'The roof of the Sydney Opera House is covered with more than a million white and cream tiles.',de:'Das Dach der Oper von Sydney ist mit über einer Million weißer und cremefarbener Fliesen bedeckt.'},
+    defs:() => withFill(19, [W_('opera', { landmark:true, star:3, ...operaHouse() }), W_('harbourBridge', harbourBridge())], [() => W_('surfShop', house(5, 5, 8, 4, 1, 3, 3)), () => W_('cafe', { smoke:true, ...house(6, 5, 6, 4, 1, 0, 0) })]) },
+  { flag:'🇺🇦', theme:'kyiv', field:'coast',
+    name:{uk:'Київ · Андріївська церква',en:'Kyiv · St Andrew’s Church',de:'Kyjiw · Andreaskirche'},
+    intro:{uk:'Фінал подорожі — Київ над Дніпром: Андріївський узвіз, біла барокова церква на пагорбі, каштани й хата.',en:'The journey’s finale — Kyiv on the Dnipro: Andriyivskyy Descent, a white baroque church on the hill, chestnut trees and a cottage.',de:'Das Finale der Reise — Kyjiw am Dnipro: der Andreassteig, eine weiße Barockkirche auf dem Hügel, Kastanien und ein Bauernhaus.'},
+    fact:{uk:'Андріївську церкву спроєктував Бартоломео Растреллі в середині XVIII століття. Вона стоїть на пагорбі, де, за легендою, апостол Андрій поставив хрест.',en:'St Andrew’s Church was designed by Bartolomeo Rastrelli in the mid-18th century. It stands on the hill where, according to legend, the Apostle Andrew raised a cross.',de:'Die Andreaskirche entwarf Bartolomeo Rastrelli Mitte des 18. Jahrhunderts. Sie steht auf dem Hügel, auf dem der Legende nach der Apostel Andreas ein Kreuz errichtete.'},
+    defs:() => withFill(20, [W_('andriivska', { landmark:true, star:3, ...andriivska() }), W_('khata', { smoke:true, ...house(6, 4, 3, 4, 4, 5, 5) })], [() => W_('kyivHouse', { smoke:true, ...house(7, 5, 6, 4, 2, 3, 3) }), () => W_('gallery', house(6, 5, 5, 4, 1, 3, 2))]) },
+);
+[null, '⛲', '🥖', '🌳', '🍂', '⚓', '🏰'].forEach((f, i) => { if (f) DISTRICTS[i].flag = f; });
+
 function districtInfo(d){
-  if (d <= 6) return DISTRICTS[d];
+  if (d < DISTRICTS.length) return DISTRICTS[d];
   const theme = THEME_CYCLE[(d - 1) % 6];
   const lb = THEMES[theme].label;
-  return { name:{uk:`Квартал ${d}`,en:`District ${d}`,de:`Viertel ${d}`}, theme, field:FIELD_CYCLE[(d * 7) % 6],
+  return { flag:'🏗️', name:{uk:`Квартал ${d}`,en:`District ${d}`,de:`Viertel ${d}`}, theme, field:FIELD_CYCLE[(d * 7) % 6],
     intro:{uk:`Новий ${lb.uk} квартал. Будівлі більші, а кожна цеглина приносить ще більше монет.`,en:`A new ${lb.en} district. Bigger buildings, and every brick pays even more.`,de:`Ein neues ${lb.de}viertel. Größere Gebäude, und jeder Stein bringt noch mehr.`},
     defs:() => procDefs(d) };
 }
@@ -1045,6 +1201,226 @@ function procDefs(d){
   while (out.length < n) out.push(pool[ri(0, pool.length - 1)]());
   return out;
 }
+
+/* ================= world landmarks: voxel shapes → hollow brick shells ================= */
+/* fn(X, Z, r) gets cell coordinates centred on the footprint (X, Z in modules) and the row r; returns a material index or -1 */
+function vox(w, d, rows, fn, opt = {}){
+  const cx = (w - 1) / 2, cz = (d - 1) / 2, N = w * d, G = [];
+  for (let r = 0; r < rows; r++) { const a = new Int8Array(N).fill(-1); for (let z = 0; z < d; z++) for (let x = 0; x < w; x++) { const m = fn(x - cx, z - cz, r); if (m != null && m >= 0) a[z * w + x] = m; } G.push(a); }
+  const at = (x, z, r) => (x < 0 || z < 0 || x >= w || z >= d || r < 0 || r >= rows) ? -1 : G[r][z * w + x];
+  const P = [];
+  for (let r = 0; r < rows; r++) {
+    const keep = new Int8Array(N).fill(-1);
+    for (let z = 0; z < d; z++) for (let x = 0; x < w; x++) { const m = at(x, z, r); if (m < 0) continue; if (at(x - 1, z, r) < 0 || at(x + 1, z, r) < 0 || at(x, z - 1, r) < 0 || at(x, z + 1, r) < 0 || at(x, z, r + 1) < 0) keep[z * w + x] = m; }
+    const used = new Uint8Array(N), k = (x, z) => (x < 0 || z < 0 || x >= w || z >= d || used[z * w + x]) ? -1 : keep[z * w + x];
+    const [sx, sz] = opt.shift ? opt.shift(r) : [0, 0];
+    const outer = (x, z) => at(x - 1, z, r) < 0 || at(x + 1, z, r) < 0 || at(x, z - 1, r) < 0 || at(x, z + 1, r) < 0;
+    const push = (m, s, px, pz, rot, cells) => { for (const [a, b] of cells) used[b * w + a] = 1; P.push({ t:tkey(m, s), x:px + sx, z:pz + sz, r, rot, win:m === 1 && cells.some(([a, b]) => outer(a, b)) }); };
+    for (let z = 0; z < d; z++) for (let x = 0; x < w; x++) {
+      const m = k(x, z); if (m < 0) continue;
+      if (m !== 1 && k(x + 1, z) === m && k(x, z + 1) === m && k(x + 1, z + 1) === m) { push(m, 2, x + .5, z + .5, 0, [[x, z], [x + 1, z], [x, z + 1], [x + 1, z + 1]]); continue; }
+      const tryX = () => k(x + 1, z) === m ? (push(m, 1, x + .5, z, 0, [[x, z], [x + 1, z]]), true) : false;
+      const tryZ = () => k(x, z + 1) === m ? (push(m, 1, x, z + .5, 1, [[x, z], [x, z + 1]]), true) : false;
+      if (r % 2 === 0 ? (tryX() || tryZ()) : (tryZ() || tryX())) continue;
+      push(m, 0, x, z, 0, [[x, z]]);
+    }
+  }
+  return { P, w, d };
+}
+const AB = Math.abs, HYP = Math.hypot;
+function gable(w, d, wallH, wm, rm){
+  const xf = (w - 1) / 2, zf = (d - 1) / 2;
+  return vox(w, d, wallH + Math.ceil(w / 2), (X, Z, r) => {
+    const ax = AB(X), az = AB(Z);
+    if (r < wallH) {
+      if (Z === zf && r < 2 && ax < 0.6) return -1;
+      const win = r % 2 === 1 && ((az === zf && ax < xf && Math.round(X + xf) % 2 === 1) || (ax === xf && az < zf && Math.round(Z + zf) % 2 === 1));
+      return win ? 1 : wm;
+    }
+    const rr = r - wallH; if (ax > xf - rr + 1e-6) return -1;
+    return az === zf ? wm : rm;
+  });
+}
+function eiffel(){
+  return vox(15, 15, 44, (X, Z, r) => {
+    const ax = AB(X), az = AB(Z), mx = Math.max(ax, az);
+    if (r <= 11) {
+      const c = 6.2 - r * 0.27;
+      if (AB(ax - c) <= 0.85 && AB(az - c) <= 0.85) return 3;
+      if (r >= 6) for (const [u, v] of [[ax, az], [az, ax]]) if (AB(v - c) <= 0.5 && u < c - 0.5) { const yy = 6 + 5 * Math.sqrt(Math.max(0, 1 - (u / c) ** 2)); if (AB(r - yy) < 0.75) return 3; }
+      return -1;
+    }
+    if (r <= 13) return mx <= 5 && mx >= 3.5 ? (r === 13 && mx < 4.5 ? 1 : 3) : -1;
+    if (r <= 23) { const c = 3.2 - (r - 14) * 0.17; return AB(ax - c) <= 0.6 && AB(az - c) <= 0.6 ? 3 : -1; }
+    if (r <= 25) return mx <= 2 && mx >= 1 ? (r === 25 && mx === 1 ? 1 : 3) : -1;
+    if (r <= 37) { const h = r <= 29 ? 1 : 0; return ax <= h && az <= h ? 3 : -1; }
+    if (r <= 39) return ax + az === 0 ? (r === 38 ? 1 : 3) : -1;
+    return ax + az === 0 ? (r >= 42 ? 2 : 3) : -1;
+  });
+}
+function pisaTower(){
+  return vox(7, 7, 28, (X, Z, r) => {
+    const dd = HYP(X, Z), a = Math.floor((Math.atan2(Z, X) + Math.PI) / (Math.PI * 2) * 10);
+    if (r < 22) { if (dd > (r % 5 === 4 ? 3.2 : 2.75)) return -1; return r % 5 === 2 && a % 2 === 0 ? 1 : 4; }
+    if (r < 26) { if (dd > 2.0) return -1; return r === 23 && a % 2 === 0 ? 1 : 4; }
+    return dd <= (r === 26 ? 1.5 : 0.8) ? 0 : -1;
+  }, { shift:r => [r * 0.1, 0] });
+}
+function baptistery(){ return vox(7, 7, 9, (X, Z, r) => { const dd = HYP(X, Z); if (r < 5) return dd <= 3.0 ? (r === 2 && (X === 0 || Z === 0) && dd > 2 ? 1 : 4) : -1; const rad = [2.6, 2.1, 1.5, 0.8][r - 5]; return dd <= rad ? (r === 8 ? 4 : 0) : -1; }); }
+function bigBen(){
+  return vox(6, 6, 33, (X, Z, r) => {
+    const ax = AB(X), az = AB(Z), mx = Math.max(ax, az), mn = Math.min(ax, az);
+    if (r < 18) { if (mx > 1.5) return -1; return r % 3 === 1 && mn < 1 && mx === 1.5 ? 1 : 4; }
+    if (r < 22) { if (mx > 2.5) return -1; return r >= 19 && r <= 20 && mx === 2.5 && mn <= 1.5 ? 1 : 4; }
+    if (r < 25) { if (mx > 1.5) return -1; return mx === 1.5 && mn === 0.5 ? 1 : 4; }
+    if (r < 31) { const h = 1.5 - (r - 25) * 0.25; return ax <= h && az <= h ? 3 : -1; }
+    return mx <= 0.5 ? 2 : -1;
+  });
+}
+function londonEye(){
+  return vox(13, 1, 14, (X, Z, r) => {
+    const y = r - 6.5, dd = HYP(X, y);
+    if (AB(dd - 6) < 0.55) return Math.round((Math.atan2(y, X) + Math.PI) / (Math.PI * 2) * 16) % 4 === 0 ? 1 : 3;
+    if (dd < 0.75) return 1;
+    if (r <= 6 && AB(AB(X) - (6.5 - r) * 0.45) < 0.5) return 3;
+    return -1;
+  });
+}
+function bus(){ return vox(7, 3, 4, (X, Z, r) => { const ax = AB(X), az = AB(Z); if (r === 0) return ax === 2 && az === 1 ? 3 : -1; if (r >= 2 && az === 1 && ax <= 2 && Math.round(X + 3) % 2 === 0) return 1; return 0; }); }
+function phoneBox(){ return vox(2, 2, 5, (X, Z, r) => r >= 2 && r <= 3 ? 1 : 0); }
+function mermaid(){ return vox(3, 3, 4, (X, Z, r) => { if (r === 0) return 4; if (r === 1) return Z <= 0 ? 4 : -1; return X === 0 && Z === 0 ? (r === 3 ? 2 : 3) : -1; }); }
+function frauenkirche(){
+  return vox(11, 11, 23, (X, Z, r) => {
+    const ax = AB(X), az = AB(Z), dd = HYP(X, Z), mx = Math.max(ax, az), mn = Math.min(ax, az);
+    if (r < 8) { if (mx > 5 || ax + az > 8.5) return -1; const face = mx === 5 || ax + az >= 8; return face && r > 0 && r % 3 !== 0 && mn % 2 === 1 && mn <= 3 ? 1 : 4; }
+    if (r < 12 && ax >= 3 && az >= 3 && ax <= 4 && az <= 4) return r === 11 ? 3 : 4;
+    if (r < 18) { const rad = [4.6, 4.7, 4.5, 4.1, 3.6, 3.0, 2.3, 1.6, 1.1, 1.0][r - 8]; return dd <= rad ? 4 : -1; }
+    if (r < 21) return dd <= 1.0 ? (r === 19 ? 1 : 4) : -1;
+    return ax + az === 0 ? 2 : -1;
+  });
+}
+function kolnDom(){
+  return vox(11, 3, 28, (X, Z, r) => {
+    const ax = AB(X), az = AB(Z), tower = ax >= 3;
+    if (r < 16) {
+      if (tower) return Z === 1 && ax === 4 && r % 4 >= 1 && r % 4 <= 2 ? 1 : 4;
+      if (r < 10) return Z === 1 && ax <= 1 && r >= 2 && r <= 7 ? 1 : 4;
+      if (r < 13) return ax <= 2 - (r - 10) * 0.7 ? 4 : -1;
+      return -1;
+    }
+    const h = r <= 20 ? 1 : 0;
+    return AB(ax - 4) <= h && az <= h ? 4 : -1;
+  });
+}
+function colosseum(){
+  return vox(17, 13, 11, (X, Z, r) => {
+    const e = (X / 7.6) ** 2 + (Z / 5.8) ** 2, i = (X / 6.4) ** 2 + (Z / 4.6) ** 2;
+    if (e > 1 || i < 1) return -1;
+    const th = Math.atan2(Z, X), top = Math.cos(th - 2.3) > 0.35 ? 7 : 10;
+    if (r > top) return -1;
+    if (r % 4 >= 1 && r % 4 <= 2 && r < top - 1 && Math.round((th + Math.PI) / (Math.PI * 2) * 28) % 2 === 0) return -1;
+    return 4;
+  });
+}
+function parthenon(){
+  return vox(13, 7, 11, (X, Z, r) => {
+    const ax = AB(X), az = AB(Z);
+    if (r <= 1) return 4;
+    if (r <= 7) {
+      if (ax === 6 || az === 3) return (az === 3 && X % 2 === 0) || (ax === 6 && Z % 2 === 0) ? 4 : -1;
+      return -1;
+    }
+    if (r === 8) return 4;
+    if (r === 9) return az <= 1.5 ? 4 : -1;
+    return az === 0 ? 4 : -1;
+  });
+}
+function pyramid(n){ return vox(n, n, n, (X, Z, r) => { const h = (n - 1) / 2 - r * 0.5; if (AB(X) > h + 1e-6 || AB(Z) > h + 1e-6) return -1; return r === n - 1 ? 2 : 4; }); }
+function sphinx(){ return vox(3, 9, 5, (X, Z, r) => { const ax = AB(X); if (r <= 1) return Z <= 2 ? 4 : (r === 0 && ax === 1 ? 4 : -1); if (r <= 3) return Z >= 1 && Z <= 2 ? 4 : -1; return ax === 0 && Z >= 1 && Z <= 2 ? 4 : -1; }); }
+function pagoda(){
+  return vox(9, 9, 20, (X, Z, r) => {
+    const ax = AB(X), az = AB(Z), mx = Math.max(ax, az);
+    if (r < 15) { const tier = Math.floor(r / 3), k = r % 3; if (k < 2) return mx <= 1 ? (k === 1 && mx === 1 && Math.min(ax, az) === 0 ? 5 : 0) : -1; return mx <= 4 - tier * 0.5 ? 3 : -1; }
+    if (r < 19) return ax + az === 0 ? 3 : -1;
+    return ax + az === 0 ? 2 : -1;
+  });
+}
+function kinkakuji(){
+  return vox(7, 5, 11, (X, Z, r) => {
+    const ax = AB(X), az = AB(Z);
+    if (r <= 2) return ax <= 2 && az <= 1 ? (r === 1 && az === 1 && ax <= 1 ? 1 : 5) : -1;
+    if (r === 3 || r === 6) return 3;
+    if (r <= 5) return ax <= 2 && az <= 1 ? 2 : -1;
+    if (r <= 8) return ax <= 1 && az <= 1 ? 2 : -1;
+    if (r === 9) return ax <= 2 && az <= 1 ? 3 : -1;
+    return ax + az === 0 ? 2 : -1;
+  });
+}
+function torii(){ return vox(7, 1, 8, (X, Z, r) => { const ax = AB(X); if (r < 6) return ax === 2 ? 0 : (r === 4 && ax < 2 ? 0 : -1); return ax <= 3 ? (r === 6 ? 0 : 3) : -1; }); }
+function tajMahal(){
+  return vox(13, 13, 17, (X, Z, r) => {
+    const ax = AB(X), az = AB(Z), dd = HYP(X, Z), mx = Math.max(ax, az), mn = Math.min(ax, az);
+    if (r === 0) return 4;
+    if (ax === 6 && az === 6) return r <= 11 ? 4 : (r === 12 ? 2 : -1);
+    if (r <= 6) { if (mx > 3 || ax + az > 5) return -1; const face = mx === 3 || ax + az === 5; return face && mn <= 1 && r >= 1 && r <= 4 ? 1 : 4; }
+    if (r <= 14) { const rad = [2.4, 2.8, 3.0, 2.9, 2.6, 2.1, 1.4, 0.7][r - 7]; return dd <= rad ? 4 : -1; }
+    return ax + az === 0 ? 2 : -1;
+  });
+}
+function darwaza(){ return vox(7, 3, 8, (X, Z, r) => { const ax = AB(X), az = AB(Z); if (ax <= 1 && r <= 3) return -1; if (r <= 5) return ax <= 1 && r === 4 && az === 1 ? 1 : 0; if (r === 6) return 0; return ax === 3 && az === 0 ? 4 : -1; }); }
+function empireState(){
+  return vox(7, 7, 33, (X, Z, r) => {
+    const ax = AB(X), az = AB(Z), mx = Math.max(ax, az), mn = Math.min(ax, az);
+    const h = r <= 4 ? 3 : r <= 14 ? 2 : r <= 24 ? 1 : r <= 27 ? 0 : -1;
+    if (h >= 0) { if (mx > h) return -1; return mx === h && h > 0 && mn % 2 === 1 && r % 2 === 1 ? 1 : 4; }
+    return ax + az === 0 ? 3 : -1;
+  });
+}
+function liberty(){
+  return vox(5, 5, 17, (X, Z, r) => {
+    const ax = AB(X), az = AB(Z);
+    if (r <= 4) return 4;
+    if (X === 1 && Z === 0 && r >= 11) return r >= 15 ? 2 : 1;
+    if (r <= 10) return ax <= 1 && az <= 1 ? 1 : -1;
+    if (r === 11) return ax + az === 0 ? 1 : -1;
+    if (r === 12) return az === 0 && ax <= 1 ? (ax === 0 ? 1 : 2) : -1;
+    return -1;
+  });
+}
+function taxi(){ return vox(4, 2, 2, (X, Z, r) => r === 1 && AB(X) <= 0.5 ? 1 : 2); }
+function operaHouse(){
+  const sails = [[-4, 6], [0, 8], [4, 7]];
+  return vox(15, 9, 11, (X, Z, r) => {
+    const ax = AB(X), az = AB(Z);
+    if (r <= 1) return ax <= 7 && az <= 4 ? 5 : -1;
+    for (const [xc, hs] of sails) { const rr = r - 2; if (rr >= hs) continue; const back = (hs - rr) * 0.45; if (X <= xc + 0.5 && X >= xc - back - 0.5 && az <= (hs - rr) * 0.25 + 0.3) return 4; }
+    return -1;
+  });
+}
+function harbourBridge(){ return vox(21, 3, 9, (X, Z, r) => { const ax = AB(X), arch = 8 * (1 - (X / 10.5) ** 2); if (ax >= 9 && r <= 4) return 4; if (AB(r - arch) < 0.6) return 3; if (r === 3) return 3; return -1; }); }
+function andriivska(){
+  return vox(11, 11, 20, (X, Z, r) => {
+    const ax = AB(X), az = AB(Z), dd = HYP(X, Z), mx = Math.max(ax, az), mn = Math.min(ax, az);
+    const cross = (ax <= 1 && az <= 4) || (az <= 1 && ax <= 4);
+    if (ax === 3 && az === 3) { if (r <= 8) return r % 3 === 1 ? 1 : 4; if (r <= 10) return 3; return r === 11 ? 2 : -1; }
+    if (r <= 6) { if (!cross) return -1; return mx === 4 && mn === 0 && r >= 2 && r <= 4 ? 1 : 4; }
+    if (r <= 10) return dd <= 2.1 ? ((r === 8 || r === 9) && mx === 2 && mn === 0 ? 1 : 4) : -1;
+    if (r <= 13) { const rad = [2.5, 2.1, 1.4][r - 11]; return dd <= rad ? 3 : -1; }
+    if (r <= 15) return dd < 0.5 ? 4 : -1;
+    if (r === 16) return dd < 0.5 ? 3 : -1;
+    return dd < 0.5 ? 2 : -1;
+  });
+}
+function cycladic(){ return vox(4, 4, 6, (X, Z, r) => { const ax = AB(X), az = AB(Z); if (r <= 3) return r === 1 && az === 1.5 && ax === 0.5 ? 1 : 4; return ax <= 0.5 && az <= 0.5 ? (r === 4 ? 1 : 1) : -1; }); }
+
+/* each world district: one landmark + local houses; fillers top the brick count up so difficulty keeps rising */
+const TGT = d => 330 + 22 * (d - 6);
+function withFill(d, list, fillers){
+  let n = sum(list.map(x => x.P.length)), i = 0;
+  while (n < TGT(d) && list.length < 6 && fillers.length) { const f = fillers[i++ % fillers.length](); list.push(f); n += f.P.length; }
+  return list;
+}
+
 const starOf = n => n < 45 ? 1 : n < 110 ? 2 : 3;
 
 /* ================= field shapes ================= */
@@ -1148,7 +1524,7 @@ function buildDistrict(d){
     }
     placedRects.push([ox - hx, oz - hz, ox + hx, oz + hz]);
     const rows = [...new Set(def.P.map(p => p.r))].sort((a, b) => a - b);
-    const b = { i, key:def.name, star:def.star || starOf(def.P.length), smoke:!!def.smoke, ox, oz, hx, hz, P:def.P, layers:rows.map(() => []), placedSet:new Set() };
+    const b = { i, key:def.name, star:def.star || starOf(def.P.length), smoke:!!def.smoke, landmark:!!def.landmark, ox, oz, hx, hz, P:def.P, layers:rows.map(() => []), placedSet:new Set() };
     def.P.forEach((p, k) => { p.li = rows.indexOf(p.r); b.layers[p.li].push(k); p.wx = ox + (p.x - (def.w - 1) / 2) * U; p.wz = oz + (p.z - (def.d - 1) / 2) * U; p.wy = p.r * H + H / 2; p.shown = false; });
     for (const lay of b.layers) lay.sort((a, c) => (b.P[a].wx + b.P[a].wz) - (b.P[c].wx + b.P[c].wz));
     b.top = rows[rows.length - 1] * H + H;
@@ -1327,30 +1703,68 @@ function buildEnv(d, rng, th){
   const coastX = W.R * 0.78 + 4.6;
   const pondA = 5.3, pondR = W.rf(pondA) + 6.6;
   const water = th.sea ? null : [Math.cos(pondA) * pondR, Math.sin(pondA) * pondR];
+  const riverW = 8, inWater = x => th.sea && x > coastX - 0.5 && (!th.river || x < coastX + riverW + 0.5);
   const trees = [...W.innerTrees];
-  for (let k = 0; k < 110; k++) { const a = rng() * Math.PI * 2, r = W.rf(a) + 4.2 + rng() * 15; trees.push([Math.cos(a) * r, Math.sin(a) * r, 0.85 + rng() * 0.7]); }
-  const tr = trees.filter(tt => (!water || hd(tt[0], tt[1], water[0], water[1]) > 4) && (!th.sea || tt[0] < coastX - 0.5));
+  for (let k = 0, nOut = th.city ? 60 : 110; k < nOut; k++) { const a = rng() * Math.PI * 2, r = W.rf(a) + 4.2 + rng() * (th.city ? 7 : 15); trees.push([Math.cos(a) * r, Math.sin(a) * r, 0.85 + rng() * 0.7]); }
+  const tr = trees.filter(tt => (!water || hd(tt[0], tt[1], water[0], water[1]) > 4) && !inWater(tt[0]));
   const trunkG = new THREE.CylinderGeometry(0.09, 0.13, 0.8, 7); trunkG.translate(0, 0.4, 0); trunkG.userData.own = true;
   const blobG = new THREE.IcosahedronGeometry(0.62, 0); blobG.userData.own = true;
   const coneG = new THREE.ConeGeometry(0.62, 1.15, 7); coneG.userData.own = true;
+  const leafG = new THREE.BoxGeometry(1.15, 0.05, 0.3); leafG.translate(0.57, 0, 0); leafG.userData.own = true;
   const trunks = instanced(trunkG, std('#8A6142', 0.9), tr.length);
   const blobs = instanced(blobG, std('#ffffff', 0.85, { flatShading:true }), tr.length * 2);
   const cones = instanced(coneG, std('#ffffff', 0.85, { flatShading:true }), tr.length * 2);
+  const leaves = instanced(leafG, std('#ffffff', 0.8), tr.length * 7);
   const greens = th.trees.map(c => new THREE.Color(c)), blossom = (th.blossom || []).map(c => new THREE.Color(c)), snowC = new THREE.Color('#F4F8FC');
-  let bi = 0, ci = 0;
+  const kinds = th.tree ? [].concat(th.tree) : null;
+  let bi = 0, ci = 0, lf = 0;
   tr.forEach(([x, z, s], k) => {
-    dummy.rotation.set(0, rng() * 6, 0); dummy.position.set(x, 0, z); dummy.scale.setScalar(s); dummy.updateMatrix(); trunks.setMatrixAt(k, dummy.matrix);
+    const kind = kinds ? kinds[Math.floor(rng() * kinds.length)] : (rng() < th.pine ? 'pine' : 'blob');
     let col = greens[Math.floor(rng() * greens.length)];
-    if (blossom.length && rng() < 0.25) col = blossom[Math.floor(rng() * blossom.length)];
-    if (rng() < th.pine) {
+    const ty = kind === 'palm' ? 2.6 : kind === 'umbrella' ? 2.3 : kind === 'cypress' ? 0.6 : 1, tw = kind === 'palm' ? 0.75 : 1;
+    dummy.position.set(x, 0, z); dummy.rotation.set(0, rng() * 6, 0); dummy.scale.set(s * tw, s * ty, s * tw); dummy.updateMatrix(); trunks.setMatrixAt(k, dummy.matrix);
+    if (kind === 'pine') {
+      if (blossom.length && rng() < (th.blossomP ?? 0.25)) col = blossom[Math.floor(rng() * blossom.length)];
       for (let j = 0; j < 2; j++) { dummy.position.set(x, (0.95 + j * 0.55) * s, z); dummy.scale.setScalar(s * (1 - j * 0.28)); dummy.rotation.set(0, rng() * 6, 0); dummy.updateMatrix(); cones.setMatrixAt(ci, dummy.matrix); cones.setColorAt(ci++, th.snow && j === 1 ? snowC : col); }
+    } else if (kind === 'cypress') {
+      dummy.position.set(x, s * 1.75, z); dummy.rotation.set(0, rng() * 6, 0); dummy.scale.set(s * 0.5, s * 2.5, s * 0.5); dummy.updateMatrix(); cones.setMatrixAt(ci, dummy.matrix); cones.setColorAt(ci++, col);
+    } else if (kind === 'palm') {
+      const top = 0.8 * 2.6 * s;
+      for (let j = 0; j < 7; j++) { dummy.position.set(x, top, z); dummy.rotation.set(0, j * 0.9 + rng() * 0.4, -0.5 - rng() * 0.25, 'YXZ'); dummy.scale.setScalar(s); dummy.updateMatrix(); leaves.setMatrixAt(lf, dummy.matrix); leaves.setColorAt(lf++, tmpC.copy(col).offsetHSL(0, 0, (rng() - .5) * .08)); }
+      dummy.rotation.order = 'XYZ';
+    } else if (kind === 'umbrella') {
+      dummy.position.set(x, 1.95 * s, z); dummy.rotation.set(0, rng() * 6, 0); dummy.scale.set(s * 1.55, s * 0.42, s * 1.55); dummy.updateMatrix(); blobs.setMatrixAt(bi, dummy.matrix); blobs.setColorAt(bi++, col);
     } else {
+      if (blossom.length && (kind === 'blossom' || rng() < (th.blossomP ?? 0.25))) col = blossom[Math.floor(rng() * blossom.length)];
       if (th.snow) col = col.clone().lerp(snowC, 0.6);
-      dummy.position.set(x, 1.15 * s, z); dummy.scale.set(s * 1.05, s * 0.95, s * 1.05); dummy.rotation.set(rng(), rng() * 6, rng()); dummy.updateMatrix(); blobs.setMatrixAt(bi, dummy.matrix); blobs.setColorAt(bi++, col);
-      dummy.position.set(x + 0.25 * s, 1.55 * s, z - 0.1 * s); dummy.scale.setScalar(s * 0.7); dummy.updateMatrix(); blobs.setMatrixAt(bi, dummy.matrix); blobs.setColorAt(bi++, tmpC.copy(col).offsetHSL(0, 0, 0.05));
+      const sc = kind === 'olive' ? 0.72 : 1;
+      dummy.position.set(x, 1.15 * s * sc, z); dummy.scale.set(s * 1.05 * sc, s * 0.95 * sc, s * 1.05 * sc); dummy.rotation.set(rng(), rng() * 6, rng()); dummy.updateMatrix(); blobs.setMatrixAt(bi, dummy.matrix); blobs.setColorAt(bi++, col);
+      dummy.position.set(x + 0.25 * s * sc, 1.55 * s * sc, z - 0.1 * s); dummy.scale.setScalar(s * 0.7 * sc); dummy.updateMatrix(); blobs.setMatrixAt(bi, dummy.matrix); blobs.setColorAt(bi++, tmpC.copy(col).offsetHSL(0, 0, 0.05));
     }
   });
-  blobs.count = bi; cones.count = ci; g.add(trunks, blobs, cones);
+  blobs.count = bi; cones.count = ci; leaves.count = lf; g.add(trunks, blobs, cones, leaves);
+  if (th.city) {
+    const C = th.city, bG = new THREE.BoxGeometry(1, 1, 1); bG.translate(0, 0.5, 0); bG.userData.own = true;
+    const rG = new THREE.ConeGeometry(0.72, 0.6, 4); rG.rotateY(Math.PI / 4); rG.translate(0, 0.3, 0); rG.userData.own = true;
+    const N2 = C.tall ? 90 : 75, blocks = instanced(bG, std('#ffffff', 0.85), N2, false), roofs = instanced(rG, std('#ffffff', 0.8, { flatShading:true }), N2, false);
+    const wc = C.walls.map(c => new THREE.Color(c)), rc = (C.roofs || []).map(c => new THREE.Color(c));
+    let nb = 0, nr = 0;
+    for (let tries = 0; nb < N2 && tries < N2 * 8; tries++) {
+      const a = rng() * Math.PI * 2, r = W.rf(a) + 9 + rng() * 18, x = Math.cos(a) * r, z = Math.sin(a) * r;
+      if (inWater(x) || (th.sea && !th.river && x > coastX - 2) || (th.river && x > coastX - 2 && x < coastX + riverW + 1.5)) continue;
+      if (water && hd(x, z, water[0], water[1]) < 4.5) continue;
+      const bw = 1.3 + rng() * 1.8, bd = 1.3 + rng() * 1.8, h = C.tall ? 2.5 + Math.pow(rng(), 2) * 13 : 1.6 + rng() * 2.4;
+      dummy.position.set(x, 0, z); dummy.rotation.set(0, -a, 0); dummy.scale.set(bw, h, bd); dummy.updateMatrix(); blocks.setMatrixAt(nb, dummy.matrix); blocks.setColorAt(nb++, wc[Math.floor(rng() * wc.length)]);
+      if (rc.length && !C.flat) { dummy.position.set(x, h, z); dummy.scale.set(bw, 1 + rng() * 0.6, bd); dummy.updateMatrix(); roofs.setMatrixAt(nr, dummy.matrix); roofs.setColorAt(nr++, rc[Math.floor(rng() * rc.length)]); }
+    }
+    blocks.count = nb; roofs.count = nr; g.add(blocks, roofs);
+  }
+  if (th.dunes) {
+    const dG = new THREE.SphereGeometry(1, 18, 8); dG.userData.own = true;
+    const dunes = instanced(dG, std(th.g[2], 1), 18, false);
+    for (let k = 0; k < 18; k++) { const a = rng() * Math.PI * 2, r = W.rf(a) + 14 + rng() * 26; dummy.position.set(Math.cos(a) * r, -0.5, Math.sin(a) * r); dummy.rotation.set(0, rng() * 6, 0); dummy.scale.set(5 + rng() * 7, 1.2 + rng() * 1.8, 3 + rng() * 4); dummy.updateMatrix(); dunes.setMatrixAt(k, dummy.matrix); }
+    g.add(dunes);
+  }
   const bushes = instanced(blobG, std('#ffffff', 0.9, { flatShading:true }), 46);
   for (let k = 0; k < 46; k++) { const a = rng() * Math.PI * 2, r = W.rf(a) + 2.2 + rng() * 1.6; const x = Math.cos(a) * r, z = Math.sin(a) * r; dummy.position.set(x, th.sea && x > coastX - 1 ? -2 : 0.18, z); dummy.scale.setScalar(0.45 + rng() * 0.35); dummy.rotation.set(rng(), rng() * 6, 0); dummy.updateMatrix(); bushes.setMatrixAt(k, dummy.matrix); bushes.setColorAt(k, th.snow ? snowC : greens[k % greens.length]); }
   g.add(bushes);
@@ -1394,9 +1808,12 @@ function buildEnv(d, rng, th){
   const wMat = std(th.snow ? '#A9CFE6' : '#78C3E6', 0.12, { metalness:0.1, transparent:true, opacity:0.9 });
   W.ripples = [];
   if (th.sea) {
-    const sea = new THREE.Mesh(new THREE.PlaneGeometry(70, 190), wMat); sea.rotation.x = -Math.PI / 2; sea.position.set(coastX + 35, 0.03, 0); sea.userData.own = true; sea.receiveShadow = true;
-    const beach = new THREE.Mesh(new THREE.PlaneGeometry(3.2, 190), std('#EADBA8', 1)); beach.rotation.x = -Math.PI / 2; beach.position.set(coastX - 1.4, 0.02, 0); beach.userData.own = true;
-    g.add(sea, beach); W.waterAt = [coastX + 3, 0, 8];
+    const sw = th.river ? riverW : 70, edge = th.river ? '#BDB6A8' : '#EADBA8';
+    const sea = new THREE.Mesh(new THREE.PlaneGeometry(sw, 190), wMat); sea.rotation.x = -Math.PI / 2; sea.position.set(coastX + sw / 2, 0.03, 0); sea.userData.own = true; sea.receiveShadow = true;
+    const beach = new THREE.Mesh(new THREE.PlaneGeometry(3.2, 190), std(edge, 1)); beach.rotation.x = -Math.PI / 2; beach.position.set(coastX - 1.4, 0.02, 0); beach.userData.own = true;
+    g.add(sea, beach);
+    if (th.river) { const bank = new THREE.Mesh(new THREE.PlaneGeometry(2, 190), std(edge, 1)); bank.rotation.x = -Math.PI / 2; bank.position.set(coastX + sw + 1, 0.02, 0); bank.userData.own = true; g.add(bank); }
+    W.waterAt = [coastX + Math.min(3, sw / 2), 0, th.river ? 3 : 8];
   } else {
     const pond = new THREE.Mesh(new THREE.CircleGeometry(3.1, 40), wMat); pond.rotation.x = -Math.PI / 2; pond.position.set(water[0], 0.03, water[1]); pond.userData.own = true; pond.receiveShadow = true;
     const rim = new THREE.Mesh(new THREE.TorusGeometry(3.15, 0.16, 6, 40), std(th.snow ? '#DDE4EC' : '#C9BBA0', 0.9)); rim.rotation.x = -Math.PI / 2; rim.position.set(water[0], 0.04, water[1]); rim.userData.own = true;
@@ -1906,6 +2323,7 @@ function layerFx(b, bonus, bDone){
   floatText('+' + bonus, V3(b.ox, b.top + 0.4, b.oz), 'coin'); SFX.coin();
   if (!bDone) return;
   SFX.fanfare(); confetti(b.ox, b.top + 0.3, b.oz); lightWindows(b); spawnResident(b); bloomAround(b);
+  if (b.landmark && W.info.fact) later(1.1, () => showModal(t('m.lmDone', { b:bName(b) }), `<b>${t('m.fact')}:</b> ${tx(W.info.fact)}`, [{ t:t('m.great'), primary:true, fn:() => {} }]));
   toast(t('t.built', { b:bName(b), s:b.star }) + (L('b_architect') ? t('t.ideaPlus') : '')); bump('#pStars');
   if (SEL === b.i) { const next = W.buildings.find(x => S.bld[x.i] < x.layers.length); if (next) selectB(next.i); }
   if (W.buildings.every(x => S.bld[x.i] >= x.layers.length)) later(1.6, districtDone);
@@ -1926,7 +2344,7 @@ function surplus(){
 }
 function districtDone(){
   const d = S.district, nx = tx(districtInfo(d + 1).name);
-  showModal(t('m.ddone', { d:tx(W.info.name) }), t('m.ddoneB', { n:nx, x:num((1 + 0.5 * d).toFixed(1)) }), [{ t:t('m.next', { n:nx }), primary:true, fn:() => act({ k:'next', d }) }, { t:t('m.stay'), fn:() => {} }]);
+  showModal(t('m.ddone', { d:tx(W.info.name) }), t(d === 6 ? 'm.ddoneW' : 'm.ddoneB', { n:nx, x:num((1 + 0.5 * d).toFixed(1)) }), [{ t:t('m.next', { n:nx }), primary:true, fn:() => act({ k:'next', d }) }, { t:t('m.stay'), fn:() => {} }]);
 }
 function nextDistrictApply(){
   let n = 0; for (let q = 0; q < 18; q++) { n += S.station[q]; S.station[q] = 0; for (const pl of S.pl) { n += pl.bag[q] + pl.carry[q]; pl.bag[q] = 0; pl.carry[q] = 0; } }
@@ -1935,7 +2353,7 @@ function nextDistrictApply(){
   enterDistrict(); save();
   later(0.3, showDistrictIntro);
 }
-function showDistrictIntro(){ LOC.introD = S.district; saveLocal(); showModal(tx(W.info.name), tx(W.info.intro) + `<br><br><span class="kbd">${t('m.stats', { b:W.buildings.length, n:W.total })}</span>`, [{ t:t('m.go'), primary:true, fn:() => {} }]); }
+function showDistrictIntro(){ LOC.introD = S.district; saveLocal(); showModal(`${W.info.flag || ''} ${tx(W.info.name)}`, tx(W.info.intro) + `<br><br><span class="kbd">${t('m.stats', { b:W.buildings.length, n:W.total })}</span>`, [{ t:t('m.go'), primary:true, fn:() => {} }]); }
 
 /* ================= progression ================= */
 function checkMastery(){
@@ -2168,9 +2586,11 @@ function makeOrder(){
 
 /* ================= toasts / modal ================= */
 function toast(html){ const el = document.createElement('div'); el.className = 'toast'; el.innerHTML = html; $('#toasts').appendChild(el); setTimeout(() => el.remove(), 3100); while ($('#toasts').children.length > 3) $('#toasts').firstChild.remove(); }
+const MQ = [];
 function showModal(title, body, btns){
+  if (!$('#modal').hidden) { MQ.push([title, body, btns]); return; }
   $('#mdT').textContent = title; $('#mdB').innerHTML = body; const row = $('#mdR'); row.innerHTML = '';
-  for (const b of btns) { const el = document.createElement('button'); el.className = b.primary ? 'primary' : 'ghostbtn'; el.textContent = b.t; el.onclick = () => { $('#modal').hidden = true; b.fn(); }; row.appendChild(el); }
+  for (const b of btns) { const el = document.createElement('button'); el.className = b.primary ? 'primary' : 'ghostbtn'; el.textContent = b.t; el.onclick = () => { $('#modal').hidden = true; b.fn(); if (MQ.length && $('#modal').hidden) showModal(...MQ.shift()); }; row.appendChild(el); }
   $('#modal').hidden = false;
 }
 
@@ -2196,7 +2616,7 @@ function refreshHUD(){
   hudDirty = false;
   $('#rCoins').textContent = fmt(S.coins); $('#rStars').textContent = S.stars; $('#rIdeas').textContent = S.ideas;
   const placed = W.buildings.reduce((a, b) => a + b.placedSet.size, 0);
-  $('#rDist').textContent = `${tx(W.info.name)} · ${Math.floor(placed / W.total * 100)}%`;
+  $('#rDist').textContent = SHOW ? `${W.info.flag || ''} ${tx(W.info.name)}` : `${tx(W.info.name)} · ${Math.floor(placed / W.total * 100)}%`;
   $('#rNet').hidden = !(NET.conn && NET.conn.open);
   const ln = looseN(ME), cn = carryN(ME), cap = E.cap();
   $('#bagN').textContent = ln + cn; $('#bagC').textContent = cap;
@@ -2267,7 +2687,7 @@ function setLang(l){ LANG = l; LOC.lang = l; saveLocal(); applyLang(); if (W && 
 function syncMenu(){
   const st = v => v ? t('st.on') : t('st.off');
   $('#vMusic').value = Math.round((LOC.musicVol ?? 0.6) * 100); $('#vSfx').value = Math.round((LOC.sfxVol ?? 0.8) * 100); volLabels(); $('#mJoy').textContent = t('menu.joy', { s:st(LOC.joy) });
-  $('#mReset').textContent = t('menu.reset'); $('#mReset').dataset.arm = ''; $('#mReset').disabled = NET.role !== 'solo';
+  $('#mReset').textContent = t('menu.reset'); $('#mReset').dataset.arm = ''; $('#mReset').disabled = NET.role !== 'solo' || !!SHOW;
   $('#mCoop').textContent = NET.conn && NET.conn.open ? t('menu.coopOn') : t('menu.coop');
   langButtons($('#mLangs'));
 }
@@ -2327,8 +2747,8 @@ function updateLabels(dt){
     el.hidden = false; el.style.transform = `translate(${Math.round(x)}px,${Math.round(y - 10)}px) translate(-50%,-100%)`;
   };
   const refresh = labT <= 0; if (refresh) labT = 0.2;
-  place($('#labSel'), W && running ? W.buildings[SEL] : null, refresh);
-  place($('#labHov'), W && running && HOV >= 0 && HOV !== SEL ? W.buildings[HOV] : null, refresh);
+  place($('#labSel'), W && running && !SHOW ? W.buildings[SEL] : null, refresh);
+  place($('#labHov'), W && running && !SHOW && HOV >= 0 && HOV !== SEL ? W.buildings[HOV] : null, refresh);
   const tag = $('#remTag');
   if (REM.active) { tmpV.copy(REM.fig.g.position); tmpV.y = 1.45; tmpV.project(camera); tag.hidden = false; tag.style.transform = `translate(${(tmpV.x + 1) / 2 * w}px,${(1 - tmpV.y) / 2 * h}px) translate(-50%,-100%)`; }
   else tag.hidden = true;
@@ -2364,6 +2784,47 @@ function drawMini(dt){
   const [px, py] = mp(P.pos.x, P.pos.z); x.fillStyle = '#E5534B'; x.strokeStyle = '#fff'; x.lineWidth = 2.5; x.beginPath(); x.arc(px, py, 7, 0, 7); x.fill(); x.stroke();
   x.restore();
 }
+
+
+/* ================= world map & showcase of rebuilt districts ================= */
+let SHOW = null;
+function curDistrict(){ return SHOW ? SHOW.saved.district : S.district; }
+function openShowcase(d){
+  if (NET.role !== 'solo') { toast(t('show.solo')); return; }
+  if (!SHOW) { save(); SHOW = { saved:S }; }
+  S = JSON.parse(JSON.stringify(SHOW.saved));
+  Object.assign(S, { district:d, bld:[], placed:{}, dead:[], order:null, ppos:null, extraGold:0, station:Array(18).fill(0), pl:[mkPl(), mkPl()] });
+  districtInfo(d).defs().forEach((df, i) => { S.placed[i] = df.P.map((_, k) => k); });
+  enterDistrict();
+  for (const b of W.bricks) if (b.alive) { b.alive = false; setBrick(b); }
+  for (const h of W.helpers) scene.remove(h.g); W.helpers = [];
+  $('#app').classList.add('show'); $('#atlas').hidden = true;
+  $('#sbName').textContent = `${W.info.flag || ''} ${tx(W.info.name)}`; $('#sbFact').textContent = W.info.fact ? tx(W.info.fact) : tx(W.info.intro);
+  const lm = W.buildings.find(b => b.landmark) || W.buildings[0];
+  const [fx, fz] = buildingFront(lm, lm.ox + 10, lm.oz + 10); P.pos.set(fx, 0, fz);
+  SHOW.lift = Math.min(lm.top * 0.42, 6); camTarget.set(fx, SHOW.lift, fz);
+  zoom = zoomT = clamp(lm.top * 1.15 + 8, 14, 30); hudDirty = true;
+}
+function closeShowcase(){ if (!SHOW) return; S = SHOW.saved; SHOW = null; zoomT = Math.min(zoomT, 16); $('#app').classList.remove('show', 'photo'); enterDistrict(); hudDirty = true; }
+function renderAtlas(){
+  const cur = curDistrict(), last = Math.max(DISTRICTS.length - 1, cur);
+  const card = d => {
+    const info = districtInfo(d), st = d < cur ? 'done' : d === cur ? 'cur' : 'lock', view = SHOW && S.district === d;
+    return `<button class="dcard ${st}${view ? ' view' : ''}" data-d="${d}"><span class="fl">${info.flag || '🏘️'}</span><span class="dt"><b>${tx(info.name)}</b><span>${t('atlas.' + st)}</span></span></button>`;
+  };
+  const range = (a, b) => { const o = []; for (let d = a; d <= b; d++) o.push(card(d)); return o.join(''); };
+  $('#atlasL').innerHTML = `<div class="agrp">${t('atlas.home')}</div><div class="alist">${range(1, 6)}</div><div class="agrp">${t('atlas.world')}</div><div class="alist">${range(7, DISTRICTS.length - 1)}</div>` + (last >= DISTRICTS.length ? `<div class="agrp">${t('atlas.more')}</div><div class="alist">${range(DISTRICTS.length, last)}</div>` : '');
+}
+$('#atlasL').addEventListener('click', e => {
+  const c = e.target.closest('.dcard'); if (!c) return; const d = +c.dataset.d, cur = curDistrict();
+  if (d < cur) openShowcase(d); else if (d === cur) { closeShowcase(); $('#atlas').hidden = true; } else toast(t('t.locked'));
+});
+$('#bAtlas').onclick = () => { renderAtlas(); $('#atlas').hidden = false; };
+$('#aClose').onclick = () => { $('#atlas').hidden = true; };
+$('#sbBack').onclick = closeShowcase;
+$('#sbMap').onclick = () => { renderAtlas(); $('#atlas').hidden = false; };
+$('#sbPhoto').onclick = () => $('#app').classList.add('photo');
+$('#photoX').onclick = () => $('#app').classList.remove('photo');
 
 /* ================= upgrade tree UI ================= */
 const LEFT = 70, COLW = 172, TOP = 104, ROWH = 126;
@@ -2536,7 +2997,7 @@ canvas.addEventListener('pointermove', e => {
   if (e.pointerType === 'mouse' && !ptrs.size && W && running) { toNdc(e.clientX, e.clientY); HOV = pickBuilding(); return; }
   if (!ptrs.has(e.pointerId)) return; ptrs.set(e.pointerId, { x:e.clientX, y:e.clientY });
   if (!gesture) return;
-  if (gesture.type === 'pinch' && ptrs.size === 2) { const [a, b] = [...ptrs.values()]; const d = Math.hypot(a.x - b.x, a.y - b.y); zoomT = clamp(gesture.z0 * gesture.d0 / Math.max(20, d), 7, 24); let da = Math.atan2(b.y - a.y, b.x - a.x) - gesture.a0; da = Math.atan2(Math.sin(da), Math.cos(da)); if (Math.abs(da) > 0.55) { LOC.yaw = (LOC.yaw + (da > 0 ? 3 : 1)) % 4; gesture.a0 += da; saveLocal(); } }
+  if (gesture.type === 'pinch' && ptrs.size === 2) { const [a, b] = [...ptrs.values()]; const d = Math.hypot(a.x - b.x, a.y - b.y); zoomT = clamp(gesture.z0 * gesture.d0 / Math.max(20, d), 7, SHOW ? 34 : 24); let da = Math.atan2(b.y - a.y, b.x - a.x) - gesture.a0; da = Math.atan2(Math.sin(da), Math.cos(da)); if (Math.abs(da) > 0.55) { LOC.yaw = (LOC.yaw + (da > 0 ? 3 : 1)) % 4; gesture.a0 += da; saveLocal(); } }
   else if (gesture.type === 'tap' && Math.hypot(e.clientX - gesture.x0, e.clientY - gesture.y0) > 12) gesture.type = 'drag';
   if (gesture.type === 'drag' && running) swipeAt(e.clientX, e.clientY);
 });
@@ -2547,7 +3008,7 @@ const endPtr = e => {
 };
 canvas.addEventListener('pointerup', endPtr); canvas.addEventListener('pointercancel', endPtr);
 canvas.addEventListener('pointerleave', () => { HOV = -1; });
-canvas.addEventListener('wheel', e => { e.preventDefault(); zoomT = clamp(zoomT * (1 + e.deltaY * 0.0012), 7, 24); }, { passive:false });
+canvas.addEventListener('wheel', e => { e.preventDefault(); zoomT = clamp(zoomT * (1 + e.deltaY * 0.0012), 7, SHOW ? 34 : 24); }, { passive:false });
 addEventListener('keydown', e => { if (e.target.tagName === 'INPUT') return; const k = e.key.toLowerCase(); if ('wasd'.includes(k) && k.length === 1) P.keys[k] = true; if (k === 'q') LOC.yaw = (LOC.yaw + 3) % 4; if (k === 'e') LOC.yaw = (LOC.yaw + 1) % 4; });
 addEventListener('keyup', e => { const k = e.key.toLowerCase(); if ('wasd'.includes(k) && k.length === 1) P.keys[k] = false; });
 addEventListener('blur', () => { P.keys = {}; });
@@ -2557,7 +3018,7 @@ function resize(){ const w = canvas.clientWidth, h = canvas.clientHeight; if (ca
 function updateCamera(dt){
   zoom = lerp(zoom, zoomT, 1 - Math.exp(-10 * dt));
   let dy = LOC.yaw * Math.PI / 2 - yaw; dy = Math.atan2(Math.sin(dy), Math.cos(dy)); yaw += dy * (1 - Math.exp(-7 * dt));
-  camTarget.lerp(tmpV.set(P.pos.x, 0, P.pos.z), 1 - Math.exp(-5 * dt));
+  camTarget.lerp(tmpV.set(P.pos.x, SHOW ? SHOW.lift : 0, P.pos.z), 1 - Math.exp(-5 * dt));
   const w = canvas.clientWidth || 1, h = canvas.clientHeight || 1, a = w / h, vh = a >= 1 ? zoom : zoom / Math.max(a, 0.62);
   camera.top = vh / 2; camera.bottom = -vh / 2; camera.left = -vh * a / 2; camera.right = vh * a / 2; camera.updateProjectionMatrix();
   const ang = Math.PI / 4 + yaw, el = 0.64, dist = 45;
@@ -2619,7 +3080,7 @@ const TUT = [
 let coachOn = [];
 function tutTick(dt, time){
   const coach = $('#coach');
-  const off = !running || NET.role === 'guest' || LOC.tut >= TUT.length || !W || W.d !== 1;
+  const off = !running || !!SHOW || NET.role === 'guest' || LOC.tut >= TUT.length || !W || W.d !== 1;
   if (off) { if (!coach.hidden) { coach.hidden = true; hudDirty = true; } coachArrow.visible = false; setCoachUI([]); return; }
   let st = TUT[LOC.tut];
   while (st && st.done()) { LOC.tut++; saveLocal(); st = TUT[LOC.tut]; }
@@ -2752,7 +3213,7 @@ function updateRemote(dt){
   let dh = REM.th - g.rotation.y; dh = Math.atan2(Math.sin(dh), Math.cos(dh)); g.rotation.y += dh * Math.min(1, dt * 12);
   animFigure(REM.fig, dt, REM.moving, 3.3);
 }
-function openCoop(){ $('#coop').hidden = false; coopUI(); }
+function openCoop(){ if (SHOW) closeShowcase(); $('#coop').hidden = false; coopUI(); }
 function coopUI(){
   const card = $('#coopCard'), on = NET.conn && NET.conn.open;
   const st = NET.status ? `<p class="status${NET.err ? ' err' : on ? ' ok' : ''}">${NET.status}</p>` : '';
@@ -2770,7 +3231,7 @@ function coopUI(){
 }
 
 /* ================= save / load ================= */
-function save(){ if (!W || NET.role === 'guest') return; try { S.savedAt = Date.now(); S.ppos = [P.pos.x, P.pos.z]; localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+function save(){ if (!W || NET.role === 'guest' || SHOW) return; try { S.savedAt = Date.now(); S.ppos = [P.pos.x, P.pos.z]; localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
 function saveLocal(){ try { localStorage.setItem(LKEY, JSON.stringify(LOC)); } catch (e) {} }
 function loadSaved(){ try { const s = localStorage.getItem(KEY); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
 function loadLocal(){ try { const s = localStorage.getItem(LKEY); if (!s) return LDEF(); const o = JSON.parse(s); if (o.musicVol == null && o.music === false) o.musicVol = 0; if (o.sfxVol == null && o.sound === false) o.sfxVol = 0; return { ...LDEF(), ...o }; } catch (e) { return LDEF(); } }
@@ -2817,9 +3278,9 @@ function offlineProgress(){
 let running = false, last = performance.now(), saveT = 0, hudT = 0;
 function step(dt, time){
   updatePlayer(dt); updateRemote(dt); updateXray(false);
-  if (NET.role === 'guest') guestHelpers(dt); else hostSystems(dt);
+  if (NET.role === 'guest') guestHelpers(dt); else if (!SHOW) hostSystems(dt);
   updateResidents(dt); settleUpdate(dt);
-  if (S.order) S.order.left -= dt;
+  if (S.order && !SHOW) S.order.left -= dt;
   marker.material.opacity = Math.max(0, marker.material.opacity - dt * 1.6); marker.scale.multiplyScalar(1 + dt * 0.6);
   const sb = W.buildings[SEL]; selRing.position.set(sb.ox, 0.04, sb.oz); selRing.scale.setScalar(Math.max(sb.hx, sb.hz) * 1.35 + 0.3); selRing.material.opacity = 0.35 + 0.2 * Math.sin(time * 3);
   const selB = W.buildings[SEL], remS = selB ? remainAll(selB) : null, plc = S.pl[ME].carry;
@@ -2833,7 +3294,7 @@ function step(dt, time){
   drawMini(dt);
 }
 function frame(now){
-  const dt = Math.min(0.05, (now - last) / 1000); last = now; const time = now / 1000;
+  const dt = clamp((now - last) / 1000, 0, 0.05); last = now; const time = now / 1000;
   resize();
   if (W) { if (running) step(dt, time); updateTimers(dt); updateFlights(dt); updateParts(dt); updateHighlight(dt, time); ambient(dt, time); }
   updateCamera(dt);
@@ -2856,8 +3317,8 @@ function boot(data){
 }
 addEventListener('visibilitychange', () => { if (document.hidden) { save(); saveLocal(); Music.pause(); AC && AC.suspend && AC.suspend(); } else { AC && AC.resume && AC.resume(); Music.resume(); } });
 addEventListener('pagehide', () => { save(); saveLocal(); });
-if (window.claude?.hot?.snapshot) window.claude.hot.snapshot(() => { if (W && NET.role !== 'guest') S.ppos = [P.pos.x, P.pos.z]; return { S:NET.role === 'guest' ? loadSaved() : JSON.parse(JSON.stringify(S)), LOC }; });
-window.__sg = { get S(){ return S; }, get W(){ return W; }, get LOC(){ return LOC; }, P, act, apply, onTap, buildAction, nodeInfo, NODE, screenOf, walkTo, walkToStation, walkToBuilding, E, plN, enterDistrict, startGame, placeTap, nextPlaceable, startPlaceAll, getNeeds, requestCollect, refreshHUD, surplus, SELf:() => SEL, setSel:i => selectB(i), TUT, setLang, T,
+if (window.claude?.hot?.snapshot) window.claude.hot.snapshot(() => { if (W && NET.role !== 'guest' && !SHOW) S.ppos = [P.pos.x, P.pos.z]; return { S:NET.role === 'guest' ? loadSaved() : JSON.parse(JSON.stringify(SHOW ? SHOW.saved : S)), LOC }; });
+window.__sg = { get S(){ return S; }, get W(){ return W; }, get LOC(){ return LOC; }, P, act, apply, onTap, buildAction, nodeInfo, NODE, screenOf, walkTo, walkToStation, walkToBuilding, E, plN, enterDistrict, startGame, placeTap, nextPlaceable, startPlaceAll, getNeeds, requestCollect, refreshHUD, surplus, openShowcase, closeShowcase, districtInfo, camTo:(x, z, zm) => { camTarget.set(x, 0, z); P.pos.set(x, 0, z); if (zm) zoom = zoomT = zm; }, get running(){ return running; }, SELf:() => SEL, setSel:i => selectB(i), TUT, setLang, T,
   sim(sec){ let tt = performance.now() / 1000; for (let k = 0; k < sec * 30; k++) { tt += 1 / 30; step(1 / 30, tt); updateTimers(1 / 30); updateFlights(1 / 30); updateParts(1 / 30); ambient(1 / 30, tt); tutTick(1 / 30, tt); } } };
 window.claude?.hot?.ready ? window.claude.hot.ready(boot) : boot(window.claude?.hot?.data ?? {});
 </script>
