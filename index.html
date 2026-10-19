@@ -406,6 +406,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
       <button class="ghostbtn" id="mHow" data-t="menu.how"></button>
       <button class="ghostbtn" id="mCheat" data-t="menu.cheat"></button>
       <button class="ghostbtn" id="mStars" data-t="menu.stars"></button>
+      <button class="ghostbtn" id="mSkip" data-t="menu.skip"></button>
       <button class="ghostbtn danger" id="mReset"></button>
       <button class="primary" id="mClose" data-t="menu.close"></button>
     </div>
@@ -452,7 +453,7 @@ uk:{
   'tip.full':'Сумка повна — неси на станцію','tip.magnet':'Відкрилась гілка «Магніт» у дереві покращень',
   'coach.ok':'Зрозуміло','coach.skip':'Пропустити','coach.skipped':'Навчання пропущено. «Як грати» є в меню',
   menu:'Меню','menu.coop':'👫 Гра вдвох по Wi‑Fi','menu.coopOn':'👫 Гра вдвох: підключено','vol.music':'🎵 Музика','vol.sfx':'🔔 Звуки','vol.track':'Зараз: «{n}»','vol.next':'Наступний ⏭','menu.joy':'Джойстик: {s}','st.on':'увімкнено','st.off':'вимкнено',
-  'menu.how':'Як грати','menu.cheat':'Тест: +1000 монет і +3 ідеї','menu.stars':'Тест: +2 зірки','menu.reset':'Почати заново','menu.reset2':'Тапни ще раз, щоб стерти прогрес','menu.close':'Повернутися до гри',
+  'menu.how':'Як грати','menu.cheat':'Тест: +1000 монет і +3 ідеї','menu.stars':'Тест: +2 зірки','menu.skip':'Тест: перейти до наступного кварталу','menu.reset':'Почати заново','menu.reset2':'Тапни ще раз, щоб стерти прогрес','menu.close':'Повернутися до гри',
   't.cheat':'Тест: +1000 монет і +3 ідеї','t.stars':'Тест: +2 зірки','t.reset':'Новий початок',
   't.built':'<b>{b}</b> відбудовано! +{s} ★','t.ideaPlus':' <em>+1 ідея</em>','t.bought':'{i} {n}: {v}','t.pbought':'Напарник купив {i} {n}','t.refund':'Вибір скинуто: повернуто {c}','t.sold':'Продано {n} за {c}',
   't.orderNew':'Нове замовлення від «{f}»: {n} × {m}','t.orderDone':'Замовлення «{f}» виконано! +{c}','t.orderEnd':'Замовлення «{f}» минуло',
@@ -485,7 +486,7 @@ en:{
   'tip.full':'Bag is full — head to the station','tip.magnet':'The Magnet branch is now open in the upgrade tree',
   'coach.ok':'Got it','coach.skip':'Skip','coach.skipped':'Tutorial skipped. “How to play” is in the menu',
   menu:'Menu','menu.coop':'👫 Play together over Wi‑Fi','menu.coopOn':'👫 Playing together: connected','vol.music':'🎵 Music','vol.sfx':'🔔 Sounds','vol.track':'Now playing: “{n}”','vol.next':'Next ⏭','menu.joy':'Joystick: {s}','st.on':'on','st.off':'off',
-  'menu.how':'How to play','menu.cheat':'Test: +1000 coins and +3 ideas','menu.stars':'Test: +2 stars','menu.reset':'Start over','menu.reset2':'Tap again to erase progress','menu.close':'Back to the game',
+  'menu.how':'How to play','menu.cheat':'Test: +1000 coins and +3 ideas','menu.stars':'Test: +2 stars','menu.skip':'Test: skip to the next district','menu.reset':'Start over','menu.reset2':'Tap again to erase progress','menu.close':'Back to the game',
   't.cheat':'Test: +1000 coins and +3 ideas','t.stars':'Test: +2 stars','t.reset':'Fresh start',
   't.built':'<b>{b}</b> rebuilt! +{s} ★','t.ideaPlus':' <em>+1 idea</em>','t.bought':'{i} {n}: {v}','t.pbought':'Your partner bought {i} {n}','t.refund':'Choice reset: {c} refunded','t.sold':'Sold {n} for {c}',
   't.orderNew':'New order from “{f}”: {n} × {m}','t.orderDone':'Order for “{f}” done! +{c}','t.orderEnd':'The order for “{f}” expired',
@@ -518,7 +519,7 @@ de:{
   'tip.full':'Tasche voll — ab zur Station','tip.magnet':'Der Zweig „Magnet“ ist im Upgrade-Baum frei',
   'coach.ok':'Verstanden','coach.skip':'Überspringen','coach.skipped':'Tutorial übersprungen. „Spielanleitung“ findest du im Menü',
   menu:'Menü','menu.coop':'👫 Zu zweit im WLAN','menu.coopOn':'👫 Zu zweit: verbunden','vol.music':'🎵 Musik','vol.sfx':'🔔 Geräusche','vol.track':'Läuft: „{n}“','vol.next':'Weiter ⏭','menu.joy':'Joystick: {s}','st.on':'an','st.off':'aus',
-  'menu.how':'Spielanleitung','menu.cheat':'Test: +1000 Münzen und +3 Ideen','menu.stars':'Test: +2 Sterne','menu.reset':'Neu anfangen','menu.reset2':'Nochmal tippen, um den Fortschritt zu löschen','menu.close':'Zurück zum Spiel',
+  'menu.how':'Spielanleitung','menu.cheat':'Test: +1000 Münzen und +3 Ideen','menu.stars':'Test: +2 Sterne','menu.skip':'Test: zum nächsten Viertel springen','menu.reset':'Neu anfangen','menu.reset2':'Nochmal tippen, um den Fortschritt zu löschen','menu.close':'Zurück zum Spiel',
   't.cheat':'Test: +1000 Münzen und +3 Ideen','t.stars':'Test: +2 Sterne','t.reset':'Neustart',
   't.built':'<b>{b}</b> wiederaufgebaut! +{s} ★','t.ideaPlus':' <em>+1 Idee</em>','t.bought':'{i} {n}: {v}','t.pbought':'Dein Partner hat {i} {n} gekauft','t.refund':'Wahl zurückgesetzt: {c} erstattet','t.sold':'{n} für {c} verkauft',
   't.orderNew':'Neuer Auftrag von „{f}“: {n} × {m}','t.orderDone':'Auftrag für „{f}“ erledigt! +{c}','t.orderEnd':'Der Auftrag für „{f}“ ist abgelaufen',
@@ -740,6 +741,28 @@ DISTRICTS.push(
     defs:() => withFill(20, [W_('andriivska', { landmark:true, star:3, ...andriivska() }), W_('khata', { smoke:true, ...house(6, 4, 3, 4, 4, 5, 5) })], [() => W_('kyivHouse', { smoke:true, ...house(7, 5, 6, 4, 2, 3, 3) }), () => W_('gallery', house(6, 5, 5, 4, 1, 3, 2))]) },
 );
 [null, '⛲', '🥖', '🌳', '🍂', '⚓', '🏰'].forEach((f, i) => { if (f) DISTRICTS[i].flag = f; });
+/* city life: paving, accents and props per place */
+const TH = (k, o) => Object.assign(THEMES[k], o);
+TH('copenhagen', { plaza:{ c:'#D2CABD', k:'cobble' }, accent:['#D9543C','#F2C14E','#3E7CB1','#2C9B58'], props:{ edge:['cafe','bench','lamp','bike','planter','bike'], inner:['lamp','planter','bench','bike'], water:['boat','sailboat','boat'] } });
+TH('pisa', { accent:['#C0392B','#F2B632','#2E6BD6','#2C9B58'], props:{ edge:['stall','stall','lamp','bench'], inner:['stall','bench','lamp'] } });
+TH('london', { plaza:{ c:'#C8C3BA', k:'flag' }, car:'cab', accent:['#D9302C','#1F3A6E'], props:{ edge:['phone','lamp','car','bus','bench','lamp'], inner:['lamp','bench','planter','phone'], water:['boat','boat'] } });
+TH('paris', { plaza:{ c:'#DDD2BE', k:'flag' }, accent:['#C0392B','#2E4A7A','#2C6B4E'], props:{ edge:['cafe','cafe','lamp','morris','bench','planter'], inner:['lamp','cafe','planter','fountain'], water:['boat'] } });
+TH('dresden', { plaza:{ c:'#D3C6AB', k:'cobble' }, accent:['#2E6BD6','#F2B632','#FFFFFF'], props:{ edge:['beer','lamp','bench','stall'], inner:['stall','lamp','fountain','planter'] } });
+TH('koln', { plaza:{ c:'#CBC6BC', k:'flag' }, accent:['#D9302C','#FFFFFF','#2E6BD6'], props:{ edge:['beer','lamp','bench','bike','car'], inner:['stall','lamp','planter'] } });
+TH('rome', { plaza:{ c:'#C9B79A', k:'cobble' }, accent:['#2C6B4E','#C0392B','#F2B632','#F4F1EA'], props:{ edge:['cafe','vespa','lamp','pot','vespa'], inner:['fountain','vespa','pot','cafe'] } });
+TH('athens', { plaza:{ c:'#E6DECB', k:'flag' }, accent:['#3E7CB1','#FFFFFF'], props:{ edge:['cafe','pot','bench','column'], inner:['column','column','pot'] } });
+TH('giza', { ring:false, accent:['#A8323A','#2E6BD6','#F2B632'], props:{ edge:['camel','tent','stall','camel'], inner:['camel','tent','pot'] } });
+TH('agra', { ring:false, accent:['#E07A3C','#F2B632','#C0392B'], props:{ edge:['pot','bench','planter','tuktuk'], inner:['fountain','pot','tuktuk'] } });
+TH('kyoto', { plaza:{ c:'#DDD6C6', k:'gravel' }, accent:['#C0392B','#3A2E2A'], props:{ edge:['lantern','bamboo','bench','lantern'], inner:['lantern','bamboo','lantern'] } });
+TH('newyork', { plaza:{ c:'#C3C2BE', k:'flag' }, car:'taxi', accent:['#2E6BD6','#F2B632','#D9302C'], props:{ edge:['car','car','hydrant','hotdog','lamp','bench'], inner:['hotdog','hydrant','lamp','bench'], water:['boat','sailboat'] } });
+TH('sydney', { plaza:{ c:'#DCD6CA', k:'flag' }, accent:['#2E6BD6','#F4F1EA','#F2B632'], props:{ edge:['bench','pot','cafe','lamp'], inner:['bench','pot','fountain'], water:['sailboat','sailboat','boat'] } });
+TH('kyiv', { plaza:{ c:'#BDB5A8', k:'cobble' }, accent:['#2E6BD6','#F2C14E','#C0392B'], props:{ edge:['easel','easel','stall','lamp','bench'], inner:['easel','planter','lamp','stall'], water:['boat','boat'] } });
+TH('spring', { props:{ inner:['bench','lamp','planter'], innerN:6 } });
+TH('afternoon', { accent:['#E07A3C','#F2B632','#FFFFFF'], props:{ edge:['cafe','stall','bench'], inner:['cafe','planter'], innerN:5 } });
+TH('park', { props:{ inner:['bench','bench','lamp','fountain'], innerN:6 } });
+TH('autumn', { accent:['#D2622F','#E8B23C','#7A5C44'], props:{ edge:['stall','stall','bench'], inner:['stall','crate'], innerN:6 } });
+TH('harbor', { props:{ edge:['crate','bench','lamp'], inner:['crate','lamp'], innerN:5, water:['boat','sailboat'] } });
+TH('winter', { props:{ inner:['lamp','bench'], innerN:5 } });
 
 function districtInfo(d){
   if (d < DISTRICTS.length) return DISTRICTS[d];
@@ -1774,7 +1797,7 @@ function buildEnv(d, rng, th){
   W.bloom = instanced(fG, std('#ffffff', 0.6), 260 + W.buildings.length * 30, false); W.bloomN = 0; W.bloomCols = fc.length ? fc : [new THREE.Color('#FFFFFF')];
   for (let cl = 0; cl < nCl; cl++) { const [cx, cz] = (() => { const a = rng() * Math.PI * 2, r = 3.95 + rng() * (W.rf(a) - 3.5); return [Math.cos(a) * r, Math.sin(a) * r]; })(); if (!free(cx, cz)) continue; const col = fc[cl % fc.length]; for (let j = 0; j < 10 && W.bloomN < 240; j++) addFlower(cx + (rng() - .5) * .9, cz + (rng() - .5) * .9, col, 0.8 + rng() * 0.5); }
   g.add(W.bloom);
-  if (th.grass) {
+  if (th.grass && !th.plaza) {
     const gg = new THREE.ConeGeometry(0.035, 0.28, 3); gg.translate(0, 0.14, 0); gg.userData.own = true;
     const tufts = []; for (let k = 0, tries = 0; k < 340 && tries < 5000; tries++) {
       const a = rng() * Math.PI * 2, r = 3.9 + Math.sqrt(rng()) * (W.rf(a) + 2.6), x = Math.cos(a) * r, z = Math.sin(a) * r;
@@ -1793,6 +1816,7 @@ function buildEnv(d, rng, th){
     const head = new THREE.Mesh(new THREE.SphereGeometry(0.14, 12, 10), std('#FFF1C4', 0.4, { emissive:'#FFD27A', emissiveIntensity:0.7 })); head.position.set(x, 1.66, z); head.userData.own = true;
     g.add(post, head); blockCircle(x, z, 0.3);
   }
+  if (!(th.city && th.ring !== false)) {
   // fence along the field outline
   const fp = []; { let acc = 0, prev = null; for (let k = 0; k <= 1440; k++) { const a = k / 1440 * Math.PI * 2, r = W.rf(a) + 3.6, p = [Math.cos(a) * r, Math.sin(a) * r]; if (prev) acc += hd(p[0], p[1], prev[0], prev[1]); if (!prev || acc >= 0.9) { fp.push(p); acc = 0; } prev = p; } }
   const postG = new RoundedBoxGeometry(0.1, 0.55, 0.1, 1, 0.02); postG.translate(0, 0.27, 0); postG.userData.own = true;
@@ -1805,6 +1829,7 @@ function buildEnv(d, rng, th){
     for (let j = 0; j < 2; j++) { dummy.position.set((x + x2) / 2, 0.22 + j * 0.2, (z + z2) / 2); dummy.rotation.set(0, -Math.atan2(z2 - z, x2 - x), 0); dummy.scale.set(len, 1, 1); dummy.updateMatrix(); rails.setMatrixAt(k * 2 + j, dummy.matrix); }
   });
   g.add(posts, rails);
+  }
   const wMat = std(th.snow ? '#A9CFE6' : '#78C3E6', 0.12, { metalness:0.1, transparent:true, opacity:0.9 });
   W.ripples = [];
   if (th.sea) {
@@ -1822,6 +1847,8 @@ function buildEnv(d, rng, th){
     W.waterAt = [water[0], water[1], 2.4];
   }
   for (let k = 0; k < 3; k++) { const rm = new THREE.Mesh(new THREE.RingGeometry(0.9, 1, 40), new THREE.MeshBasicMaterial({ color:'#ffffff', transparent:true, opacity:0, depthWrite:false })); rm.rotation.x = -Math.PI / 2; rm.position.y = 0.05; rm.userData.own = true; rm.userData.t = k * 1.3; g.add(rm); W.ripples.push(rm); }
+  buildCityLife(g, th, rng, { coastX, inWater, stoneCells, water });
+  spawnWalkers(th.city ? 10 : 5);
 }
 function addFlower(x, z, col, s = 1){
   if (W.bloomN >= W.bloom.count) return;
@@ -1839,6 +1866,186 @@ function bloomAround(b){
     addFlower(x, z, cols[k % cols.length], 0.8 + r() * 0.4);
   }
 }
+
+
+/* ================= city dressing: plaza paving, street frontage, props, passers-by, boats ================= */
+const PK = {};
+function propGeos(){
+  if (PK.geos) return PK.geos;
+  const cone4 = new THREE.ConeGeometry(0.5, 1, 4); cone4.rotateY(Math.PI / 4);
+  const sph = new THREE.SphereGeometry(0.5, 12, 9);
+  PK.geos = { box:new THREE.BoxGeometry(1, 1, 1), cyl:new THREE.CylinderGeometry(0.5, 0.5, 1, 12), cone:new THREE.ConeGeometry(0.5, 1, 12), cone3:new THREE.ConeGeometry(0.5, 1, 3), cone4, sph, glow:sph };
+  PK.mat = std('#ffffff', 0.72); PK.glow = std('#ffffff', 0.4, { emissive:'#FFD27A', emissiveIntensity:0.65 });
+  return PK.geos;
+}
+/* part: [geo, colour, x, y, z, sx, sy, sz, rx, ry, rz]; colour tokens: A accent, B second accent, W wood, M metal, S stone, G green, F flower, C car paint */
+const WHL = (x, z, r = 0.34) => ['cyl', '#22252C', x, r / 2 + 0.02, z, r, 0.12, r, Math.PI / 2, 0, 0];
+const PROP = {
+  lamp:[['cyl','M',0,.8,0,.08,1.6,.08],['glow','#FFF1C4',0,1.66,0,.26,.26,.26]],
+  bench:[['box','W',0,.38,0,1.1,.08,.38],['box','W',0,.62,-.17,1.1,.34,.06],['box','M',-.45,.19,0,.06,.38,.34],['box','M',.45,.19,0,.06,.38,.34]],
+  cafe:[['cyl','#F4F1EA',0,.5,0,.55,.05,.55],['cyl','M',0,.25,0,.06,.5,.06],['cyl','M',0,1,0,.04,1.1,.04],['cone','A',0,1.5,0,1.5,.35,1.5],['box','B',.5,.3,0,.3,.06,.3],['box','B',.64,.48,0,.05,.34,.3],['box','B',-.5,.3,0,.3,.06,.3],['box','B',-.64,.48,0,.05,.34,.3]],
+  planter:[['box','S',0,.25,0,.7,.5,.7],['sph','G',0,.62,0,.75,.5,.75],['sph','F',.1,.86,.05,.32,.22,.32]],
+  pot:[['cyl','#C8703E',0,.3,0,.6,.6,.6],['sph','G',0,.9,0,.95,.7,.95]],
+  stall:[['cyl','W',-.6,.6,-.4,.06,1.2,.06],['cyl','W',.6,.6,-.4,.06,1.2,.06],['cyl','W',-.6,.6,.4,.06,1.2,.06],['cyl','W',.6,.6,.4,.06,1.2,.06],['box','W',0,.5,.3,1.3,.1,.35],['box','A',0,1.25,0,1.5,.1,1.1,.18,0,0],['sph','F',-.3,.62,.3,.22,.18,.22],['sph','F',.05,.62,.32,.22,.18,.22],['sph','B',.35,.62,.3,.22,.18,.22]],
+  bike:[['cyl','#22252C',-.4,.3,0,.55,.04,.55,Math.PI/2,0,0],['cyl','#22252C',.4,.3,0,.55,.04,.55,Math.PI/2,0,0],['box','A',0,.45,0,.8,.05,.05],['box','A',-.05,.55,0,.05,.3,.05],['box','#22252C',-.05,.72,0,.2,.05,.1]],
+  phone:[['box','#D9302C',0,.8,0,.6,1.6,.6],['box','#CFE6F5',0,1.0,0,.62,.6,.62],['box','#D9302C',0,1.65,0,.68,.1,.68]],
+  car:[['box','C',0,.38,0,1.6,.42,.8],['box','C',-.1,.72,0,.9,.32,.74],['box','#CFE6F5',-.1,.72,0,.92,.24,.76],WHL(.5,.38),WHL(-.5,.38),WHL(.5,-.38),WHL(-.5,-.38)],
+  bus:[['box','#D9302C',0,.95,0,2.6,1.5,1],['box','#CFE6F5',0,1.05,0,2.62,.28,1.02],['box','#CFE6F5',0,1.5,0,2.62,.28,1.02],WHL(.85,.45,.45),WHL(-.85,.45,.45),WHL(.85,-.45,.45),WHL(-.85,-.45,.45)],
+  morris:[['cyl','#2F6B4E',0,.9,0,.6,1.8,.6],['cyl','#E8D8B8',0,1.15,0,.63,.7,.63],['cone','#2F6B4E',0,1.95,0,.72,.32,.72],['sph','#2F6B4E',0,2.15,0,.12,.12,.12]],
+  beer:[['box','W',0,.45,0,1.8,.07,.6],['box','W',0,.27,.55,1.8,.06,.24],['box','W',0,.27,-.55,1.8,.06,.24],['box','M',.75,.22,0,.06,.44,1.3],['box','M',-.75,.22,0,.06,.44,1.3],['cyl','#F2C14E',.3,.56,0,.1,.18,.1],['cyl','#F2C14E',-.4,.56,.1,.1,.18,.1]],
+  vespa:[['box','C',0,.38,0,.85,.26,.3],['box','C',.36,.62,0,.12,.4,.1],['box','#3A2E2A',-.12,.56,0,.4,.08,.24],WHL(.36,0,.3),WHL(-.32,0,.3)],
+  fountain:[['cyl','S',0,.2,0,1.8,.4,1.8],['cyl','#78C3E6',0,.4,0,1.55,.04,1.55],['cyl','S',0,.7,0,.22,1,.22],['cyl','S',0,1.15,0,.7,.12,.7],['sph','#BFE6F7',0,1.35,0,.22,.3,.22]],
+  column:[['cyl','S',0,.75,0,.42,1.5,.42],['box','S',0,1.55,0,.55,.12,.55],['cyl','S',.9,.21,.2,.42,.55,.42,0,0,Math.PI/2]],
+  camel:[['box','#C9A16A',0,.95,0,1.2,.5,.5],['sph','#C9A16A',0,1.25,0,.62,.48,.5],['box','#C9A16A',.68,1.22,0,.18,.62,.18,0,0,-.5],['box','#C9A16A',.9,1.52,0,.42,.2,.2],['box','#A8323A',0,1.13,0,.55,.1,.54],['box','#B08A58',.42,.45,.15,.12,.9,.12],['box','#B08A58',.42,.45,-.15,.12,.9,.12],['box','#B08A58',-.42,.45,.15,.12,.9,.12],['box','#B08A58',-.42,.45,-.15,.12,.9,.12]],
+  tent:[['cone4','#EADBC0',0,.8,0,2,1.6,2],['box','A',0,.35,.75,.5,.7,.06]],
+  tuktuk:[['box','#2C9B58',0,.55,0,1.2,.6,.8],['box','#F2C14E',0,1.0,0,1.26,.08,.86],['box','#F2C14E',0,.95,.42,1.2,.1,.04],WHL(.4,.38,.3),WHL(.4,-.38,.3),WHL(-.45,0,.3)],
+  lantern:[['box','S',0,.12,0,.42,.24,.42],['cyl','S',0,.48,0,.18,.5,.18],['box','S',0,.85,0,.42,.3,.42],['glow','#FFE9B0',0,.85,0,.26,.2,.26],['cone4','S',0,1.12,0,.66,.26,.66],['sph','S',0,1.3,0,.12,.12,.12]],
+  bamboo:[['cyl','#6FA84A',-.12,1.2,-.1,.07,2.4,.07],['cyl','#6FA84A',.1,1.35,.05,.07,2.7,.07],['cyl','#5C9A3E',0,1.05,.15,.07,2.1,.07],['sph','#6FB15A',0,2.3,0,.7,.5,.7]],
+  hydrant:[['cyl','#D9302C',0,.3,0,.26,.6,.26],['sph','#D9302C',0,.62,0,.26,.16,.26],['cyl','#D9302C',0,.38,0,.12,.4,.12,0,0,Math.PI/2]],
+  hotdog:[['box','#C9CED6',0,.6,0,1.1,.5,.6],['cyl','M',0,1.1,0,.04,1,.04],['cone','A',0,1.65,0,1.3,.3,1.3],WHL(.35,.3,.36),WHL(-.35,.3,.36)],
+  easel:[['box','W',-.22,.6,.1,.05,1.2,.05,.15,0,.12],['box','W',.22,.6,.1,.05,1.2,.05,.15,0,-.12],['box','W',0,.6,-.25,.05,1.2,.05,-.35,0,0],['box','F',0,1.0,.16,.62,.48,.04,-.15,0,0],['box','#FFFFFF',0,1.0,.15,.68,.54,.03,-.15,0,0]],
+  crate:[['box','W',0,.25,0,.5,.5,.5],['box','W',.3,.2,.4,.4,.4,.4],['box','W',.1,.65,.1,.4,.3,.4]],
+  boat:[['box','C',0,.15,0,2.2,.5,.9],['box','#F4F1EA',-.3,.6,0,.8,.4,.6],['box','W',.2,.42,0,1.2,.05,.8]],
+  sailboat:[['box','#F4F1EA',0,.15,0,2,.42,.7],['cyl','M',0,1.6,0,.06,2.7,.06],['cone3','#FFFFFF',.35,1.6,0,.9,2.3,.08,0,Math.PI/2,0],['box','C',0,.2,0,2.02,.1,.72]],
+};
+const CAR_COLS = { taxi:'#F2C14E', cab:'#22262E' };
+function plazaTex(kind){
+  const c = document.createElement('canvas'); c.width = c.height = 256; const x = c.getContext('2d'), r = mulberry(kind.length * 977);
+  if (kind === 'cobble') { x.fillStyle = '#9C968C'; x.fillRect(0, 0, 256, 256); for (let row = 0; row < 11; row++) for (let col = -1; col < 9; col++) { const w = 30, h = 22, ox = col * 32 + (row % 2) * 16, oy = row * 24; const v = 205 + r() * 50; x.fillStyle = `rgb(${v},${v - 4},${v - 10})`; x.beginPath(); x.roundRect(ox + 1, oy + 1, w, h, 6); x.fill(); } }
+  else if (kind === 'flag') { x.fillStyle = '#A8A39A'; x.fillRect(0, 0, 256, 256); for (let row = 0; row < 4; row++) for (let col = -1; col < 5; col++) { const ox = col * 64 + (row % 2) * 32, oy = row * 64; const v = 215 + r() * 38; x.fillStyle = `rgb(${v},${v - 2},${v - 6})`; x.fillRect(ox + 2, oy + 2, 60, 60); } }
+  else { x.fillStyle = '#E4DED2'; x.fillRect(0, 0, 256, 256); x.strokeStyle = 'rgba(120,110,95,.25)'; x.lineWidth = 2; for (let y = 6; y < 256; y += 12) { x.beginPath(); for (let X = 0; X <= 256; X += 8) x.lineTo(X, y + Math.sin(X * 0.05) * 2); x.stroke(); } }
+  for (let i = 0; i < 600; i++) { x.fillStyle = `rgba(60,55,50,${r() * 0.08})`; x.fillRect(r() * 256, r() * 256, 2, 2); }
+  const t2 = new THREE.CanvasTexture(c); t2.colorSpace = THREE.SRGBColorSpace; t2.wrapS = t2.wrapT = THREE.RepeatWrapping; t2.repeat.set(0.4, 0.4); t2.anisotropy = 4; return t2;
+}
+function facadeTex(){
+  if (PK.fac) return PK.fac;
+  const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d');
+  x.fillStyle = '#ffffff'; x.fillRect(0, 0, 128, 128);
+  for (const [wx, wy] of [[20, 18], [74, 18], [20, 56], [74, 56]]) { x.fillStyle = '#E9E4DA'; x.fillRect(wx - 3, wy - 3, 40, 30); x.fillStyle = '#4A5A70'; x.fillRect(wx, wy, 34, 24); x.fillStyle = '#7F93AE'; x.fillRect(wx, wy, 34, 7); }
+  x.fillStyle = '#5A4434'; x.fillRect(50, 92, 28, 36); x.fillStyle = '#E9E4DA'; x.fillRect(0, 88, 128, 4);
+  const t2 = new THREE.CanvasTexture(c); t2.colorSpace = THREE.SRGBColorSpace; PK.fac = t2; return t2;
+}
+function buildCityLife(g, th, rng, ctx){
+  const { coastX, inWater, stoneCells, water } = ctx;
+  const P2 = th.props || {};
+  const pick = arr => arr[Math.floor(rng() * arr.length)];
+  const acc = (th.accent || ['#C0392B','#2E6BD6','#2C9B58','#F2B632']), flowers = th.flowers.length ? th.flowers : ['#FFFFFF'];
+  const nearWater = x => th.sea && x > coastX - 2.6;
+  const blocked = [];
+  const clear = (x, z, rad) => {
+    if (distToDeck(x, z) < 1.4 + rad) return false;
+    if (Math.hypot(x, z) < 4.6) return false;
+    for (const b of W.buildings) if (distToB(b, x, z) < 0.9 + rad) return false;
+    for (const p of W.piles) if (hd(x, z, p.cx, p.cz) < 1.6 + rad) return false;
+    for (const b of W.bricks) if (b.alive && hd(x, z, b.x, b.z) < 0.6 + rad) return false;
+    for (const t2 of W.innerTrees) if (hd(x, z, t2[0], t2[1]) < 0.8 + rad) return false;
+    for (const q of blocked) if (hd(x, z, q[0], q[1]) < q[2] + rad + 0.3) return false;
+    if (stoneCells.has(Math.round(x * 2) + ',' + Math.round(z * 2))) return false;
+    if (water && hd(x, z, water[0], water[1]) < 3.6 + rad) return false;
+    return true;
+  };
+  /* paving */
+  if (th.plaza) {
+    const pts = []; for (let k = 0; k < 180; k++) { const a = k / 180 * Math.PI * 2, r = W.rf(a) + 2.3; pts.push(new THREE.Vector2(Math.cos(a) * r, -Math.sin(a) * r)); }
+    const geo = new THREE.ShapeGeometry(new THREE.Shape(pts)); geo.rotateX(-Math.PI / 2); geo.userData.own = true;
+    const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ map:plazaTex(th.plaza.k), color:th.plaza.c, roughness:1 })); m.position.y = 0.008; m.receiveShadow = true; m.userData.own = true; g.add(m);
+  }
+  /* street frontage: a row of houses around the square */
+  if (th.city && th.ring !== false) {
+    const geos = propGeos(), fac = new THREE.MeshStandardMaterial({ map:facadeTex(), color:'#ffffff', roughness:0.85 }), top = std('#ffffff', 0.9);
+    const houses = instanced(geos.box, [fac, fac, top, top, fac, fac], 140), roofs = instanced(geos.cone4, std('#ffffff', 0.8, { flatShading:true }), 140);
+    const wc = th.city.walls.map(c => new THREE.Color(c)), rc = (th.city.roofs || []).map(c => new THREE.Color(c));
+    let a = 0, nh = 0, nr = 0, run = 0;
+    while (a < Math.PI * 2 && nh < 140) {
+      const r = W.rf(a) + 3.7, w = 1.6 + rng() * 1.2, da = w / r;
+      const am = a + da / 2, x = Math.cos(am) * (W.rf(am) + 3.7), z = Math.sin(am) * (W.rf(am) + 3.7);
+      a += da + 0.02 / r;
+      if (++run > 6 + rng() * 4) { run = 0; a += 0.9 / r; continue; }
+      if (nearWater(x) || (th.sea && x > coastX - 3.5)) continue;
+      const h = 1.5 + rng() * 0.8, d = 1.8;
+      dummy.position.set(x, 0, z); dummy.rotation.set(0, -am - Math.PI / 2, 0); dummy.scale.set(w - 0.06, h, d); dummy.updateMatrix();
+      dummy.position.y = h / 2; dummy.updateMatrix(); houses.setMatrixAt(nh, dummy.matrix); houses.setColorAt(nh++, pick(wc));
+      if (rc.length) { dummy.position.y = h + 0.35; dummy.scale.set(w - 0.06, 0.7 + rng() * 0.3, d); dummy.updateMatrix(); roofs.setMatrixAt(nr, dummy.matrix); roofs.setColorAt(nr++, pick(rc)); }
+      blockCircle(x, z, 0.9);
+    }
+    houses.count = nh; roofs.count = nr; g.add(houses, roofs);
+  }
+  /* props */
+  const geos = propGeos(), bins = {};
+  const mP = new THREE.Matrix4(), mQ = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), v = new THREE.Vector3(), sc = new THREE.Vector3();
+  const addProp = (kind, x, z, ry, y0 = 0) => {
+    const parts = PROP[kind]; if (!parts) return;
+    const A = pick(acc), B = pick(acc), F = pick(flowers), C = kind === 'car' ? (CAR_COLS[th.car] || pick(['#D9302C', '#2E6BD6', '#F4F1EA', '#2C9B58', '#F2B632'])) : pick(['#D9302C', '#2E6BD6', '#2C9B58', '#F2B632', '#F4F1EA']);
+    const tok = { A, B, F, C, W:'#A9733F', M:'#3A4458', S:'#D3CBBB', G:pick(th.trees) };
+    mP.compose(v.set(x, y0, z), q.setFromEuler(e.set(0, ry, 0)), sc.set(1, 1, 1));
+    for (const [geo, col, px, py, pz, sx, sy, sz, rx = 0, ry2 = 0, rz = 0] of parts) {
+      mQ.compose(v.set(px, py, pz), q.setFromEuler(e.set(rx, ry2, rz)), sc.set(sx, sy, sz));
+      (bins[geo] ||= []).push([mP.clone().multiply(mQ), new THREE.Color(tok[col] || col)]);
+    }
+  };
+  const edgeKinds = P2.edge || [], innerKinds = P2.inner || [];
+  if (edgeKinds.length) {
+    let a = rng() * 0.5;
+    while (a < Math.PI * 2) {
+      const r = W.rf(a) + 1.15 + rng() * 0.6, x = Math.cos(a) * r, z = Math.sin(a) * r;
+      a += (2.2 + rng() * 2.2) / r;
+      if (nearWater(x)) continue;
+      const kind = pick(edgeKinds), rad = kind === 'bus' ? 1.4 : kind === 'car' || kind === 'beer' || kind === 'camel' || kind === 'tent' ? 0.9 : 0.55;
+      if (!clear(x, z, rad)) continue;
+      addProp(kind, x, z, -a - Math.PI / 2); blocked.push([x, z, rad]); blockCircle(x, z, rad * 0.8);
+    }
+  }
+  for (let k = 0, tries = 0; k < (P2.innerN ?? 10) && innerKinds.length && tries < 300; tries++) {
+    const a = rng() * Math.PI * 2, r = 4.8 + rng() * (W.rf(a) - 4), x = Math.cos(a) * r, z = Math.sin(a) * r;
+    const kind = pick(innerKinds), rad = kind === 'fountain' ? 1.1 : kind === 'car' || kind === 'beer' || kind === 'camel' || kind === 'tent' ? 0.9 : 0.5;
+    if (!inside(x, z, rad) || !clear(x, z, rad)) continue;
+    addProp(kind, x, z, rng() * Math.PI * 2); blocked.push([x, z, rad]); blockCircle(x, z, rad * 0.8); k++;
+  }
+  if (th.sea && P2.water) for (let k = 0; k < 7; k++) {
+    const x = coastX + (th.river ? 1.2 + (k % 2) * 5.6 : 1.5 + rng() * 9), z = -24 + k * 8 + rng() * 3;
+    addProp(pick(P2.water), x, z, Math.PI / 2 + (rng() - 0.5) * 0.3, -0.1);
+  }
+  for (const key in bins) {
+    const list = bins[key], im = instanced(geos[key], key === 'glow' ? PK.glow : PK.mat, list.length, key !== 'glow');
+    list.forEach(([m, c], i) => { im.setMatrixAt(i, m); im.setColorAt(i, c); });
+    g.add(im);
+  }
+  /* moving boats */
+  W.sailing = [];
+  if (th.sea && P2.water) for (let k = 0; k < (th.river ? 2 : 3); k++) {
+    const grp = new THREE.Group(), parts = PROP[k % 2 ? 'sailboat' : 'boat'], col = pick(['#D9302C', '#2E6BD6', '#2C9B58', '#F2B632']);
+    for (const [geo, c, px, py, pz, sx, sy, sz, rx = 0, ry2 = 0, rz = 0] of parts) { const m = new THREE.Mesh(geos[geo], std(c === 'C' ? col : c === 'W' ? '#A9733F' : c === 'M' ? '#3A4458' : c, 0.7)); m.position.set(px, py, pz); m.rotation.set(rx, ry2, rz); m.scale.set(sx, sy, sz); m.castShadow = true; grp.add(m); }
+    grp.rotation.y = Math.PI / 2; grp.position.set(coastX + (th.river ? 4 : 5 + k * 3.5), -0.05, -30 + k * 20); g.add(grp);
+    W.sailing.push({ g:grp, sp:(0.5 + rng() * 0.5) * (k % 2 ? 1 : -1) });
+  }
+}
+/* passers-by wandering the square; purely cosmetic and local to each device */
+function spawnWalkers(n){
+  W.walkers = [];
+  const shirts = ['#E5534B','#2E6BD6','#F2B632','#55B562','#9C7BF2','#F28D52','#3FA7B5','#F4F1EA','#22262E'];
+  for (let i = 0; i < n; i++) {
+    const f = makeFigure(shirts[i % shirts.length], shirts[(i * 3 + 2) % shirts.length], false); f.g.scale.setScalar(0.68 + Math.random() * 0.1);
+    const p = randomWalkSpot(); if (!p) continue;
+    f.g.position.set(p[0], 0, p[1]); districtGroup.add(f.g);
+    W.walkers.push({ f, tx:p[0], tz:p[1], wait:Math.random() * 3, sp:0.7 + Math.random() * 0.5 });
+  }
+}
+function randomWalkSpot(){
+  for (let k = 0; k < 40; k++) { const a = Math.random() * Math.PI * 2, r = 4.2 + Math.random() * (W.rf(a) + 1.5 - 4.2), x = Math.cos(a) * r, z = Math.sin(a) * r; if (free(x, z)) return [x, z]; }
+  return null;
+}
+function updateWalkers(dt){
+  if (!W.walkers) return;
+  for (const w of W.walkers) {
+    const g = w.f.g, dx = w.tx - g.position.x, dz = w.tz - g.position.z, d = Math.hypot(dx, dz); let moving = false;
+    if (w.wait > 0) w.wait -= dt;
+    else if (d < 0.1) { w.wait = 1 + Math.random() * 4; const p = randomWalkSpot(); if (p && hd(p[0], p[1], g.position.x, g.position.z) < 9 && lineFree([g.position.x, g.position.z], p)) { w.tx = p[0]; w.tz = p[1]; } }
+    else { const st = Math.min(d, w.sp * dt), nx = g.position.x + dx / d * st, nz = g.position.z + dz / d * st; if (free(nx, nz)) { g.position.x = nx; g.position.z = nz; moving = true; let dh = Math.atan2(dx, dz) - g.rotation.y; dh = Math.atan2(Math.sin(dh), Math.cos(dh)); g.rotation.y += dh * Math.min(1, dt * 8); } else { w.tx = g.position.x; w.tz = g.position.z; } }
+    animFigure(w.f, dt, moving, 2.2);
+  }
+  for (const b of W.sailing || []) { b.g.position.z += b.sp * dt; if (b.g.position.z > 45) b.g.position.z = -45; if (b.g.position.z < -45) b.g.position.z = 45; b.g.rotation.y = b.sp > 0 ? -Math.PI / 2 : Math.PI / 2; b.g.position.y = -0.05 + Math.sin(performance.now() / 700 + b.sp * 10) * 0.03; }
+}
+function setWalkers(n){ for (const w of W.walkers || []) districtGroup.remove(w.f.g); spawnWalkers(n); }
 
 /* ---------- station ---------- */
 function buildStation(){
@@ -2151,6 +2358,7 @@ function ambient(dt, time){
     const a = Math.sin(f.ph) * 1.1; f.w1.rotation.x = a; f.w2.rotation.x = -a;
   }
   if (!W) return;
+  updateWalkers(dt);
   const kind = W.th.fall; AMB.fallT += dt;
   const iv = kind === 'snow' ? 0.03 : kind === 'leaf' ? 0.18 : kind === 'petal' ? 0.25 : kind === 'fluff' ? 0.5 : 1e9;
   while (AMB.fallT > iv) {
@@ -2351,6 +2559,7 @@ function nextDistrictApply(){
   if (n) addCoins(n * E.trade() * dm(), null);
   S.district++; S.dead = []; S.extraGold = 0; S.bld = []; S.placed = {}; S.order = null; S.ppos = null;
   enterDistrict(); save();
+  MQ.length = 0; $('#modal').hidden = true;
   later(0.3, showDistrictIntro);
 }
 function showDistrictIntro(){ LOC.introD = S.district; saveLocal(); showModal(`${W.info.flag || ''} ${tx(W.info.name)}`, tx(W.info.intro) + `<br><br><span class="kbd">${t('m.stats', { b:W.buildings.length, n:W.total })}</span>`, [{ t:t('m.go'), primary:true, fn:() => {} }]); }
@@ -2699,6 +2908,7 @@ $('#mNext').onclick = () => { audioInit(); Music.next(); setTimeout(volLabels, 6
 $('#mJoy').onclick = () => { LOC.joy = !LOC.joy; saveLocal(); syncMenu(); hudDirty = true; };
 $('#mHow').onclick = () => { $('#menu').hidden = true; showIntro(2, false); };
 $('#mCheat').onclick = () => { act({ k:'cheat', c:1000, i:3 }); toast(t('t.cheat')); };
+$('#mSkip').onclick = () => { if (NET.role === 'guest') return; if (SHOW) closeShowcase(); $('#menu').hidden = true; act({ k:'next', d:S.district }); };
 $('#mStars').onclick = () => { act({ k:'cheat', s:2 }); toast(t('t.stars')); };
 $('#mReset').onclick = () => {
   const b = $('#mReset'); if (NET.role !== 'solo') return;
@@ -2798,6 +3008,7 @@ function openShowcase(d){
   enterDistrict();
   for (const b of W.bricks) if (b.alive) { b.alive = false; setBrick(b); }
   for (const h of W.helpers) scene.remove(h.g); W.helpers = [];
+  setWalkers(W.th.city ? 18 : 9);
   $('#app').classList.add('show'); $('#atlas').hidden = true;
   $('#sbName').textContent = `${W.info.flag || ''} ${tx(W.info.name)}`; $('#sbFact').textContent = W.info.fact ? tx(W.info.fact) : tx(W.info.intro);
   const lm = W.buildings.find(b => b.landmark) || W.buildings[0];
