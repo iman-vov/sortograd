@@ -251,6 +251,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
 .de{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font:500 13px/1.3 var(--f-body);color:var(--ink-2)}
 .de b{font:700 13px/1.2 var(--f-display);color:var(--ink);background:var(--paper-2);padding:6px 9px;border-radius:9px}
 .de b.nx{background:var(--blue-2);color:var(--blue-ink)}
+.dv{font:600 11.5px/1.2 var(--f-body);color:var(--idea);margin-top:-4px}
 .dr{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;font:500 12.5px/1.3 var(--f-body)}
 .dr li{display:flex;gap:6px;align-items:baseline}
 .dr li::before{content:"✓";font-weight:700;color:var(--good);width:14px;flex:none}
@@ -519,7 +520,7 @@ uk:{
   tree:'Дерево покращень', bag:'Сумка', 'bag.carry':'для будови: {n}', 'bag.full':'Сумка повна', mail:'Пошта', pulse:'Імпульс',
   'legend.carry':'у сумці','legend.station':'на станції', 'plan.min':'згорнути','plan.max':'розгорнути',
   'plan.layer':'Шар {a} з {b}','plan.done':'Відбудовано',
-  'act.place':'Покласти {n}','act.carry':'Неси до «{b}» →','act.fore':'Докупити {n} за {c}','act.take':'До станції по {n} →','act.takeNow':'Взяти {n} для будови','atlas':'Мапа світу','atlas.hint':'Тапни відбудований квартал, щоб прогулятися ним і показати друзям.','atlas.home':'Сортоград','atlas.world':'Навколо світу','atlas.more':'Далі','atlas.done':'✓ відбудовано — подивитися','atlas.cur':'зараз тут','atlas.lock':'🔒 попереду','show.back':'↩ До роботи','show.solo':'Перегляд доступний лише в одиночній грі','t.locked':'Спершу відбудуй попередні квартали','m.lmDone':'{b} відбудовано!','m.fact':'Цікавий факт','m.ddoneW':'Сортоград повністю відбудовано! Ти отримав <b>+2 ідеї</b>. Далі — подорож навколо світу, і в кожному місті своя знаменита пам’ятка. Перша зупинка: {n}.','stock.h':'На станції — тапни, щоб узяти в сумку','ret':'↩ Повернути {n} на станцію','f.ret':'Віддаси на станції','f.notNeeded':'Цей матеріал зараз не потрібен','lab.station':'Візьми цеглини на станції: «Взяти» або тап по ящику','act.lack':'Бракує {n} — збирай','act.done':'Відбудовано ✓','act.busy':'Кладу…',
+  'act.place':'Покласти {n}','act.carry':'Неси до «{b}» →','act.fore':'Докупити {n} за {c}','act.take':'До станції по {n} →','act.takeNow':'Взяти {n} для будови','d.visible':'👀 Видно на будівельнику','atlas':'Мапа світу','atlas.hint':'Тапни відбудований квартал, щоб прогулятися ним і показати друзям.','atlas.home':'Сортоград','atlas.world':'Навколо світу','atlas.more':'Далі','atlas.done':'✓ відбудовано — подивитися','atlas.cur':'зараз тут','atlas.lock':'🔒 попереду','show.back':'↩ До роботи','show.solo':'Перегляд доступний лише в одиночній грі','t.locked':'Спершу відбудуй попередні квартали','m.lmDone':'{b} відбудовано!','m.fact':'Цікавий факт','m.ddoneW':'Сортоград повністю відбудовано! Ти отримав <b>+2 ідеї</b>. Далі — подорож навколо світу, і в кожному місті своя знаменита пам’ятка. Перша зупинка: {n}.','stock.h':'На станції — тапни, щоб узяти в сумку','ret':'↩ Повернути {n} на станцію','f.ret':'Віддаси на станції','f.notNeeded':'Цей матеріал зараз не потрібен','lab.station':'Візьми цеглини на станції: «Взяти» або тап по ящику','act.lack':'Бракує {n} — збирай','act.done':'Відбудовано ✓','act.busy':'Кладу…',
   sell:'Продати надлишок: {n} шт → {c}',
   'lab.near':'Тапай по будинку або «Покласти»','lab.far':'Неси сюди — у сумці є потрібні',
   'f.lower':'Спершу нижній шар','f.take':'Візьми {m} {s} на станції','f.pile':'Вся купа!','f.idea':'+{n} ідея','f.rent':'оренда',
@@ -552,7 +553,7 @@ en:{
   tree:'Upgrade tree', bag:'Bag', 'bag.carry':'for building: {n}', 'bag.full':'Bag is full', mail:'Mail', pulse:'Pulse',
   'legend.carry':'in your bag','legend.station':'at the station', 'plan.min':'collapse','plan.max':'expand',
   'plan.layer':'Layer {a} of {b}','plan.done':'Rebuilt',
-  'act.place':'Place {n}','act.carry':'Carry to “{b}” →','act.fore':'Buy {n} for {c}','act.take':'Get {n} at the station →','act.takeNow':'Take {n} for building','atlas':'World map','atlas.hint':'Tap a rebuilt district to walk around it and show it off.','atlas.home':'Sortograd','atlas.world':'Around the world','atlas.more':'Further on','atlas.done':'✓ rebuilt — take a look','atlas.cur':'you are here','atlas.lock':'🔒 ahead','show.back':'↩ Back to work','show.solo':'Viewing is only available in solo play','t.locked':'Rebuild the previous districts first','m.lmDone':'{b} rebuilt!','m.fact':'Fun fact','m.ddoneW':'Sortograd is fully rebuilt! You earned <b>+2 ideas</b>. Next comes a journey around the world, each city with its famous landmark. First stop: {n}.','stock.h':'At the station — tap to put in your bag','ret':'↩ Return {n} to station','f.ret':'Drop off at the station','f.notNeeded':'This material isn’t needed right now','lab.station':'Pick up bricks at the station: “Take” or tap a crate','act.lack':'{n} missing — collect','act.done':'Rebuilt ✓','act.busy':'Placing…',
+  'act.place':'Place {n}','act.carry':'Carry to “{b}” →','act.fore':'Buy {n} for {c}','act.take':'Get {n} at the station →','act.takeNow':'Take {n} for building','d.visible':'👀 Visible on your builder','atlas':'World map','atlas.hint':'Tap a rebuilt district to walk around it and show it off.','atlas.home':'Sortograd','atlas.world':'Around the world','atlas.more':'Further on','atlas.done':'✓ rebuilt — take a look','atlas.cur':'you are here','atlas.lock':'🔒 ahead','show.back':'↩ Back to work','show.solo':'Viewing is only available in solo play','t.locked':'Rebuild the previous districts first','m.lmDone':'{b} rebuilt!','m.fact':'Fun fact','m.ddoneW':'Sortograd is fully rebuilt! You earned <b>+2 ideas</b>. Next comes a journey around the world, each city with its famous landmark. First stop: {n}.','stock.h':'At the station — tap to put in your bag','ret':'↩ Return {n} to station','f.ret':'Drop off at the station','f.notNeeded':'This material isn’t needed right now','lab.station':'Pick up bricks at the station: “Take” or tap a crate','act.lack':'{n} missing — collect','act.done':'Rebuilt ✓','act.busy':'Placing…',
   sell:'Sell surplus: {n} pcs → {c}',
   'lab.near':'Tap the building or press “Place”','lab.far':'Bring them here — your bag has what’s needed',
   'f.lower':'Lower layer first','f.take':'Pick up {m} {s} at the station','f.pile':'The whole pile!','f.idea':'+{n} idea','f.rent':'rent',
@@ -585,7 +586,7 @@ de:{
   tree:'Upgrade-Baum', bag:'Tasche', 'bag.carry':'zum Bauen: {n}', 'bag.full':'Tasche ist voll', mail:'Rohrpost', pulse:'Impuls',
   'legend.carry':'in der Tasche','legend.station':'an der Station', 'plan.min':'einklappen','plan.max':'ausklappen',
   'plan.layer':'Schicht {a} von {b}','plan.done':'Wiederaufgebaut',
-  'act.place':'{n} setzen','act.carry':'Zu „{b}“ tragen →','act.fore':'{n} kaufen für {c}','act.take':'{n} an der Station holen →','act.takeNow':'{n} zum Bauen nehmen','atlas':'Weltkarte','atlas.hint':'Tippe auf ein wiederaufgebautes Viertel, um herumzuspazieren und es herzuzeigen.','atlas.home':'Sortograd','atlas.world':'Rund um die Welt','atlas.more':'Weiter','atlas.done':'✓ wiederaufgebaut — ansehen','atlas.cur':'du bist hier','atlas.lock':'🔒 noch vor dir','show.back':'↩ Zurück zur Arbeit','show.solo':'Ansehen geht nur im Einzelspiel','t.locked':'Baue zuerst die vorherigen Viertel wieder auf','m.lmDone':'{b} wiederaufgebaut!','m.fact':'Wusstest du?','m.ddoneW':'Sortograd ist komplett wiederaufgebaut! Du bekommst <b>+2 Ideen</b>. Jetzt geht es auf Weltreise, jede Stadt mit ihrem berühmten Wahrzeichen. Erste Station: {n}.','stock.h':'An der Station — antippen, um einzupacken','ret':'↩ {n} zur Station zurück','f.ret':'An der Station abgeben','f.notNeeded':'Dieses Material wird gerade nicht gebraucht','lab.station':'Hol die Steine an der Station: „Nehmen“ oder Kiste antippen','act.lack':'{n} fehlen — sammeln','act.done':'Wiederaufgebaut ✓','act.busy':'Setze…',
+  'act.place':'{n} setzen','act.carry':'Zu „{b}“ tragen →','act.fore':'{n} kaufen für {c}','act.take':'{n} an der Station holen →','act.takeNow':'{n} zum Bauen nehmen','d.visible':'👀 Am Bauarbeiter sichtbar','atlas':'Weltkarte','atlas.hint':'Tippe auf ein wiederaufgebautes Viertel, um herumzuspazieren und es herzuzeigen.','atlas.home':'Sortograd','atlas.world':'Rund um die Welt','atlas.more':'Weiter','atlas.done':'✓ wiederaufgebaut — ansehen','atlas.cur':'du bist hier','atlas.lock':'🔒 noch vor dir','show.back':'↩ Zurück zur Arbeit','show.solo':'Ansehen geht nur im Einzelspiel','t.locked':'Baue zuerst die vorherigen Viertel wieder auf','m.lmDone':'{b} wiederaufgebaut!','m.fact':'Wusstest du?','m.ddoneW':'Sortograd ist komplett wiederaufgebaut! Du bekommst <b>+2 Ideen</b>. Jetzt geht es auf Weltreise, jede Stadt mit ihrem berühmten Wahrzeichen. Erste Station: {n}.','stock.h':'An der Station — antippen, um einzupacken','ret':'↩ {n} zur Station zurück','f.ret':'An der Station abgeben','f.notNeeded':'Dieses Material wird gerade nicht gebraucht','lab.station':'Hol die Steine an der Station: „Nehmen“ oder Kiste antippen','act.lack':'{n} fehlen — sammeln','act.done':'Wiederaufgebaut ✓','act.busy':'Setze…',
   sell:'Überschuss verkaufen: {n} Stk. → {c}',
   'lab.near':'Tippe auf das Gebäude oder „Setzen“','lab.far':'Bring sie her — du hast die passenden Steine',
   'f.lower':'Zuerst die untere Schicht','f.take':'Hol {m} {s} an der Station','f.pile':'Der ganze Haufen!','f.idea':'+{n} Idee','f.rent':'Miete',
@@ -2271,7 +2272,7 @@ function makeFigure(o = {}){
     const knee = new THREE.Group(); knee.position.y = -0.19; hip.add(knee);
     const sh = M(FG.shin, o.skirt ? o.skin : o.pants, 0, -0.07, 0); sh.scale.set(1, 0.5, 1); knee.add(sh);
     const shoe = M(FG.shoe, o.shoes, 0, -0.195, 0.03, 0.5); shoe.scale.set(1.15, 1, 0.95); knee.add(shoe);
-    return { hip, knee };
+    return { hip, knee, shoe };
   };
   const L = leg(-1), Rg = leg(1); g.add(L.hip, Rg.hip);
   const upper = new THREE.Group(); g.add(upper);
@@ -2298,19 +2299,20 @@ function makeFigure(o = {}){
     if (o.hairStyle === 'bun') { const bun = M(FG.sph, o.hair, 0, 0.11, -0.08, 0.85); bun.scale.setScalar(0.09); head.add(bun); }
     if (o.hairStyle === 'ponytail') { const pt = M(FG.sph, o.hair, 0, -0.02, -0.14, 0.85); pt.scale.set(0.06, 0.15, 0.06); pt.rotation.x = 0.4; head.add(pt); }
   }
-  if (o.hat === 'cap') { const c = M(FG.hairCap, o.hatColor, 0, 0.022, 0, 0.55); c.scale.set(1.05, 1, 1.05); c.rotation.x = -0.15; const brim = M(FG.box, o.hatColor, 0, 0.05, 0.12, 0.55); brim.scale.set(0.2, 0.018, 0.12); head.add(c, brim); }
-  else if (o.hat === 'beanie') { const c = M(FG.hairCap, o.hatColor, 0, 0.03, 0, 0.9); c.scale.set(1.07, 1.12, 1.07); c.rotation.x = -0.1; const pom = M(FG.sph, '#FFFFFF', 0, 0.14, -0.01, 0.9); pom.scale.setScalar(0.05); head.add(c, pom); }
-  else if (o.hat === 'sun') { const br = M(FG.cyl, o.hatColor, 0, 0.07, 0, 0.8); br.scale.set(0.36, 0.015, 0.36); const cr = M(FG.cyl, o.hatColor, 0, 0.11, 0, 0.8); cr.scale.set(0.2, 0.08, 0.2); head.add(br, cr); }
+  const hatMs = [];
+  if (o.hat === 'cap') { const c = M(FG.hairCap, o.hatColor, 0, 0.022, 0, 0.55); c.scale.set(1.05, 1, 1.05); c.rotation.x = -0.15; const brim = M(FG.box, o.hatColor, 0, 0.05, 0.12, 0.55); brim.scale.set(0.2, 0.018, 0.12); head.add(c, brim); hatMs.push(c, brim); }
+  else if (o.hat === 'beanie') { const c = M(FG.hairCap, o.hatColor, 0, 0.03, 0, 0.9); c.scale.set(1.07, 1.12, 1.07); c.rotation.x = -0.1; const pom = M(FG.sph, '#FFFFFF', 0, 0.14, -0.01, 0.9); pom.scale.setScalar(0.05); head.add(c, pom); hatMs.push(c, pom); }
+  else if (o.hat === 'sun') { const br = M(FG.cyl, o.hatColor, 0, 0.07, 0, 0.8); br.scale.set(0.36, 0.015, 0.36); const cr = M(FG.cyl, o.hatColor, 0, 0.11, 0, 0.8); cr.scale.set(0.2, 0.08, 0.2); head.add(br, cr); hatMs.push(br, cr); }
   const arm = side => {
     const sh = new THREE.Group(); sh.position.set(side * 0.175, 0.7, 0); sh.rotation.z = side * 0.12;
     const up = M(FG.upper, o.shirt, 0, -0.06, 0); up.scale.set(1, 0.55, 1); sh.add(up);
     const el = new THREE.Group(); el.position.y = -0.14; sh.add(el);
     const fo = M(FG.fore, sleeve, 0, -0.05, 0); fo.scale.set(1, 0.5, 1); el.add(fo);
     const hand = M(FG.sph, o.skin, 0, -0.12, 0); hand.scale.set(0.085, 0.09, 0.08); el.add(hand);
-    upper.add(sh); return { sh, el };
+    upper.add(sh); return { sh, el, hand };
   };
   const A1 = arm(-1), A2 = arm(1);
-  const fig = { g, upper, head, e1, e2, l1:L.hip, l2:Rg.hip, k1:L.knee, k2:Rg.knee, a1:A1.sh, a2:A2.sh, el1:A1.el, el2:A2.el, phase:Math.random() * 6, blink:2 + Math.random() * 3, eyeY:e1.scale.y };
+  const fig = { g, upper, head, e1, e2, l1:L.hip, l2:Rg.hip, k1:L.knee, k2:Rg.knee, a1:A1.sh, a2:A2.sh, el1:A1.el, el2:A2.el, phase:Math.random() * 6, blink:2 + Math.random() * 3, eyeY:e1.scale.y, shoes:[L.shoe, Rg.shoe], hands:[A1.hand, A2.hand], hatMs, baseShoes:o.shoes, baseSkin:o.skin };
   if (o.pack) {
     const pack = new THREE.Group(); pack.position.set(0, 0.62, -0.17);
     const pm = new THREE.Mesh(new RoundedBoxGeometry(0.28, 0.3, 0.15, 2, 0.05), fmat('#A8743F', 0.8)); pm.castShadow = true; pack.add(pm);
@@ -2327,14 +2329,94 @@ function animFigure(f, dt, moving, speed){
   f.l1.rotation.x = lerp(f.l1.rotation.x, -sw, k); f.l2.rotation.x = lerp(f.l2.rotation.x, sw, k);
   f.k1.rotation.x = lerp(f.k1.rotation.x, moving ? Math.max(0, Math.sin(f.phase + 1.4)) * 0.85 : 0.02, k);
   f.k2.rotation.x = lerp(f.k2.rotation.x, moving ? Math.max(0, Math.sin(f.phase + 1.4 + Math.PI)) * 0.85 : 0.02, k);
-  f.a2.rotation.x = lerp(f.a2.rotation.x, -sw * 0.7, k); f.el2.rotation.x = lerp(f.el2.rotation.x, moving ? -0.45 : -0.12, k);
-  if (!f.reach) { f.a1.rotation.x = lerp(f.a1.rotation.x, sw * 0.7, k); f.el1.rotation.x = lerp(f.el1.rotation.x, moving ? -0.45 : -0.12, k); }
+  if (f.pushing) { f.a2.rotation.x = lerp(f.a2.rotation.x, -0.95, k); f.el2.rotation.x = lerp(f.el2.rotation.x, -0.15, k); if (!f.reach) { f.a1.rotation.x = lerp(f.a1.rotation.x, -0.95, k); f.el1.rotation.x = lerp(f.el1.rotation.x, -0.15, k); } }
+  else f.a2.rotation.x = lerp(f.a2.rotation.x, -sw * 0.7, k), f.el2.rotation.x = lerp(f.el2.rotation.x, moving ? -0.45 : -0.12, k);
+  if (f.gearPop > 0) { f.gearPop = Math.max(0, f.gearPop - dt * 1.8); f.upper.scale.setScalar(1 + Math.sin((1 - f.gearPop) * Math.PI) * 0.14); }
+  if (f.radarBulb) f.radarBulb.visible = Math.floor(f.phase * 0.7) % 2 === 0;
+  if (f.barrow && moving) f.barrow.position.y = Math.abs(Math.sin(f.phase)) * 0.015;
+  if (f.pushing) {} else if (!f.reach) { f.a1.rotation.x = lerp(f.a1.rotation.x, sw * 0.7, k); f.el1.rotation.x = lerp(f.el1.rotation.x, moving ? -0.45 : -0.12, k); }
   else f.el1.rotation.x = lerp(f.el1.rotation.x, -0.2, k);
   f.upper.position.y = moving ? Math.abs(Math.cos(f.phase)) * 0.035 - 0.015 : Math.sin(f.phase) * 0.004;
   f.upper.rotation.z = moving ? s * 0.035 : 0; f.upper.rotation.y = moving ? s * 0.06 : 0;
   f.head.rotation.y = moving ? 0 : Math.sin(f.phase * 0.31) * 0.25;
   f.blink -= dt; const bl = f.blink < 0.12 ? f.eyeY * 0.2 : f.eyeY; f.e1.scale.y = f.e2.scale.y = bl; if (f.blink < 0) f.blink = 2.5 + Math.random() * 3.5;
 }
+
+/* ================= visible gear: upgrades show up on the builder ================= */
+const GEAR_NODES = new Set(['c_cap','c_basket','c_barrow','c_bike','c_speed','c_mail','c_bottomless','h_speed','h_reach','h_gold','m_unlock','m_radius','m_pulse','v_need','v_radar','b_pay','b_speed','b_architect','b_foreman','b_auto']);
+const GLOW = c => std(c, 0.35, { emissive:c, emissiveIntensity:0.9 });
+const TORUS_HALF = new THREE.TorusGeometry(0.1, 0.035, 8, 18, Math.PI);
+function applyGear(f){
+  if (!f || !f.shoes) return;
+  for (const [parent, m] of f.gearParts || []) parent.remove(m);
+  f.gearParts = []; f.pushing = false;
+  const lv = id => S.up[id] || 0;
+  const add = (parent, geo, col, x, y, z, sx, sy, sz, rx = 0, ry = 0, rz = 0, mat = null) => {
+    const m = new THREE.Mesh(geo, mat || fmat(col, 0.6)); m.position.set(x, y, z); m.scale.set(sx, sy, sz); m.rotation.set(rx, ry, rz); m.castShadow = true;
+    parent.add(m); f.gearParts.push([parent, m]); return m;
+  };
+  const grp = (parent, x, y, z) => { const g2 = new THREE.Group(); g2.position.set(x, y, z); parent.add(g2); f.gearParts.push([parent, g2]); return g2; };
+  /* shoes and gloves */
+  const shoeCol = [null, '#E5534B', '#E5534B', '#2E6BD6', '#2E6BD6', '#F2B632'][Math.min(5, lv('c_speed'))] || f.baseShoes;
+  f.shoes.forEach(m => m.material = fmat(shoeCol, 0.5));
+  if (lv('c_speed') >= 1) f.shoes.forEach(m => { add(m.parent, FG.box, '#FFFFFF', 0, -0.215, 0.03, 0.118, 0.022, 0.2); });
+  const glove = lv('h_gold') ? '#F6C343' : [null, '#F2C14E', '#F2C14E', '#E07A3C', '#E07A3C', '#C0392B', '#C0392B', '#8E44AD'][Math.min(7, lv('h_speed'))];
+  f.hands.forEach(m => m.material = glove ? (lv('h_gold') ? std(glove, 0.25, { metalness:0.6, emissive:'#7A4E00', emissiveIntensity:0.25 }) : fmat(glove, 0.8)) : fmat(f.baseSkin, 0.7));
+  /* backpack: pockets, bedroll, mail tube, bottomless glow */
+  if (f.pack) {
+    if (lv('c_cap') >= 2) { add(f.pack, FG.box, '#8A5C34', -0.17, -0.02, 0, 0.06, 0.16, 0.12); add(f.pack, FG.box, '#8A5C34', 0.17, -0.02, 0, 0.06, 0.16, 0.12); }
+    if (lv('c_cap') >= 4) add(f.pack, FG.cyl, '#3E7CB1', 0, -0.2, 0, 0.12, 0.3, 0.12, 0, 0, Math.PI / 2);
+    if (lv('c_mail')) add(f.pack, FG.cyl, '#C9CED6', 0.2, 0.05, -0.02, 0.07, 0.34, 0.07, 0.25, 0, 0, std('#C9CED6', 0.25, { metalness:0.7 }));
+    if (lv('c_bottomless')) add(f.pack, FG.sph, '#9C7BF2', 0, 0.02, -0.085, 0.12, 0.12, 0.03, 0, 0, 0, GLOW('#9C7BF2'));
+  }
+  /* basket on the hip */
+  if (lv('c_basket')) { const s = 1 + lv('c_basket') * 0.12; add(f.upper, FG.cyl, '#C89A5B', -0.21, 0.42, 0.06, 0.2 * s, 0.13 * s, 0.17 * s); add(f.upper, FG.cyl, '#A97648', -0.21, 0.49 * 1, 0.06, 0.21 * s, 0.025, 0.18 * s); const h = add(f.upper, TORUS_HALF, '#A97648', -0.21, 0.5, 0.06, 0.9 * s, 0.9 * s, 0.9 * s); h.rotation.y = Math.PI / 2; }
+  /* wheelbarrow in front (pushed), or cargo trailer behind */
+  if (lv('c_barrow')) {
+    const s = 0.9 + lv('c_barrow') * 0.08, b = grp(f.g, 0, 0, 0.62 * s); b.scale.setScalar(s);
+    add(b, FG.box, '#2C9B58', 0, 0.36, 0.06, 0.5, 0.2, 0.62, -0.12, 0, 0);
+    add(b, FG.cyl, '#22252C', 0, 0.14, 0.4, 0.26, 0.07, 0.26, 0, 0, Math.PI / 2);
+    for (const sx of [-1, 1]) { add(b, FG.box, '#8A5C34', sx * 0.2, 0.42, -0.32, 0.04, 0.04, 0.5, 0.25, 0, 0); add(b, FG.box, '#3A4458', sx * 0.17, 0.18, -0.1, 0.03, 0.26, 0.03); }
+    f.barrow = b; f.pushing = true;
+  }
+  if (lv('c_bike')) {
+    const s = 0.9 + lv('c_bike') * 0.08, tr = grp(f.g, 0, 0, -0.75 * s); tr.scale.setScalar(s);
+    add(tr, FG.box, '#2E6BD6', 0, 0.3, -0.05, 0.5, 0.24, 0.5);
+    for (const sx of [-1, 1]) add(tr, FG.cyl, '#22252C', sx * 0.3, 0.14, -0.05, 0.26, 0.06, 0.26, 0, 0, Math.PI / 2);
+    add(tr, FG.box, '#3A4458', 0, 0.3, 0.32, 0.04, 0.04, 0.3);
+    f.trailer = tr;
+  }
+  /* tools */
+  if (lv('h_reach') >= 3) { const pole = add(f.el2, FG.cyl, '#3A4458', 0, -0.26, 0.04, 0.025, 0.36, 0.025); pole.rotation.x = 0.15; add(f.el2, FG.box, '#F2B632', 0, -0.46, 0.07, 0.07, 0.05, 0.06); }
+  if (lv('b_pay') >= 1) { add(f.upper, FG.cyl, '#8A5C34', 0.19, 0.44, 0.03, 0.035, 0.2, 0.035, 0, 0, 0.2); add(f.upper, FG.box, '#3A4458', 0.21, 0.54, 0.03, 0.12, 0.05, 0.05, 0, 0, 0.2); }
+  if (lv('b_speed') >= 2) { add(f.upper, FG.box, '#C9CED6', 0.14, 0.45, -0.1, 0.09, 0.012, 0.13, 0.4, 0, 0, std('#C9CED6', 0.3, { metalness:0.7 })); }
+  if (lv('b_architect')) { add(f.upper, FG.cyl, '#3E7CB1', -0.16, 0.6, 0.12, 0.07, 0.34, 0.07, 1.2, 0, 0.3); }
+  if (lv('m_pulse')) add(f.upper, new THREE.TorusGeometry(0.17, 0.02, 6, 24), '#B9A0FF', 0, 0.5, 0, 1, 1, 0.75, Math.PI / 2, 0, 0, GLOW('#B9A0FF'));
+  /* magnet above the backpack */
+  if (lv('m_unlock') && f.pack) {
+    const s = 1 + lv('m_radius') * 0.12, mg = grp(f.pack, 0, 0.42, -0.04); mg.scale.setScalar(s);
+    add(mg, FG.cyl, '#3A4458', 0, -0.13, 0, 0.02, 0.24, 0.02);
+    const u = add(mg, TORUS_HALF, '#D9302C', 0, 0.03, 0, 1, 1, 1, 0, 0, Math.PI);
+    for (const sx of [-1, 1]) add(mg, FG.box, '#E8EDF2', sx * 0.1, 0.06, 0, 0.075, 0.06, 0.075);
+    f.magnet = mg;
+  }
+  /* head: goggles, headlamp, radar antenna, hard hat */
+  const hd = f.head;
+  if (lv('v_need')) { add(hd, FG.box, '#22262E', 0, 0.035, 0.0, 0.245, 0.03, 0.245); for (const sx of [-1, 1]) add(hd, FG.cyl, '#5BC0EB', sx * 0.045, 0.035, 0.112, 0.06, 0.02, 0.06, Math.PI / 2, 0, 0, std('#5BC0EB', 0.15, { metalness:0.3, transparent:true, opacity:0.8 })); }
+  if (lv('v_need') >= 2) add(hd, FG.sph, '#FFF4B0', 0, 0.105, 0.1, 0.045, 0.035, 0.03, 0, 0, 0, GLOW('#FFE27A'));
+  if (lv('v_radar')) { add(hd, FG.cyl, '#3A4458', 0.06, 0.18, -0.02, 0.012, 0.12, 0.012, 0, 0, -0.2); f.radarBulb = add(hd, FG.sph, '#7FE3FF', 0.074, 0.25, -0.02, 0.035, 0.035, 0.035, 0, 0, 0, GLOW('#7FE3FF')); } else f.radarBulb = null;
+  const hard = lv('b_architect') || lv('b_foreman') || lv('b_auto');
+  (f.hatMs || []).forEach(m => m.visible = !hard);
+  if (hard) { add(hd, FG.hairCap, '#F2B632', 0, 0.03, 0, 1.12, 1.05, 1.12, -0.05, 0, 0, fmat('#F2B632', 0.35)); add(hd, FG.cyl, '#F2B632', 0, 0.035, 0.01, 0.27, 0.012, 0.27, -0.05, 0, 0, fmat('#E6A817', 0.4)); }
+  f.gearPop = 1;
+}
+function gearFx(f, n){
+  if (!f || !f.g.visible) return;
+  const p = f.g.position;
+  for (let i = 0; i < 26; i++) { const a = i / 26 * 6.28; spawnP(p.x + Math.cos(a) * 0.4, 0.6 + Math.random() * 0.8, p.z + Math.sin(a) * 0.4, Math.cos(a) * 1.4, 1.5 + Math.random() * 1.5, Math.sin(a) * 1.4, 0.8, 0.07, SPARK, 2); }
+  floatText(`${n.icon} ${nName(n)}`, V3(p.x, 1.7, p.z), 'idea');
+}
+
 const miniGeo = new RoundedBoxGeometry(0.15, 0.08, 0.11, 1, 0.02);
 const P = { fig:makeFigure({ shirt:'#3C6FB4', pants:'#2B3550', hat:'cap', hatColor:'#E5534B', hair:'#4A3020', hairStyle:'short', apron:true, pack:true }), path:null, pathFor:null, queue:[], col:null, still:0, heading:0, moving:false, mgT:0, rfT:0, eyeT:0, unT:0, unloading:false,
   tapN:0, streak:0, wantTake:null, lastCol:0, keys:{}, joy:{ x:0, y:0 }, mailCd:0, pulseCd:0, takeCd:0, placeQ:null, pendPlace:new Set(), pendUnl:Array(18).fill(0), lastColPos:null, netT:0 };
@@ -2359,7 +2441,7 @@ function updatePack(by){
   for (let q = 0; q < 18; q++) for (let k = 0; k < pl.bag[q] && cols.length < 8; k++) cols.push(tc(q));
   const n = Math.min(cols.length, Math.ceil(plN(by) / Math.max(1, E.cap()) * 8));
   for (let k = 0; k < n; k++) { const m = new THREE.Mesh(miniGeo, flyMats[cols[k]]); m.position.set((k % 2 ? 0.07 : -0.07), 0.04 + Math.floor(k / 2) * 0.085, 0); m.rotation.y = (k * 0.7) % 0.4 - 0.2; st.add(m); }
-  f.pack.scale.setScalar(1 + Math.min(0.55, (E.cap() - 10) / 140));
+  f.pack.scale.setScalar(1 + Math.min(0.8, (E.cap() - 10) / 90));
 }
 const packPosOf = by => figOf(by).g.localToWorld(tmpV2.set(0, 0.85, -0.22)).clone();
 
@@ -2706,7 +2788,8 @@ function apply(ev){
       if (mine) { SFX.buy(); toast(t('t.bought', { i:n.icon, n:nName(n), v:n.fmt(n.vals[S.up[n.id]]) })); } else toast(t('t.pbought', { i:n.icon, n:nName(n) }));
       if (n.id === 'v_treasure') { S.extraGold++; addExtraGold(S.extraGold - 1); }
       if (n.id.startsWith('a_')) syncHelpers();
-      updatePack(0); updatePack(1);
+      updatePack(0); updatePack(1); applyGear(P.fig); applyGear(REM.fig);
+      if (GEAR_NODES.has(n.id)) gearFx(figOf(by), n);
       break;
     }
     case 'swap': {
@@ -2714,6 +2797,7 @@ function apply(ev){
       let refund = 0; for (let k = 0; k < L(o.id); k++) refund += Math.round(o.base * Math.pow(1.55, k) * o.mult);
       S.ideas -= 1; S.coins += refund; S.up[o.id] = 0;
       if (o.id.startsWith('a_')) syncHelpers();
+      applyGear(P.fig); applyGear(REM.fig);
       if (mine) toast(t('t.refund', { c:nC(refund) }));
       break;
     }
@@ -3436,7 +3520,7 @@ function renderDetail(){
   if (inf.forked) btn = `<button class="ghostbtn" id="dSwap" ${S.ideas < 1 ? 'disabled' : ''}>${t('d.swap')}</button>`;
   else if (!inf.max) btn = `<button class="primary" id="dBuy" ${inf.can ? '' : 'disabled'}>${inf.l ? t('d.up') : t('d.buy')}</button>`;
   const html = `<div class="dh"><span class="di">${n.icon}</span><div><h3>${nName(n)} <span style="color:var(--ink-3);font-size:13px">${inf.l}/${n.max}</span></h3><div class="db">${bl}</div></div><button class="x" id="dX">✕</button></div>
-    <p class="dd">${nDesc(n)}</p><div class="de">${eff}</div>
+    <p class="dd">${nDesc(n)}</p>${GEAR_NODES.has(n.id) ? `<div class="dv">${t('d.visible')}</div>` : ''}<div class="de">${eff}</div>
     ${reqs.length ? `<ul class="dr">${reqs.map(([ok, s]) => `<li class="${ok ? '' : 'no'}">${s}</li>`).join('')}</ul>` : ''}
     <div class="df"><div class="price">${price}</div>${btn}</div>`;
   /* only touch the DOM when the card really changed, so a tap never lands on a button that was just replaced */
@@ -3793,7 +3877,7 @@ function enterDistrict(){
   const pp = ME === 0 && S.ppos && free(S.ppos[0], S.ppos[1]) ? S.ppos : (ME === 0 ? [1.6, 1.8] : [-1.6, 1.8]);
   P.pos.set(pp[0], 0, pp[1]); camTarget.set(pp[0], 0, pp[1]);
   W.helpers = []; syncHelpers();
-  updatePack(0); updatePack(1); W.needDirty = true; planSig = ''; hudDirty = true; refreshGhosts();
+  updatePack(0); updatePack(1); applyGear(P.fig); applyGear(REM.fig); W.needDirty = true; planSig = ''; hudDirty = true; refreshGhosts();
 }
 function offlineProgress(){
   if (NET.role === 'guest' || !L('a_night') || !S.savedAt) return;
@@ -3851,7 +3935,7 @@ function boot(data){
 addEventListener('visibilitychange', () => { if (document.hidden) { save(); saveLocal(); Music.pause(); AC && AC.suspend && AC.suspend(); } else { AC && AC.resume && AC.resume(); Music.resume(); } });
 addEventListener('pagehide', () => { save(); saveLocal(); });
 if (window.claude?.hot?.snapshot) window.claude.hot.snapshot(() => { if (W && NET.role !== 'guest' && !SHOW) S.ppos = [P.pos.x, P.pos.z]; return { S:NET.role === 'guest' ? loadSaved() : JSON.parse(JSON.stringify(SHOW ? SHOW.saved : S)), LOC }; });
-window.__sg = { get S(){ return S; }, get W(){ return W; }, get LOC(){ return LOC; }, P, act, apply, onTap, buildAction, nodeInfo, NODE, screenOf, walkTo, walkToStation, walkToBuilding, E, plN, enterDistrict, startGame, placeTap, nextPlaceable, startPlaceAll, getNeeds, requestCollect, refreshHUD, surplus, openShowcase, closeShowcase, districtInfo, playFlight, camTo:(x, z, zm) => { camTarget.set(x, 0, z); P.pos.set(x, 0, z); if (zm) zoom = zoomT = zm; }, get running(){ return running; }, SELf:() => SEL, setSel:i => selectB(i), TUT, setLang, T,
+window.__sg = { get S(){ return S; }, get W(){ return W; }, get LOC(){ return LOC; }, P, act, apply, onTap, buildAction, nodeInfo, NODE, screenOf, walkTo, walkToStation, walkToBuilding, E, plN, enterDistrict, startGame, placeTap, nextPlaceable, startPlaceAll, getNeeds, requestCollect, refreshHUD, applyGear, surplus, openShowcase, closeShowcase, districtInfo, playFlight, camTo:(x, z, zm) => { camTarget.set(x, 0, z); P.pos.set(x, 0, z); if (zm) zoom = zoomT = zm; }, get running(){ return running; }, SELf:() => SEL, setSel:i => selectB(i), TUT, setLang, T,
   sim(sec){ let tt = performance.now() / 1000; for (let k = 0; k < sec * 30; k++) { tt += 1 / 30; step(1 / 30, tt); updateTimers(1 / 30); updateFlights(1 / 30); updateParts(1 / 30); ambient(1 / 30, tt); tutTick(1 / 30, tt); } } };
 window.claude?.hot?.ready ? window.claude.hot.ready(boot) : boot(window.claude?.hot?.data ?? {});
 </script>
