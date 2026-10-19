@@ -51,7 +51,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
 .pill{display:flex;align-items:center;gap:7px;height:40px;padding:0 14px 0 8px;border-radius:20px;background:var(--paper);box-shadow:var(--shadow);font:700 15px/1 var(--f-display);font-variant-numeric:tabular-nums}
 .pill svg{width:26px;height:26px;flex:none}
 .pill.dist{font:600 13px/1 var(--f-body);color:var(--ink-2);padding:0 14px}
-.pill.net{font:600 12px/1 var(--f-body);color:var(--good);padding:0 12px}
+.pill.net{border:0;cursor:pointer;font:600 12px/1 var(--f-body);color:var(--good);padding:0 12px}
 .pill.bump{animation:bump .35s ease}
 @keyframes bump{40%{transform:scale(1.12)}}
 .btns{display:flex;gap:8px;pointer-events:auto}
@@ -398,7 +398,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
 <div id="app">
   <canvas id="c" aria-label="Sortograd"></canvas>
   <div id="vig"></div>
-  <div id="labels"><div class="blab" id="labSel" hidden></div><div class="blab hov" id="labHov" hidden></div><div class="ptag" id="remTag" hidden></div></div>
+  <div id="labels"><div class="blab" id="labSel" hidden></div><div class="blab hov" id="labHov" hidden></div></div>
   <div id="radar"></div>
   <div id="fx"></div>
 
@@ -409,7 +409,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
         <div class="pill" id="pStars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.2 1.3-6.6L2.5 9.3l6.6-.8z" fill="#F0A21A" stroke="#B87507" stroke-width="1.5" stroke-linejoin="round"/></svg><b id="rStars">0</b></div>
         <div class="pill" id="pIdeas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a6.8 6.8 0 0 0-4 12.3c.6.5 1 1.2 1 2V18h6v-1.2c0-.8.4-1.5 1-2A6.8 6.8 0 0 0 12 2.5z" fill="#9C7BF2" stroke="#5B35C7" stroke-width="1.6"/><rect x="9" y="19" width="6" height="2.6" rx="1.2" fill="#5B35C7"/></svg><b id="rIdeas">0</b></div>
         <div class="pill dist" id="rDist"></div>
-        <div class="pill net" id="rNet" hidden></div>
+        <button class="pill net" id="rNet" hidden></button>
       </div>
       <div class="btns">
         <button class="ib" id="bAtlas"><svg viewBox="0 0 24 24" fill="none" stroke="#1D2840" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg></button>
@@ -526,10 +526,10 @@ uk:{
   'f.lower':'Спершу нижній шар','f.take':'Візьми {m} {s} на станції','f.pile':'Вся купа!','f.idea':'+{n} ідея','f.rent':'оренда',
   'tip.full':'Сумка повна — неси на станцію','tip.magnet':'Відкрилась гілка «Магніт» у дереві покращень',
   'coach.ok':'Зрозуміло','coach.skip':'Пропустити','coach.skipped':'Навчання пропущено. «Як грати» є в меню',
-  menu:'Меню','menu.coop':'👫 Гра вдвох по Wi‑Fi','menu.coopOn':'👫 Гра вдвох: підключено','vol.music':'🎵 Музика','vol.sfx':'🔔 Звуки','vol.track':'Зараз: «{n}»','vol.next':'Наступний ⏭','menu.joy':'Джойстик: {s}','st.on':'увімкнено','st.off':'вимкнено',
+  menu:'Меню','menu.coop':'👫 Гра разом по Wi‑Fi','menu.coopOn':'👫 Гра разом: підключено','vol.music':'🎵 Музика','vol.sfx':'🔔 Звуки','vol.track':'Зараз: «{n}»','vol.next':'Наступний ⏭','menu.joy':'Джойстик: {s}','st.on':'увімкнено','st.off':'вимкнено',
   'menu.how':'Як грати','menu.cheat':'Тест: +1000 монет і +3 ідеї','menu.stars':'Тест: +2 зірки','menu.skip':'Тест: перейти до наступного кварталу','fl.to':'Летимо до: {n}','fl.skip':'Пропустити','menu.reset':'Почати заново','menu.reset2':'Тапни ще раз, щоб стерти прогрес','menu.close':'Повернутися до гри',
   't.cheat':'Тест: +1000 монет і +3 ідеї','t.stars':'Тест: +2 зірки','t.reset':'Новий початок',
-  't.built':'<b>{b}</b> відбудовано! +{s} ★','t.ideaPlus':' <em>+1 ідея</em>','t.bought':'{i} {n}: {v}','t.pbought':'Напарник купив {i} {n}','t.refund':'Вибір скинуто: повернуто {c}','t.sold':'Продано {n} за {c}',
+  't.built':'<b>{b}</b> відбудовано! +{s} ★','t.ideaPlus':' <em>+1 ідея</em>','t.bought':'{i} {n}: {v}','t.pbought':'Гравець {p} купив {i} {n}','t.refund':'Вибір скинуто: повернуто {c}','t.sold':'Продано {n} за {c}',
   't.orderNew':'Нове замовлення від «{f}»: {n} × {m}','t.orderDone':'Замовлення «{f}» виконано! +{c}','t.orderEnd':'Замовлення «{f}» минуло',
   't.mastery':'Майстерність «{b}» — рівень {l}','t.ms':'Віха: {n}','t.joined':'Напарник приєднався! 👫','t.left':'Напарник від’єднався','t.lost':'Зв’язок з кімнатою втрачено','t.inroom':'Ти в кімнаті! 👫',
   'order.from':'Замовлення · {f}',
@@ -537,11 +537,11 @@ uk:{
   'm.offline':'Поки тебе не було…','m.offlineB':'Помічники нічної зміни принесли на станцію <b>{n}</b>.','m.great':'Чудово',
   'tr.start':'старт','tr.syn':'Синергії','tr.synS':'2 гілки + ідеї','tr.mast':'Майстерність {l} · {x}','tr.opens':'Відкриється з {n} ★','tr.max':'макс.','tr.other':'інший вибір','tr.ideas':' + {n} ідеї','tr.or':'або',
   'd.syn':'Синергія','d.fork':' · розвилка','d.now':'Зараз','d.max':'максимум','d.stars':'{n} ★ (є {h})','d.mast':'Майстерність «{b}» {n} (є {h})','d.forked':'Обрано «{x}» — це розвилка','d.swap':'Змінити вибір · 1 ідея','d.up':'Покращити','d.buy':'Купити','d.ororeq':' або ',
-  'start.tag':'Збирай цеглини, сортуй їх на станції й відбудовуй містечко будинок за будинком.','start.play':'Грати','start.cont':'Продовжити','start.how':'Як грати','start.coop':'👫 Гра вдвох','start.note':'Прогрес зберігається в цьому браузері.',
+  'start.tag':'Збирай цеглини, сортуй їх на станції й відбудовуй містечко будинок за будинком.','start.play':'Грати','start.cont':'Продовжити','start.how':'Як грати','start.coop':'👫 Гра разом','start.note':'Прогрес зберігається в цьому браузері.',
   'in.next':'Далі','in.begin':'Почати гру','in.got':'Зрозуміло','in.skip':'Пропустити вступ',
-  'net.tag':'Напарник','net.pill':'● Удвох',
-  'c.title':'Гра вдвох по Wi‑Fi','c.intro':'Один створює кімнату й отримує код, другий вводить його на своєму пристрої. Містечко, монети й будівлі спільні: хтось збирає, хтось будує.','c.host':'Створити кімнату','c.join':'Приєднатися за кодом','c.note':'Обидва пристрої мають бути в одній мережі й відкрити гру з GitHub Pages. Прогрес зберігається у того, хто створив кімнату.','c.back':'Назад',
-  'c.hostP':'Скажи цей код напарнику. Він відкриває гру на своєму пристрої в тій самій Wi‑Fi мережі й натискає «Приєднатися».','c.closeRoom':'Закрити кімнату','c.play':'Грати','c.playSolo':'Грати поки сам','c.guestP':'Ти в кімнаті <b>{c}</b>. Монети, зірки й будівлі спільні, а сумка в кожного своя.','c.leave':'Вийти з кімнати',
+  'net.tag':'Гравець','net.pillN':'● {n}/4 · {c}','c.players':'Гравців у кімнаті: {n} з 4','c.sameCode':'Цей код твій назавжди — наступного разу кімната відкриється з ним же.','c.hostAgain':'Відкрити мою кімнату ({c})','c.rejoin':'Знову до кімнати {c}','c.full':'Кімната вже повна — грають 4 гравці.','t.joinedN':'Гравець {n} приєднався! 👫','t.leftN':'Гравець {n} вийшов',
+  'c.title':'Гра разом по Wi‑Fi','c.intro':'Один створює кімнату й отримує код, інші (до трьох) вводять його на своїх пристроях. Монети, будівлі й станція спільні, а дерево покращень і спорядження в кожного своє.','c.host':'Створити кімнату','c.join':'Приєднатися за кодом','c.note':'Обидва пристрої мають бути в одній мережі й відкрити гру з GitHub Pages. Прогрес зберігається у того, хто створив кімнату.','c.back':'Назад',
+  'c.hostP':'Скажи цей код напарнику. Він відкриває гру на своєму пристрої в тій самій Wi‑Fi мережі й натискає «Приєднатися».','c.closeRoom':'Закрити кімнату','c.play':'Грати','c.playSolo':'Грати поки сам','c.guestP':'Ти в кімнаті <b>{c}</b>. Монети й будівлі спільні, а сумка й покращення в кожного свої.','c.leave':'Вийти з кімнати',
   'c.creating':'Створюю кімнату…','c.waiting':'Чекаю на другого гравця…','c.connected':'Підключено. Граєте вдвох!','c.joining':'Підключаюсь…','c.gotState':'Підключено. Чекаю на стан гри…','c.code4':'Введи 4 цифри коду',
   'c.notfound':'Кімнату з таким кодом не знайдено. Перевір код і чи відкрита гра на другому пристрої.','c.taken':'Цей код зайнятий, спробуй ще раз.','c.fail':'Не вдалося з’єднатися. Гра вдвох працює у версії на GitHub Pages (iman-vov.github.io/sortograd), коли обидва пристрої в одній мережі Wi‑Fi.',
   'br.hands':'Руки','br.carry':'Ноша','br.vision':'Зір','br.magnet':'Магніт','br.build':'Будівництво','br.auto':'Автоматизація',
@@ -562,7 +562,7 @@ en:{
   menu:'Menu','menu.coop':'👫 Play together over Wi‑Fi','menu.coopOn':'👫 Playing together: connected','vol.music':'🎵 Music','vol.sfx':'🔔 Sounds','vol.track':'Now playing: “{n}”','vol.next':'Next ⏭','menu.joy':'Joystick: {s}','st.on':'on','st.off':'off',
   'menu.how':'How to play','menu.cheat':'Test: +1000 coins and +3 ideas','menu.stars':'Test: +2 stars','menu.skip':'Test: skip to the next district','fl.to':'Flying to: {n}','fl.skip':'Skip','menu.reset':'Start over','menu.reset2':'Tap again to erase progress','menu.close':'Back to the game',
   't.cheat':'Test: +1000 coins and +3 ideas','t.stars':'Test: +2 stars','t.reset':'Fresh start',
-  't.built':'<b>{b}</b> rebuilt! +{s} ★','t.ideaPlus':' <em>+1 idea</em>','t.bought':'{i} {n}: {v}','t.pbought':'Your partner bought {i} {n}','t.refund':'Choice reset: {c} refunded','t.sold':'Sold {n} for {c}',
+  't.built':'<b>{b}</b> rebuilt! +{s} ★','t.ideaPlus':' <em>+1 idea</em>','t.bought':'{i} {n}: {v}','t.pbought':'Player {p} bought {i} {n}','t.refund':'Choice reset: {c} refunded','t.sold':'Sold {n} for {c}',
   't.orderNew':'New order from “{f}”: {n} × {m}','t.orderDone':'Order for “{f}” done! +{c}','t.orderEnd':'The order for “{f}” expired',
   't.mastery':'“{b}” mastery — level {l}','t.ms':'Milestone: {n}','t.joined':'Your partner joined! 👫','t.left':'Your partner disconnected','t.lost':'Lost connection to the room','t.inroom':'You’re in the room! 👫',
   'order.from':'Order · {f}',
@@ -572,9 +572,9 @@ en:{
   'd.syn':'Synergy','d.fork':' · fork','d.now':'Now','d.max':'maximum','d.stars':'{n} ★ (have {h})','d.mast':'“{b}” mastery {n} (have {h})','d.forked':'You chose “{x}” — this is a fork','d.swap':'Change choice · 1 idea','d.up':'Upgrade','d.buy':'Buy','d.ororeq':' or ',
   'start.tag':'Collect bricks, sort them at the station and rebuild the town one house at a time.','start.play':'Play','start.cont':'Continue','start.how':'How to play','start.coop':'👫 Play together','start.note':'Progress is saved in this browser.',
   'in.next':'Next','in.begin':'Start playing','in.got':'Got it','in.skip':'Skip intro',
-  'net.tag':'Partner','net.pill':'● Together',
-  'c.title':'Play together over Wi‑Fi','c.intro':'One player creates a room and gets a code, the other enters it on their device. The town, coins and buildings are shared: one collects, the other builds.','c.host':'Create a room','c.join':'Join with a code','c.note':'Both devices must be on the same network and open the game from GitHub Pages. Progress is saved by whoever created the room.','c.back':'Back',
-  'c.hostP':'Tell your partner this code. They open the game on their device on the same Wi‑Fi and press “Join”.','c.closeRoom':'Close the room','c.play':'Play','c.playSolo':'Play solo for now','c.guestP':'You’re in room <b>{c}</b>. Coins, stars and buildings are shared, but each of you has your own bag.','c.leave':'Leave the room',
+  'net.tag':'Player','net.pillN':'● {n}/4 · {c}','c.players':'Players in the room: {n} of 4','c.sameCode':'This code is yours to keep — next time the room opens with the same code.','c.hostAgain':'Open my room ({c})','c.rejoin':'Rejoin room {c}','c.full':'The room is full — 4 players are already in.','t.joinedN':'Player {n} joined! 👫','t.leftN':'Player {n} left',
+  'c.title':'Play together over Wi‑Fi','c.intro':'One player creates a room and gets a code; up to three others enter it on their devices. Coins, buildings and the station are shared, but everyone has their own upgrade tree and gear.','c.host':'Create a room','c.join':'Join with a code','c.note':'Both devices must be on the same network and open the game from GitHub Pages. Progress is saved by whoever created the room.','c.back':'Back',
+  'c.hostP':'Tell your partner this code. They open the game on their device on the same Wi‑Fi and press “Join”.','c.closeRoom':'Close the room','c.play':'Play','c.playSolo':'Play solo for now','c.guestP':'You’re in room <b>{c}</b>. Coins and buildings are shared; bags and upgrades are your own.','c.leave':'Leave the room',
   'c.creating':'Creating a room…','c.waiting':'Waiting for the second player…','c.connected':'Connected. You’re playing together!','c.joining':'Connecting…','c.gotState':'Connected. Waiting for the game state…','c.code4':'Enter the 4‑digit code',
   'c.notfound':'No room with that code. Check the code and that the game is open on the other device.','c.taken':'That code is taken, try again.','c.fail':'Couldn’t connect. Playing together works in the GitHub Pages version (iman-vov.github.io/sortograd) when both devices are on the same Wi‑Fi.',
   'br.hands':'Hands','br.carry':'Carrying','br.vision':'Vision','br.magnet':'Magnet','br.build':'Building','br.auto':'Automation',
@@ -592,10 +592,10 @@ de:{
   'f.lower':'Zuerst die untere Schicht','f.take':'Hol {m} {s} an der Station','f.pile':'Der ganze Haufen!','f.idea':'+{n} Idee','f.rent':'Miete',
   'tip.full':'Tasche voll — ab zur Station','tip.magnet':'Der Zweig „Magnet“ ist im Upgrade-Baum frei',
   'coach.ok':'Verstanden','coach.skip':'Überspringen','coach.skipped':'Tutorial übersprungen. „Spielanleitung“ findest du im Menü',
-  menu:'Menü','menu.coop':'👫 Zu zweit im WLAN','menu.coopOn':'👫 Zu zweit: verbunden','vol.music':'🎵 Musik','vol.sfx':'🔔 Geräusche','vol.track':'Läuft: „{n}“','vol.next':'Weiter ⏭','menu.joy':'Joystick: {s}','st.on':'an','st.off':'aus',
+  menu:'Menü','menu.coop':'👫 Gemeinsam im WLAN','menu.coopOn':'👫 Gemeinsam: verbunden','vol.music':'🎵 Musik','vol.sfx':'🔔 Geräusche','vol.track':'Läuft: „{n}“','vol.next':'Weiter ⏭','menu.joy':'Joystick: {s}','st.on':'an','st.off':'aus',
   'menu.how':'Spielanleitung','menu.cheat':'Test: +1000 Münzen und +3 Ideen','menu.stars':'Test: +2 Sterne','menu.skip':'Test: zum nächsten Viertel springen','fl.to':'Flug nach: {n}','fl.skip':'Überspringen','menu.reset':'Neu anfangen','menu.reset2':'Nochmal tippen, um den Fortschritt zu löschen','menu.close':'Zurück zum Spiel',
   't.cheat':'Test: +1000 Münzen und +3 Ideen','t.stars':'Test: +2 Sterne','t.reset':'Neustart',
-  't.built':'<b>{b}</b> wiederaufgebaut! +{s} ★','t.ideaPlus':' <em>+1 Idee</em>','t.bought':'{i} {n}: {v}','t.pbought':'Dein Partner hat {i} {n} gekauft','t.refund':'Wahl zurückgesetzt: {c} erstattet','t.sold':'{n} für {c} verkauft',
+  't.built':'<b>{b}</b> wiederaufgebaut! +{s} ★','t.ideaPlus':' <em>+1 Idee</em>','t.bought':'{i} {n}: {v}','t.pbought':'Spieler {p} hat {i} {n} gekauft','t.refund':'Wahl zurückgesetzt: {c} erstattet','t.sold':'{n} für {c} verkauft',
   't.orderNew':'Neuer Auftrag von „{f}“: {n} × {m}','t.orderDone':'Auftrag für „{f}“ erledigt! +{c}','t.orderEnd':'Der Auftrag für „{f}“ ist abgelaufen',
   't.mastery':'Meisterschaft „{b}“ — Stufe {l}','t.ms':'Meilenstein: {n}','t.joined':'Dein Partner ist da! 👫','t.left':'Dein Partner hat die Verbindung getrennt','t.lost':'Verbindung zum Raum verloren','t.inroom':'Du bist im Raum! 👫',
   'order.from':'Auftrag · {f}',
@@ -603,11 +603,11 @@ de:{
   'm.offline':'Während du weg warst…','m.offlineB':'Die Nachtschicht hat <b>{n}</b> zur Station gebracht.','m.great':'Super',
   'tr.start':'Start','tr.syn':'Synergien','tr.synS':'2 Zweige + Ideen','tr.mast':'Meisterschaft {l} · {x}','tr.opens':'Ab {n} ★','tr.max':'max.','tr.other':'andere Wahl','tr.ideas':' + {n} Ideen','tr.or':'oder',
   'd.syn':'Synergie','d.fork':' · Gabelung','d.now':'Jetzt','d.max':'Maximum','d.stars':'{n} ★ (hast {h})','d.mast':'Meisterschaft „{b}“ {n} (hast {h})','d.forked':'Du hast „{x}“ gewählt — das ist eine Gabelung','d.swap':'Wahl ändern · 1 Idee','d.up':'Verbessern','d.buy':'Kaufen','d.ororeq':' oder ',
-  'start.tag':'Sammle Steine, sortiere sie an der Station und baue die Stadt Haus für Haus wieder auf.','start.play':'Spielen','start.cont':'Weiterspielen','start.how':'Spielanleitung','start.coop':'👫 Zu zweit','start.note':'Der Fortschritt wird in diesem Browser gespeichert.',
+  'start.tag':'Sammle Steine, sortiere sie an der Station und baue die Stadt Haus für Haus wieder auf.','start.play':'Spielen','start.cont':'Weiterspielen','start.how':'Spielanleitung','start.coop':'👫 Gemeinsam spielen','start.note':'Der Fortschritt wird in diesem Browser gespeichert.',
   'in.next':'Weiter','in.begin':'Spiel starten','in.got':'Verstanden','in.skip':'Intro überspringen',
-  'net.tag':'Partner','net.pill':'● Zu zweit',
-  'c.title':'Zu zweit im WLAN','c.intro':'Einer erstellt einen Raum und bekommt einen Code, der andere gibt ihn auf seinem Gerät ein. Stadt, Münzen und Gebäude sind gemeinsam: einer sammelt, der andere baut.','c.host':'Raum erstellen','c.join':'Mit Code beitreten','c.note':'Beide Geräte müssen im selben Netzwerk sein und das Spiel über GitHub Pages öffnen. Gespeichert wird beim Ersteller des Raums.','c.back':'Zurück',
-  'c.hostP':'Sag deinem Partner diesen Code. Er öffnet das Spiel auf seinem Gerät im selben WLAN und tippt auf „Beitreten“.','c.closeRoom':'Raum schließen','c.play':'Spielen','c.playSolo':'Erstmal allein spielen','c.guestP':'Du bist im Raum <b>{c}</b>. Münzen, Sterne und Gebäude sind gemeinsam, die Tasche hat jeder für sich.','c.leave':'Raum verlassen',
+  'net.tag':'Spieler','net.pillN':'● {n}/4 · {c}','c.players':'Spieler im Raum: {n} von 4','c.sameCode':'Dieser Code bleibt deiner — beim nächsten Mal öffnet sich der Raum mit demselben Code.','c.hostAgain':'Meinen Raum öffnen ({c})','c.rejoin':'Wieder in Raum {c}','c.full':'Der Raum ist voll — 4 Spieler sind schon drin.','t.joinedN':'Spieler {n} ist da! 👫','t.leftN':'Spieler {n} ist gegangen',
+  'c.title':'Gemeinsam im WLAN','c.intro':'Einer erstellt einen Raum und bekommt einen Code, bis zu drei andere geben ihn auf ihren Geräten ein. Münzen, Gebäude und Station sind gemeinsam, Upgrade-Baum und Ausrüstung hat jeder für sich.','c.host':'Raum erstellen','c.join':'Mit Code beitreten','c.note':'Beide Geräte müssen im selben Netzwerk sein und das Spiel über GitHub Pages öffnen. Gespeichert wird beim Ersteller des Raums.','c.back':'Zurück',
+  'c.hostP':'Sag deinem Partner diesen Code. Er öffnet das Spiel auf seinem Gerät im selben WLAN und tippt auf „Beitreten“.','c.closeRoom':'Raum schließen','c.play':'Spielen','c.playSolo':'Erstmal allein spielen','c.guestP':'Du bist im Raum <b>{c}</b>. Münzen und Gebäude sind gemeinsam, Tasche und Upgrades hat jeder für sich.','c.leave':'Raum verlassen',
   'c.creating':'Raum wird erstellt…','c.waiting':'Warte auf den zweiten Spieler…','c.connected':'Verbunden. Ihr spielt zu zweit!','c.joining':'Verbinde…','c.gotState':'Verbunden. Warte auf den Spielstand…','c.code4':'Gib den 4-stelligen Code ein',
   'c.notfound':'Kein Raum mit diesem Code. Prüfe den Code und ob das Spiel auf dem anderen Gerät offen ist.','c.taken':'Der Code ist belegt, versuch es nochmal.','c.fail':'Keine Verbindung möglich. Zu zweit spielen klappt in der Version auf GitHub Pages (iman-vov.github.io/sortograd), wenn beide Geräte im selben WLAN sind.',
   'br.hands':'Hände','br.carry':'Tragen','br.vision':'Blick','br.magnet':'Magnet','br.build':'Bauen','br.auto':'Automatik',
@@ -625,7 +625,6 @@ function applyLang(){
   document.querySelectorAll('[data-t]').forEach(el => { el.textContent = t(el.dataset.t); });
   const al = { bTree:'tree', bMenu:'menu', tClose:'menu.close', bAtlas:'atlas' };
   for (const id in al) $('#' + id).setAttribute('aria-label', t(al[id]));
-  $('#remTag').textContent = t('net.tag'); $('#rNet').textContent = t('net.pill');
   $('#pMin').textContent = $('#plan').classList.contains('mini') ? t('plan.max') : t('plan.min');
   treeBuilt = false; if (!$('#tree').hidden) refreshTree();
   planSig = ''; hudDirty = true;
@@ -981,18 +980,20 @@ for (const n of NODES) {
 const nName = n => (NT[n.id][LANG] || NT[n.id].uk)[0], nDesc = n => (NT[n.id][LANG] || NT[n.id].uk)[1];
 
 /* ================= state ================= */
-const mkPl = () => ({ bag:Array(18).fill(0), carry:Array(18).fill(0) });
-const DEF = () => ({ v:2, coins:0, stars:0, ideas:0, district:1, up:{},
+const mkPl = () => ({ bag:Array(18).fill(0), carry:Array(18).fill(0), up:{} });
+const DEF = () => ({ v:2, coins:0, stars:0, ideas:0, district:1, slots:{},
   xp:{hands:0,carry:0,vision:0,magnet:0,build:0,auto:0}, mlv:{hands:0,carry:0,vision:0,magnet:0,build:0,auto:0},
   ms:{}, stats:{collected:0,manual:0,placed:0,buildings:0,bought:0,gold:0,delivered:0,orders:0},
-  pl:[mkPl(), mkPl()], station:Array(18).fill(0), dead:[], extraGold:0, bld:[], placed:{}, order:null, savedAt:0, dRewarded:0, ppos:null });
+  pl:[mkPl(), mkPl(), mkPl(), mkPl()], station:Array(18).fill(0), dead:[], extraGold:0, bld:[], placed:{}, order:null, savedAt:0, dRewarded:0, ppos:null });
 const coarse = window.matchMedia && matchMedia('(pointer:coarse)').matches;
 const navLang = (navigator.language || 'uk').slice(0, 2);
 const LDEF = () => ({ tut:0, intro:false, musicVol:0.6, sfxVol:0.8, yaw:0, introD:0, joy:coarse, lang:['uk','en','de'].includes(navLang) ? navLang : (navLang === 'ru' ? 'uk' : 'en') });
 let S = DEF(), LOC = LDEF();
 let ME = 0;
-const NET = { role:'solo', conn:null, peer:null, code:'', status:'', err:false };
-const L = id => S.up[id] || 0;
+const NET = { role:'solo', conn:null, conns:[], peer:null, code:'', status:'', err:false };
+/* upgrades belong to a player: L() reads the acting player (LB) or this device's player (ME) */
+let LB = null;
+const L = id => (S.pl[LB ?? ME].up || {})[id] || 0;
 const V = id => NODE[id].vals[L(id)];
 const dm = () => 1 + 0.5 * (S.district - 1);
 const council = () => 1 + V('b_council');
@@ -2346,11 +2347,11 @@ function animFigure(f, dt, moving, speed){
 const GEAR_NODES = new Set(['c_cap','c_basket','c_barrow','c_bike','c_speed','c_mail','c_bottomless','h_speed','h_reach','h_gold','m_unlock','m_radius','m_pulse','v_need','v_radar','b_pay','b_speed','b_architect','b_foreman','b_auto']);
 const GLOW = c => std(c, 0.35, { emissive:c, emissiveIntensity:0.9 });
 const TORUS_HALF = new THREE.TorusGeometry(0.1, 0.035, 8, 18, Math.PI);
-function applyGear(f){
+function applyGear(f, by = ME){
   if (!f || !f.shoes) return;
   for (const [parent, m] of f.gearParts || []) parent.remove(m);
   f.gearParts = []; f.pushing = false;
-  const lv = id => S.up[id] || 0;
+  const lv = id => (S.pl[by] && S.pl[by].up || {})[id] || 0;
   const add = (parent, geo, col, x, y, z, sx, sy, sz, rx = 0, ry = 0, rz = 0, mat = null) => {
     const m = new THREE.Mesh(geo, mat || fmat(col, 0.6)); m.position.set(x, y, z); m.scale.set(sx, sy, sz); m.rotation.set(rx, ry, rz); m.castShadow = true;
     parent.add(m); f.gearParts.push([parent, m]); return m;
@@ -2421,9 +2422,25 @@ const miniGeo = new RoundedBoxGeometry(0.15, 0.08, 0.11, 1, 0.02);
 const P = { fig:makeFigure({ shirt:'#3C6FB4', pants:'#2B3550', hat:'cap', hatColor:'#E5534B', hair:'#4A3020', hairStyle:'short', apron:true, pack:true }), path:null, pathFor:null, queue:[], col:null, still:0, heading:0, moving:false, mgT:0, rfT:0, eyeT:0, unT:0, unloading:false,
   tapN:0, streak:0, wantTake:null, lastCol:0, keys:{}, joy:{ x:0, y:0 }, mailCd:0, pulseCd:0, takeCd:0, placeQ:null, pendPlace:new Set(), pendUnl:Array(18).fill(0), lastColPos:null, netT:0 };
 P.pos = P.fig.g.position; P.fig.g.scale.setScalar(1); scene.add(P.fig.g);
-const REM = { fig:makeFigure({ shirt:'#3FA556', pants:'#3A3F55', skin:'#F6D7BE', hair:'#B8834A', hairStyle:'ponytail', hat:'beanie', hatColor:'#F5C53D', apron:true, pack:true }), tx:0, tz:0, th:0, moving:false, active:false };
-REM.fig.g.visible = false; REM.fig.g.scale.setScalar(1); scene.add(REM.fig.g);
-const figOf = by => by === ME ? P.fig : REM.fig;
+const LOOKS = [
+  { shirt:'#3C6FB4', pants:'#2B3550', hat:'cap', hatColor:'#E5534B', hair:'#4A3020', hairStyle:'short', apron:true, pack:true },
+  { shirt:'#3FA556', pants:'#3A3F55', skin:'#F6D7BE', hair:'#B8834A', hairStyle:'ponytail', hat:'beanie', hatColor:'#F5C53D', apron:true, pack:true },
+  { shirt:'#9C7BF2', pants:'#2E4A7A', skin:'#C98E62', hair:'#1A1A1A', hairStyle:'short', hat:'cap', hatColor:'#F28D52', apron:true, pack:true },
+  { shirt:'#E5534B', pants:'#5A4A3A', skin:'#E8B48C', hair:'#B5452A', hairStyle:'bun', hat:'sun', hatColor:'#F2C14E', apron:true, pack:true },
+];
+const REMS = {};
+function getRem(slot){
+  if (REMS[slot]) return REMS[slot];
+  const fig = makeFigure(LOOKS[slot % 4]); fig.g.visible = false; scene.add(fig.g);
+  const tag = document.createElement('div'); tag.className = 'ptag'; tag.hidden = true; tag.style.background = LOOKS[slot % 4].shirt; $('#labels').appendChild(tag);
+  return REMS[slot] = { fig, tag, tx:0, tz:0, th:0, moving:false, active:false };
+}
+function setMyLook(){
+  const old = P.fig, pos = old.g.position.clone(), ry = old.g.rotation.y;
+  scene.remove(old.g); P.fig = makeFigure(LOOKS[ME % 4]); P.fig.g.position.copy(pos); P.fig.g.rotation.y = ry; P.pos = P.fig.g.position; scene.add(P.fig.g);
+  if (REMS[ME]) { REMS[ME].active = false; REMS[ME].fig.g.visible = false; }
+}
+const figOf = by => by === ME ? P.fig : getRem(by).fig;
 const marker = new THREE.Mesh(new THREE.RingGeometry(0.2, 0.3, 28), new THREE.MeshBasicMaterial({ color:'#ffffff', transparent:true, opacity:0, depthWrite:false }));
 marker.rotation.x = -Math.PI / 2; marker.position.y = 0.03; scene.add(marker);
 const aura = new THREE.Mesh(new THREE.RingGeometry(0.94, 1, 56), new THREE.MeshBasicMaterial({ color:'#9C7BF2', transparent:true, opacity:0, depthWrite:false }));
@@ -2433,7 +2450,13 @@ selRing.rotation.x = -Math.PI / 2; selRing.position.y = 0.04; scene.add(selRing)
 const coachArrow = new THREE.Group();
 { const m = std('#FFD24A', 0.4, { emissive:'#FFB800', emissiveIntensity:0.5 }); const cone = new THREE.Mesh(new THREE.ConeGeometry(0.2, 0.38, 16), m); cone.rotation.x = Math.PI; const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.3, 10), m); stem.position.y = 0.32; coachArrow.add(cone, stem); coachArrow.visible = false; scene.add(coachArrow); }
 
+function updatePacks(){ for (const s2 of activeSlots()) updatePack(s2); }
+function applyGears(){ applyGear(P.fig, ME); for (const s2 in REMS) applyGear(REMS[s2].fig, +s2); }
 function updatePack(by){
+  if (by !== ME && !(REMS[by] && REMS[by].active)) return;
+  const prevLB = LB; LB = by; try { updatePackInner(by); } finally { LB = prevLB; }
+}
+function updatePackInner(by){
   const f = figOf(by); if (!f.stack) return;
   const st = f.stack; while (st.children.length) st.remove(st.children[0]);
   const pl = S.pl[by], cols = [];
@@ -2485,17 +2508,24 @@ function makeDrone(){
   return { g, bin, rotors, kind:'drone', state:'rest', t:3, phase:0, load:[], speed:4.5, fly:true };
 }
 function helperKinds(){
-  const want = [];
-  if (L('a_dog')) want.push('dog');
-  const rl = L('a_robot'); if (rl) { want.push('robot'); if (rl >= 3) want.push('robot'); }
-  const dl = L('a_drone'); if (dl) { want.push('drone'); if (dl >= 3) want.push('drone'); }
-  return want;
+  const want = [], prev = LB;
+  for (const s2 of activeSlots()) {
+    LB = s2;
+    if (L('a_dog')) want.push(['dog', s2]);
+    const rl = L('a_robot'); if (rl) { want.push(['robot', s2]); if (rl >= 3) want.push(['robot', s2]); }
+    const dl = L('a_drone'); if (dl) { want.push(['drone', s2]); if (dl >= 3) want.push(['drone', s2]); }
+  }
+  LB = prev; return want;
 }
 function syncHelpers(){
-  const want = helperKinds(), have = W.helpers.map(h => h.kind);
-  if (want.join() === have.join()) return;
+  if (NET.role === 'guest') return;
+  const want = helperKinds(), have = W.helpers.map(h => h.kind + ':' + h.owner);
+  if (want.map(w => w.join(':')).join() === have.join()) return;
   for (const h of W.helpers) { if (NET.role !== 'guest') for (const q of h.load) S.station[q]++; for (const b of W.bricks) if (b.res === h) b.res = null; scene.remove(h.g); }
-  W.helpers = want.map((k, i) => { const h = k === 'dog' ? makeDog() : k === 'robot' ? makeRobot() : makeDrone(); h.g.position.set(2.9 + i * 0.6, h.fly ? 2.2 : 0, 1.2); scene.add(h.g); return h; });
+  W.helpers = want.map(([k, owner], i) => makeHelperOf(k, owner, i));
+}
+function makeHelperOf(k, owner, i){
+  const h = k === 'dog' ? makeDog() : k === 'robot' ? makeRobot() : makeDrone(); h.owner = owner; h.g.position.set(2.9 + i * 0.6, h.fly ? 2.2 : 0, 1.2); scene.add(h.g); return h;
 }
 function helperCap(h){ return h.kind === 'dog' ? 1 + V('a_kennel') : h.kind === 'drone' ? (L('a_drone') >= 2 ? 2 : 1) : (L('a_robot') >= 2 ? 8 : 4); }
 function helperSpeed(h){ return h.kind === 'dog' ? 4.0 * (1 + 0.1 * L('a_kennel')) : h.speed; }
@@ -2515,7 +2545,9 @@ function pickTargetFor(h){
 function helperPace(){ let n = 0; for (const b of W.bricks) if (b.alive && !b.gold) n++; return clamp(n / 120, 0.5, 1.6); }
 function hostHelpers(dt){
   const pace = W.helpers.length ? helperPace() : 1;
+  const prevLB = LB;
   for (const h of W.helpers) {
+    LB = h.owner ?? 0;
     const pos = h.g.position; let moving = false; const spd = helperSpeed(h);
     if (h.fly) { if (h.goal) { const [gx, gz] = h.goal, dx = gx - pos.x, dz = gz - pos.z, d = Math.hypot(dx, dz), st = spd * dt; if (d <= st) { pos.x = gx; pos.z = gz; h.goal = null; } else { pos.x += dx / d * st; pos.z += dz / d * st; h.g.rotation.y = Math.atan2(dx, dz); } moving = true; } }
     else if (h.path) { const [gx, gz] = h.path[0], dx = gx - pos.x, dz = gz - pos.z, d = Math.hypot(dx, dz), st = spd * dt; if (d <= st) { pos.x = gx; pos.z = gz; h.path.shift(); if (!h.path.length) h.path = null; } else { pos.x += dx / d * st; pos.z += dz / d * st; h.g.rotation.y = lerp(h.g.rotation.y, Math.atan2(dx, dz), 0.25); } moving = true; }
@@ -2555,8 +2587,9 @@ function updateHelperLoad(h){
   if (h.kind === 'dog') { h.carry.visible = h.load.length > 0; if (h.load.length) h.carry.material = flyMats[tc(h.load[0])]; }
   else { while (h.bin.children.length) h.bin.remove(h.bin.children[0]); h.load.slice(0, 8).forEach((q, k) => { const m = new THREE.Mesh(miniGeo, flyMats[tc(q)]); m.position.set((k % 2 ? 0.07 : -0.07), (h.fly ? -1 : 1) * Math.floor(k / 2) * 0.085, 0); h.bin.add(m); }); }
 }
-function helperSnapshot(){ return W.helpers.map(h => [+h.g.position.x.toFixed(2), +h.g.position.z.toFixed(2), +h.g.rotation.y.toFixed(2), h.load.slice(0, 8)]); }
-function applyHelperSnapshot(list){ syncHelpers(); W.helpers.forEach((h, i) => { const s = list[i]; if (!s) return; h.snap = s; const changed = h.load.join() !== s[3].join(); h.load = s[3]; if (changed) updateHelperLoad(h); }); }
+function helperSnapshot(){ return W.helpers.map(h => [+h.g.position.x.toFixed(2), +h.g.position.z.toFixed(2), +h.g.rotation.y.toFixed(2), h.load.slice(0, 8), h.kind, h.owner]); }
+function applyHelperSnapshot(list){
+  if (list.map(x => x[4] + ':' + x[5]).join() !== W.helpers.map(h => h.kind + ':' + h.owner).join()) { for (const h of W.helpers) scene.remove(h.g); W.helpers = list.map((x, i) => makeHelperOf(x[4], x[5], i)); } W.helpers.forEach((h, i) => { const s = list[i]; if (!s) return; h.snap = s; const changed = h.load.join() !== s[3].join(); h.load = s[3]; if (changed) updateHelperLoad(h); }); }
 function guestHelpers(dt){ for (const h of W.helpers) { if (!h.snap) continue; const pos = h.g.position, [x, z, ry] = h.snap; const moving = hd(pos.x, pos.z, x, z) > 0.02; pos.x = lerp(pos.x, x, 1 - Math.exp(-10 * dt)); pos.z = lerp(pos.z, z, 1 - Math.exp(-10 * dt)); h.g.rotation.y = ry; animHelper(h, dt, moving); } }
 
 /* ================= flights, particles, timers ================= */
@@ -2696,10 +2729,14 @@ function act(ev){
   if (ev.by == null) ev.by = ME;
   if (NET.role === 'guest') { netSend({ k:'act', ev }); return; }
   apply(ev);
-  if (NET.role === 'host' && NET.conn) netSend({ k:'ev', ev });
+  if (NET.role === 'host') netBroadcast({ k:'ev', ev });
 }
 let unlStep = 0, placeStep = 0;
 function apply(ev){
+  const prevLB = LB; LB = ev.by | 0;
+  try { applyInner(ev); } finally { LB = prevLB; }
+}
+function applyInner(ev){
   const by = ev.by | 0, pl = S.pl[by], mine = by === ME;
   switch (ev.k) {
     case 'col': {
@@ -2784,20 +2821,20 @@ function apply(ev){
     }
     case 'buy': {
       const n = NODE[ev.id]; const inf = nodeInfo(n); if (!inf.can) break;
-      S.coins -= inf.price; S.ideas -= inf.ideas; S.up[n.id] = inf.l + 1; S.stats.bought++;
-      if (mine) { SFX.buy(); toast(t('t.bought', { i:n.icon, n:nName(n), v:n.fmt(n.vals[S.up[n.id]]) })); } else toast(t('t.pbought', { i:n.icon, n:nName(n) }));
+      S.coins -= inf.price; S.ideas -= inf.ideas; pl.up[n.id] = inf.l + 1; S.stats.bought++;
+      if (mine) { SFX.buy(); toast(t('t.bought', { i:n.icon, n:nName(n), v:n.fmt(n.vals[pl.up[n.id]]) })); } else toast(t('t.pbought', { i:n.icon, n:nName(n), p:by + 1 }));
       if (n.id === 'v_treasure') { S.extraGold++; addExtraGold(S.extraGold - 1); }
       if (n.id.startsWith('a_')) syncHelpers();
-      updatePack(0); updatePack(1); applyGear(P.fig); applyGear(REM.fig);
+      updatePacks(); applyGears();
       if (GEAR_NODES.has(n.id)) gearFx(figOf(by), n);
       break;
     }
     case 'swap': {
       const n = NODE[ev.id], o = forkOther(n); if (!o || S.ideas < 1 || !L(o.id)) break;
       let refund = 0; for (let k = 0; k < L(o.id); k++) refund += Math.round(o.base * Math.pow(1.55, k) * o.mult);
-      S.ideas -= 1; S.coins += refund; S.up[o.id] = 0;
+      S.ideas -= 1; S.coins += refund; pl.up[o.id] = 0;
       if (o.id.startsWith('a_')) syncHelpers();
-      applyGear(P.fig); applyGear(REM.fig);
+      applyGears();
       if (mine) toast(t('t.refund', { c:nC(refund) }));
       break;
     }
@@ -3072,8 +3109,12 @@ function sendPulse(){
 let vacT = 0;
 function hostSystems(dt){
   hostHelpers(dt);
-  if (L('a_vacuum')) { vacT += dt * VAC_RATE[L('a_vacuum')] * helperPace(); if (vacT >= 1) { vacT -= 1; const b = (L('x_crew') ? nearest(0, -0.3, V('a_vacuum'), true) : null) || nearest(0, -0.3, V('a_vacuum'), false); if (b) act({ k:'vac', i:b.i }); else vacT = 0; } }
-  if (L('b_rent') && S.stars) { W.rentT += dt; if (W.rentT >= 20) { W.rentT = 0; act({ k:'coins', n:Math.round(S.stars * V('b_rent') / 3 * dm() * (L('x_fair') ? 1.25 : 1)) }); } }
+  /* station-wide helpers use the best vacuum among players; rent adds up per player */
+  let vl = 0, crew = false, rent = 0; const prev = LB;
+  for (const s2 of activeSlots()) { LB = s2; vl = Math.max(vl, L('a_vacuum')); crew ||= L('x_crew') > 0; if (L('b_rent')) rent += V('b_rent') * (L('x_fair') ? 1.25 : 1); }
+  LB = prev;
+  if (vl) { const vr = NODE.a_vacuum.vals[vl]; vacT += dt * VAC_RATE[vl] * helperPace(); if (vacT >= 1) { vacT -= 1; const b = (crew ? nearest(0, -0.3, vr, true) : null) || nearest(0, -0.3, vr, false); if (b) act({ k:'vac', i:b.i }); else vacT = 0; } }
+  if (rent && S.stars) { W.rentT += dt; if (W.rentT >= 20) { W.rentT = 0; act({ k:'coins', n:Math.round(S.stars * rent / 3 * dm()) }); } }
   if (S.stats.buildings >= 1) {
     if (!S.order) { W.orderT -= dt; if (W.orderT <= 0) { W.orderT = 90 + Math.random() * 60; const o = makeOrder(); if (o) act({ k:'order', o }); } }
     else if (S.order.left <= 0) act({ k:'oend' });
@@ -3122,7 +3163,7 @@ function refreshHUD(){
   $('#rCoins').textContent = fmt(S.coins); $('#rStars').textContent = S.stars; $('#rIdeas').textContent = S.ideas;
   const placed = W.buildings.reduce((a, b) => a + b.placedSet.size, 0);
   $('#rDist').textContent = SHOW ? `${W.info.flag || ''} ${tx(W.info.name)}` : `${tx(W.info.name)} · ${Math.floor(placed / W.total * 100)}%`;
-  $('#rNet').hidden = !(NET.conn && NET.conn.open);
+  $('#rNet').hidden = NET.role === 'solo'; if (NET.role !== 'solo') $('#rNet').textContent = t('net.pillN', { n:activeSlots().length, c:NET.code });
   const ln = looseN(ME), cn = carryN(ME), cap = E.cap();
   $('#bagN').textContent = ln + cn; $('#bagC').textContent = cap;
   $('#bagBar').style.width = Math.min(100, ln / cap * 100) + '%'; $('#carryBar').style.width = Math.min(100, cn / cap * 100) + '%';
@@ -3193,7 +3234,7 @@ function syncMenu(){
   const st = v => v ? t('st.on') : t('st.off');
   $('#vMusic').value = Math.round((LOC.musicVol ?? 0.6) * 100); $('#vSfx').value = Math.round((LOC.sfxVol ?? 0.8) * 100); volLabels(); $('#mJoy').textContent = t('menu.joy', { s:st(LOC.joy) });
   $('#mReset').textContent = t('menu.reset'); $('#mReset').dataset.arm = ''; $('#mReset').disabled = NET.role !== 'solo' || !!SHOW;
-  $('#mCoop').textContent = NET.conn && NET.conn.open ? t('menu.coopOn') : t('menu.coop');
+  $('#mCoop').textContent = netOn() ? t('menu.coopOn') : t('menu.coop');
   langButtons($('#mLangs'));
 }
 function volLabels(){ const f = v => v > 0 ? Math.round(v * 100) + '%' : t('st.off'); $('#vMusicV').textContent = f(LOC.musicVol); $('#vSfxV').textContent = f(LOC.sfxVol); $('#mTrack').textContent = t('vol.track', { n:Music.name() }); }
@@ -3213,6 +3254,7 @@ $('#mReset').onclick = () => {
   enterDistrict(); $('#menu').hidden = true; toast(t('t.reset'));
 };
 $('#mCoop').onclick = () => { $('#menu').hidden = true; openCoop(); };
+$('#rNet').onclick = () => openCoop();
 
 /* joystick */
 {
@@ -3255,9 +3297,12 @@ function updateLabels(dt){
   const refresh = labT <= 0; if (refresh) labT = 0.2;
   place($('#labSel'), W && running && !SHOW ? W.buildings[SEL] : null, refresh);
   place($('#labHov'), W && running && !SHOW && HOV >= 0 && HOV !== SEL ? W.buildings[HOV] : null, refresh);
-  const tag = $('#remTag');
-  if (REM.active) { tmpV.copy(REM.fig.g.position); tmpV.y = 1.45; tmpV.project(camera); tag.hidden = false; tag.style.transform = `translate(${(tmpV.x + 1) / 2 * w}px,${(1 - tmpV.y) / 2 * h}px) translate(-50%,-100%)`; }
-  else tag.hidden = true;
+  for (const s2 in REMS) {
+    const r = REMS[s2], tag = r.tag;
+    if (!r.active || SHOW) { tag.hidden = true; continue; }
+    tmpV.copy(r.fig.g.position); tmpV.y = 1.45; tmpV.project(camera); tag.hidden = false; tag.textContent = `${t('net.tag')} ${+s2 + 1}`;
+    tag.style.transform = `translate(${(tmpV.x + 1) / 2 * w}px,${(1 - tmpV.y) / 2 * h}px) translate(-50%,-100%)`;
+  }
 }
 
 /* minimap */
@@ -3286,7 +3331,7 @@ function drawMini(dt){
     if (need) { x.strokeStyle = '#fff'; x.lineWidth = 1.5; x.strokeRect(px - 3, py - 3, 6, 6); }
   }
   for (const h2 of W.helpers) { const [px, py] = mp(h2.g.position.x, h2.g.position.z); x.fillStyle = '#6B4426'; x.beginPath(); x.arc(px, py, 4, 0, 7); x.fill(); }
-  if (REM.active) { const [px, py] = mp(REM.fig.g.position.x, REM.fig.g.position.z); x.fillStyle = '#3FA556'; x.beginPath(); x.arc(px, py, 6, 0, 7); x.fill(); }
+  for (const s2 in REMS) { const r = REMS[s2]; if (!r.active) continue; const [px, py] = mp(r.fig.g.position.x, r.fig.g.position.z); x.fillStyle = LOOKS[s2 % 4].shirt; x.beginPath(); x.arc(px, py, 6, 0, 7); x.fill(); }
   const [px, py] = mp(P.pos.x, P.pos.z); x.fillStyle = '#E5534B'; x.strokeStyle = '#fff'; x.lineWidth = 2.5; x.beginPath(); x.arc(px, py, 7, 0, 7); x.fill(); x.stroke();
   x.restore();
 }
@@ -3764,84 +3809,133 @@ function startGame(){
   else if (LOC.introD !== S.district && S.district > 1) later(0.3, showDistrictIntro);
 }
 
-/* ================= co-op (WebRTC via PeerJS) ================= */
-const PEER_PREFIX = 'sortograd2-';
+/* ================= co-op (WebRTC via PeerJS): host + up to 3 guests; coins shared, upgrades per player ================= */
+const PEER_PREFIX = 'sortograd2-', MAX_GUESTS = 3;
 function loadPeer(){ return new Promise((res, rej) => { if (window.Peer) return res(); const s = document.createElement('script'); s.src = 'https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js'; s.onload = () => res(); s.onerror = () => rej(new Error('lib')); document.head.appendChild(s); }); }
-function netSend(m){ try { if (NET.conn && NET.conn.open) NET.conn.send(m); } catch (e) {} }
-function setNet(key, err = false, v = {}){ NET.status = key ? t(key, v) : ''; NET.err = err; if (!$('#coop').hidden) coopUI(); }
+const netOn = () => NET.role === 'host' ? NET.conns.some(c => c.open && c.slot != null) : !!(NET.conn && NET.conn.open);
+function netSend(m){ try { if (NET.role === 'guest') { if (NET.conn && NET.conn.open) NET.conn.send(m); } else netBroadcast(m); } catch (e) {} }
+function netBroadcast(m, except){ for (const c of NET.conns) if (c !== except && c.open && c.slot != null) { try { c.send(m); } catch (e) {} } }
+function setNet(key, err = false, v = {}){ NET.status = key ? t(key, v) : ''; NET.err = err; if (!$('#coop').hidden) coopUI(); hudDirty = true; }
 function netFail(e){ const ty = e && e.type; setNet(ty === 'peer-unavailable' ? 'c.notfound' : ty === 'unavailable-id' ? 'c.taken' : 'c.fail', true); }
-function attachConn(c){ NET.conn = c; c.on('data', onNet); c.on('close', onNetClose); c.on('error', () => {}); }
-async function hostRoom(){
+function activeSlots(){ return [ME, ...Object.keys(REMS).map(Number).filter(s => REMS[s].active && s !== ME)]; }
+function myPid(){ if (!LOC.pid) { LOC.pid = Math.random().toString(36).slice(2, 10); saveLocal(); } return LOC.pid; }
+async function hostRoom(retry = false){
   try { setNet('c.creating'); await loadPeer(); } catch (e) { netFail(); return; }
   leaveNet(true);
-  const code = String(Math.floor(1000 + Math.random() * 9000));
-  const peer = new Peer(PEER_PREFIX + code); NET.peer = peer;
+  if (!LOC.roomCode || retry) { LOC.roomCode = String(Math.floor(1000 + Math.random() * 9000)); saveLocal(); }
+  const code = LOC.roomCode, peer = new Peer(PEER_PREFIX + code); NET.peer = peer; NET.conns = [];
   peer.on('open', () => { NET.role = 'host'; NET.code = code; setNet('c.waiting'); });
   peer.on('connection', c => {
-    if (NET.conn && NET.conn.open) { c.close(); return; }
-    attachConn(c);
-    c.on('open', () => { netSend({ k:'full', S:JSON.parse(JSON.stringify(S)) }); REM.active = true; REM.fig.g.visible = true; REM.fig.g.position.set(-1.6, 0, 1.8); toast(t('t.joined')); setNet('c.connected'); hudDirty = true; });
+    if (NET.conns.filter(x => x.open).length >= MAX_GUESTS) { c.on('open', () => { try { c.send({ k:'full-room' }); } catch (e) {} setTimeout(() => c.close(), 400); }); return; }
+    NET.conns.push(c);
+    c.on('data', m => onHostData(c, m));
+    c.on('close', () => hostDrop(c)); c.on('error', () => {});
   });
-  peer.on('error', netFail);
+  peer.on('error', e => { if (e && e.type === 'unavailable-id' && !retry) { hostRoom(true); return; } netFail(e); });
+}
+function onHostData(c, m){
+  if (!m || !m.k) return;
+  if (m.k === 'hello') {
+    S.slots ||= {};
+    const used = new Set([0, ...NET.conns.filter(x => x !== c && x.slot != null).map(x => x.slot)]);
+    let slot = S.slots[m.pid];
+    if (!slot || used.has(slot)) { slot = [1, 2, 3].find(s => !used.has(s)); if (!slot) { c.close(); return; } }
+    S.slots[m.pid] = slot; c.slot = slot;
+    const r = getRem(slot); r.active = true; r.fig.g.visible = true; r.fig.g.position.set(-1.6 + slot * 0.6, 0, 1.8); r.tx = r.fig.g.position.x; r.tz = 1.8; applyGear(r.fig, slot);
+    try { c.send({ k:'full', S:JSON.parse(JSON.stringify(S)), slot, active:activeSlots() }); } catch (e) {}
+    netBroadcast({ k:'join', s:slot }, c);
+    toast(t('t.joinedN', { n:slot + 1 })); setNet('c.connected'); hudDirty = true;
+    return;
+  }
+  if (c.slot == null) return;
+  if (m.k === 'act') { m.ev.by = c.slot; apply(m.ev); netBroadcast({ k:'ev', ev:m.ev }); }
+  else if (m.k === 'pos') { const r = REMS[c.slot]; if (r) Object.assign(r, { tx:m.x, tz:m.z, th:m.h, moving:m.m }); netBroadcast({ ...m, s:c.slot }, c); }
+}
+function hostDrop(c){
+  NET.conns = NET.conns.filter(x => x !== c);
+  if (c.slot == null || NET.role !== 'host') return;
+  const r = REMS[c.slot]; if (r) { r.active = false; r.fig.g.visible = false; }
+  const pl = S.pl[c.slot]; for (let q = 0; q < 18; q++) { S.station[q] += pl.bag[q] + pl.carry[q]; pl.bag[q] = 0; pl.carry[q] = 0; } crateFillUpdate();
+  netBroadcast({ k:'leave', s:c.slot }); toast(t('t.leftN', { n:c.slot + 1 }));
+  if (!netOn()) setNet('c.waiting'); hudDirty = true;
 }
 async function joinRoom(code){
   code = String(code || '').replace(/\D/g, '');
   if (code.length !== 4) { setNet('c.code4', true); return; }
   try { setNet('c.joining'); await loadPeer(); } catch (e) { netFail(); return; }
   leaveNet(true);
+  LOC.lastJoin = code; saveLocal();
   const peer = new Peer(); NET.peer = peer;
-  peer.on('open', () => { const c = peer.connect(PEER_PREFIX + code, { reliable:true }); attachConn(c); c.on('open', () => { NET.role = 'guest'; NET.code = code; setNet('c.gotState'); }); });
+  peer.on('open', () => {
+    const c = peer.connect(PEER_PREFIX + code, { reliable:true }); NET.conn = c;
+    c.on('data', onGuestData); c.on('close', onGuestClose); c.on('error', () => {});
+    c.on('open', () => { NET.role = 'guest'; NET.code = code; setNet('c.gotState'); c.send({ k:'hello', pid:myPid() }); });
+  });
   peer.on('error', netFail);
 }
+function onGuestData(m){
+  if (!m || !m.k) return;
+  switch (m.k) {
+    case 'full': ME = m.slot; S = mergeState(m.S); setMyLook(); enterDistrict(); for (const s of m.active) if (s !== ME) { const r = getRem(s); r.active = true; r.fig.g.visible = true; applyGear(r.fig, s); } setNet('c.connected'); toast(t('t.inroom')); if (!running) startGame(); break;
+    case 'full-room': setNet('c.full', true); break;
+    case 'ev': apply(m.ev); break;
+    case 'pos': if (m.s !== ME) { const r = getRem(m.s); if (!r.active) { r.active = true; r.fig.g.visible = true; applyGear(r.fig, m.s); } Object.assign(r, { tx:m.x, tz:m.z, th:m.h, moving:m.m }); } break;
+    case 'join': { const r = getRem(m.s); r.active = true; r.fig.g.visible = true; applyGear(r.fig, m.s); toast(t('t.joinedN', { n:m.s + 1 })); break; }
+    case 'leave': { const r = REMS[m.s]; if (r) { r.active = false; r.fig.g.visible = false; } toast(t('t.leftN', { n:m.s + 1 })); break; }
+    case 'hp': if (W) applyHelperSnapshot(m.l); break;
+  }
+}
+function onGuestClose(){
+  if (NET.role !== 'guest') return;
+  toast(t('t.lost')); NET.role = 'solo'; NET.conn = null; try { NET.peer && NET.peer.destroy(); } catch (e) {} NET.peer = null;
+  hideRems(); backToSolo(); setNet('');
+}
+function hideRems(){ for (const s in REMS) { REMS[s].active = false; REMS[s].fig.g.visible = false; } }
 function leaveNet(silent){
   const wasGuest = NET.role === 'guest';
   try { NET.conn && NET.conn.close(); } catch (e) {}
+  for (const c of NET.conns || []) { try { c.close(); } catch (e) {} }
   try { NET.peer && NET.peer.destroy(); } catch (e) {}
-  NET.conn = null; NET.peer = null; NET.code = '';
-  if (NET.role !== 'solo') { NET.role = 'solo'; REM.active = false; REM.fig.g.visible = false; if (wasGuest) backToSolo(); }
+  NET.conn = null; NET.conns = []; NET.peer = null; NET.code = '';
+  if (NET.role !== 'solo') { NET.role = 'solo'; hideRems(); if (wasGuest) backToSolo(); }
   if (!silent) setNet('');
   hudDirty = true;
 }
-function backToSolo(){ ME = 0; const sv = loadSaved(); S = sv ? mergeState(sv) : DEF(); enterDistrict(); }
-function onNetClose(){
-  if (NET.role === 'guest') { toast(t('t.lost')); NET.role = 'solo'; NET.conn = null; try { NET.peer && NET.peer.destroy(); } catch (e) {} NET.peer = null; REM.active = false; REM.fig.g.visible = false; backToSolo(); setNet(''); }
-  else if (NET.role === 'host') { toast(t('t.left')); NET.conn = null; REM.active = false; REM.fig.g.visible = false; const pl = S.pl[1]; for (let q = 0; q < 18; q++) { S.station[q] += pl.bag[q] + pl.carry[q]; pl.bag[q] = 0; pl.carry[q] = 0; } crateFillUpdate(); setNet('c.waiting'); }
-  hudDirty = true;
-}
-function onNet(m){
-  if (!m || !m.k) return;
-  switch (m.k) {
-    case 'full': ME = 1; S = mergeState(m.S); enterDistrict(); REM.active = true; REM.fig.g.visible = true; setNet('c.connected'); toast(t('t.inroom')); if (!running) startGame(); break;
-    case 'ev': apply(m.ev); break;
-    case 'act': if (NET.role === 'host') { m.ev.by = 1; apply(m.ev); netSend({ k:'ev', ev:m.ev }); } break;
-    case 'pos': REM.tx = m.x; REM.tz = m.z; REM.th = m.h; REM.moving = m.m; break;
-    case 'hp': if (NET.role === 'guest' && W) applyHelperSnapshot(m.l); break;
+function backToSolo(){ ME = 0; setMyLook(); const sv = loadSaved(); S = sv ? mergeState(sv) : DEF(); enterDistrict(); }
+function netTick(dt){
+  if (!netOn()) return;
+  P.netT -= dt;
+  if (P.netT <= 0) {
+    P.netT = 0.08;
+    netSend({ k:'pos', s:ME, x:+P.pos.x.toFixed(2), z:+P.pos.z.toFixed(2), h:+P.fig.g.rotation.y.toFixed(2), m:P.moving });
+    if (NET.role === 'host' && W.helpers.length) netSend({ k:'hp', l:helperSnapshot() });
   }
 }
-function netTick(dt){
-  if (!NET.conn || !NET.conn.open) return;
-  P.netT -= dt;
-  if (P.netT <= 0) { P.netT = 0.08; netSend({ k:'pos', x:+P.pos.x.toFixed(2), z:+P.pos.z.toFixed(2), h:+P.fig.g.rotation.y.toFixed(2), m:P.moving }); if (NET.role === 'host' && W.helpers.length) netSend({ k:'hp', l:helperSnapshot() }); }
-}
 function updateRemote(dt){
-  if (!REM.active) return;
-  const g = REM.fig.g, k = 1 - Math.exp(-12 * dt);
-  g.position.x = lerp(g.position.x, REM.tx, k); g.position.z = lerp(g.position.z, REM.tz, k);
-  let dh = REM.th - g.rotation.y; dh = Math.atan2(Math.sin(dh), Math.cos(dh)); g.rotation.y += dh * Math.min(1, dt * 12);
-  animFigure(REM.fig, dt, REM.moving, 3.3);
+  for (const s in REMS) {
+    const r = REMS[s]; if (!r.active) continue;
+    const g = r.fig.g, k = 1 - Math.exp(-12 * dt);
+    g.position.x = lerp(g.position.x, r.tx, k); g.position.z = lerp(g.position.z, r.tz, k);
+    let dh = r.th - g.rotation.y; dh = Math.atan2(Math.sin(dh), Math.cos(dh)); g.rotation.y += dh * Math.min(1, dt * 12);
+    animFigure(r.fig, dt, r.moving, 3.3);
+  }
 }
 function openCoop(){ if (SHOW) closeShowcase(); $('#coop').hidden = false; coopUI(); }
 function coopUI(){
-  const card = $('#coopCard'), on = NET.conn && NET.conn.open;
+  const card = $('#coopCard'), on = netOn();
   const st = NET.status ? `<p class="status${NET.err ? ' err' : on ? ' ok' : ''}">${NET.status}</p>` : '';
-  if (NET.role === 'host') card.innerHTML = `<h2>${t('c.title')}</h2><p>${t('c.hostP')}</p><div class="code">${NET.code}</div>${st}<button class="ghostbtn" id="cLeave">${t('c.closeRoom')}</button><button class="primary" id="cClose">${on ? t('c.play') : t('c.playSolo')}</button>`;
-  else if (NET.role === 'guest') card.innerHTML = `<h2>${t('c.title')}</h2><p>${t('c.guestP', { c:NET.code })}</p>${st}<button class="ghostbtn" id="cLeave">${t('c.leave')}</button><button class="primary" id="cClose">${t('c.play')}</button>`;
+  if (NET.role === 'host') {
+    const n = activeSlots().length;
+    card.innerHTML = `<h2>${t('c.title')}</h2><p>${t('c.hostP')}</p><div class="code">${NET.code}</div><p class="status ok">${t('c.players', { n })}</p>${st}<p class="kbd">${t('c.sameCode')}</p><button class="ghostbtn" id="cLeave">${t('c.closeRoom')}</button><button class="primary" id="cClose">${on ? t('c.play') : t('c.playSolo')}</button>`;
+  } else if (NET.role === 'guest') card.innerHTML = `<h2>${t('c.title')}</h2><p>${t('c.guestP', { c:NET.code })}</p><p class="status ok">${t('c.players', { n:activeSlots().length })}</p>${st}<button class="ghostbtn" id="cLeave">${t('c.leave')}</button><button class="primary" id="cClose">${t('c.play')}</button>`;
   else {
-    card.innerHTML = `<h2>${t('c.title')}</h2><p>${t('c.intro')}</p><button class="primary" id="cHost">${t('c.host')}</button>
+    card.innerHTML = `<h2>${t('c.title')}</h2><p>${t('c.intro')}</p><button class="primary" id="cHost">${LOC.roomCode ? t('c.hostAgain', { c:LOC.roomCode }) : t('c.host')}</button>
+      ${LOC.lastJoin ? `<button class="ghostbtn" id="cRejoin">${t('c.rejoin', { c:LOC.lastJoin })}</button>` : ''}
       <input class="codein" id="cCode" inputmode="numeric" maxlength="4" placeholder="0000" aria-label="code"><button class="ghostbtn" id="cJoin">${t('c.join')}</button>${st}
       <p class="kbd">${t('c.note')}</p><button class="ghostbtn" id="cClose">${t('c.back')}</button>`;
     $('#cHost').onclick = () => { audioInit(); hostRoom(); };
     $('#cJoin').onclick = () => { audioInit(); joinRoom($('#cCode').value); };
+    const rj = $('#cRejoin'); if (rj) rj.onclick = () => { audioInit(); joinRoom(LOC.lastJoin); };
   }
   const lv = $('#cLeave'); if (lv) lv.onclick = () => { leaveNet(false); coopUI(); };
   $('#cClose').onclick = () => { $('#coop').hidden = true; if (!$('#start').hidden && NET.role !== 'solo' && !running) startGame(); };
@@ -3855,7 +3949,11 @@ function loadLocal(){ try { const s = localStorage.getItem(LKEY); if (!s) return
 function mergeState(o){
   const d = DEF(); if (!o) return d;
   for (const k in d) if (o[k] !== undefined) d[k] = (typeof d[k] === 'object' && d[k] && !Array.isArray(d[k]) && k !== 'order') ? { ...d[k], ...o[k] } : o[k];
-  if (!Array.isArray(d.pl) || d.pl.length < 2) d.pl = [mkPl(), mkPl()];
+  if (!Array.isArray(d.pl)) d.pl = [];
+  while (d.pl.length < 4) d.pl.push(mkPl());
+  d.pl = d.pl.map(p2 => ({ ...mkPl(), ...p2, up:{ ...(p2.up || {}) } }));
+  if (o.up && !Object.keys(d.pl[0].up).length) d.pl[0].up = { ...o.up };   /* old saves: shared upgrades become the host's */
+  delete d.up;
   return d;
 }
 function enterDistrict(){
@@ -3877,7 +3975,7 @@ function enterDistrict(){
   const pp = ME === 0 && S.ppos && free(S.ppos[0], S.ppos[1]) ? S.ppos : (ME === 0 ? [1.6, 1.8] : [-1.6, 1.8]);
   P.pos.set(pp[0], 0, pp[1]); camTarget.set(pp[0], 0, pp[1]);
   W.helpers = []; syncHelpers();
-  updatePack(0); updatePack(1); applyGear(P.fig); applyGear(REM.fig); W.needDirty = true; planSig = ''; hudDirty = true; refreshGhosts();
+  updatePacks(); applyGears(); W.needDirty = true; planSig = ''; hudDirty = true; refreshGhosts();
 }
 function offlineProgress(){
   if (NET.role === 'guest' || !L('a_night') || !S.savedAt) return;
@@ -3935,7 +4033,7 @@ function boot(data){
 addEventListener('visibilitychange', () => { if (document.hidden) { save(); saveLocal(); Music.pause(); AC && AC.suspend && AC.suspend(); } else { AC && AC.resume && AC.resume(); Music.resume(); } });
 addEventListener('pagehide', () => { save(); saveLocal(); });
 if (window.claude?.hot?.snapshot) window.claude.hot.snapshot(() => { if (W && NET.role !== 'guest' && !SHOW) S.ppos = [P.pos.x, P.pos.z]; return { S:NET.role === 'guest' ? loadSaved() : JSON.parse(JSON.stringify(SHOW ? SHOW.saved : S)), LOC }; });
-window.__sg = { get S(){ return S; }, get W(){ return W; }, get LOC(){ return LOC; }, P, act, apply, onTap, buildAction, nodeInfo, NODE, screenOf, walkTo, walkToStation, walkToBuilding, E, plN, enterDistrict, startGame, placeTap, nextPlaceable, startPlaceAll, getNeeds, requestCollect, refreshHUD, applyGear, surplus, openShowcase, closeShowcase, districtInfo, playFlight, camTo:(x, z, zm) => { camTarget.set(x, 0, z); P.pos.set(x, 0, z); if (zm) zoom = zoomT = zm; }, get running(){ return running; }, SELf:() => SEL, setSel:i => selectB(i), TUT, setLang, T,
+window.__sg = { get S(){ return S; }, get W(){ return W; }, get LOC(){ return LOC; }, P, act, apply, onTap, buildAction, nodeInfo, NODE, screenOf, walkTo, walkToStation, walkToBuilding, E, plN, enterDistrict, startGame, placeTap, nextPlaceable, startPlaceAll, getNeeds, requestCollect, refreshHUD, applyGear, onHostData, onGuestData, hostDrop, NET, REMS, activeSlots, nodeInfo2:id => nodeInfo(NODE[id]), surplus, openShowcase, closeShowcase, districtInfo, playFlight, camTo:(x, z, zm) => { camTarget.set(x, 0, z); P.pos.set(x, 0, z); if (zm) zoom = zoomT = zm; }, get running(){ return running; }, SELf:() => SEL, setSel:i => selectB(i), TUT, setLang, T,
   sim(sec){ let tt = performance.now() / 1000; for (let k = 0; k < sec * 30; k++) { tt += 1 / 30; step(1 / 30, tt); updateTimers(1 / 30); updateFlights(1 / 30); updateParts(1 / 30); ambient(1 / 30, tt); tutTick(1 / 30, tt); } } };
 window.claude?.hot?.ready ? window.claude.hot.ready(boot) : boot(window.claude?.hot?.data ?? {});
 </script>
